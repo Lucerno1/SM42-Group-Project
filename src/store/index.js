@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const modules = {}
 
 const store = new Vuex.Store({
-  modules,
+  modules
 })
 
 export default store
