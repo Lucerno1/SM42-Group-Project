@@ -17,4 +17,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+h1 {
+  color: white;
+  font-size: 13pt;
+  font-family: 'Lato';
+  font-weight: 600;
+}
 </style>
