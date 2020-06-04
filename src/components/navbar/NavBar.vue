@@ -1,10 +1,14 @@
 <template>
   <div class="navBar">
-    <Row :margin="10">
+    <Row :margin="16">
       <Button v-for="(icon, index) in icons" :key="'icon:' + index">
         <div class="navButton">
-          <component :is="icon" class="whiteSVG"></component>
-          <!--          <img :src="icon.src" alt="" />-->
+          <component
+            :is="icon.comp"
+            class="whiteSVG"
+            v-on:click="redirect(icon.loc)"
+          ></component>
+          <span v-if="$route.name === icon.loc" class="dot"></span>
         </div>
       </Button>
     </Row>
@@ -25,7 +29,20 @@ export default {
   name: 'NavBar',
   data() {
     return {
-      icons: [UsersIcon, ClipboardIcon, MessageSquareIcon, SettingsIcon]
+      icons: [
+        { comp: UsersIcon, loc: 'Task' },
+        { comp: ClipboardIcon, loc: '' },
+        { comp: MessageSquareIcon, loc: 'Chat' },
+        { comp: SettingsIcon, loc: 'Settings' }
+      ]
+    }
+  },
+  methods: {
+    redirect: function (loc) {
+      if (this.$route.name === loc) {
+        return
+      }
+      this.$router.push(loc)
     }
   },
   components: { Row, Button }
@@ -34,6 +51,8 @@ export default {
 
 <style scoped>
 .navBar {
+  position: fixed;
+  bottom: 0;
   height: 85px;
   width: 100vw;
   background-color: #ff8a00;
@@ -48,5 +67,16 @@ export default {
 
 .whiteSVG {
   color: white;
+}
+
+.dot {
+  margin-top: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 6px;
+  width: 6px;
+  background-color: white;
+  border-radius: 50%;
+  display: block;
 }
 </style>
