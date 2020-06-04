@@ -1,10 +1,13 @@
 <template>
-  <p>Swipe</p>
+  <RequestCard></RequestCard>
 </template>
 
 <script>
+import RequestCard from '@/components/requestcard/RequestCard'
+
 export default {
-  name: 'SwipeTask'
+  name: 'SwipeTask',
+  components: { RequestCard }
 }
 </script>
 
