@@ -5,29 +5,40 @@ import Settings from '@/views/Settings'
 import ChatOverview from '@/views/ChatOverview'
 import Login from '@/views/Login'
 import TaskOverview from '@/views/TaskOverview'
+import AppWrapper from '@/views/AppWrapper'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/task',
-    name: 'Task',
-    component: SwipeTask
+    path: '/',
+    redirect: '/task'
   },
   {
-    path: '/tasks',
-    name: 'Tasks',
-    component: TaskOverview
-  },
-  {
-    path: '/chat',
-    name: 'Chat',
-    component: ChatOverview
-  },
-  {
-    path: '/settings',
-    name: 'Settings',
-    component: Settings
+    path: '/',
+    component: AppWrapper,
+    children: [
+      {
+        path: '/task',
+        name: 'Task',
+        component: SwipeTask
+      },
+      {
+        path: '/tasks',
+        name: 'Tasks',
+        component: TaskOverview
+      },
+      {
+        path: '/chat',
+        name: 'Chat',
+        component: ChatOverview
+      },
+      {
+        path: '/settings',
+        name: 'Settings',
+        component: Settings
+      }
+    ]
   },
   {
     path: '/login',
