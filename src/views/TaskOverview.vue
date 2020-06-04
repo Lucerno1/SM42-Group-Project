@@ -1,5 +1,5 @@
 <template>
-  <TopBar></TopBar>
+  <TopBar pageTitle="Questions & Requests"></TopBar>
 </template>
 
 <script>
