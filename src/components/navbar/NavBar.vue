@@ -3,7 +3,8 @@
     <Row :margin="10">
       <Button v-for="(icon, index) in icons" :key="'icon:' + index">
         <div class="navButton">
-          <img :src="icon.src" alt="" />
+          <component :is="icon" class="whiteSVG"></component>
+          <!--          <img :src="icon.src" alt="" />-->
         </div>
       </Button>
     </Row>
@@ -13,17 +14,18 @@
 <script>
 import Button from '@/components/Button'
 import Row from '@/components/Row'
+import {
+  UsersIcon,
+  SettingsIcon,
+  ClipboardIcon,
+  MessageSquareIcon
+} from 'vue-feather-icons'
 
 export default {
   name: 'NavBar',
   data() {
     return {
-      icons: [
-        { src: '/img/icons/users.svg' },
-        { src: '/img/icons/clipboard.svg' },
-        { src: '/img/icons/message-square.svg' },
-        { src: '/img/icons/settings.svg' }
-      ]
+      icons: [UsersIcon, ClipboardIcon, MessageSquareIcon, SettingsIcon]
     }
   },
   components: { Row, Button }
@@ -42,5 +44,9 @@ export default {
 .navButton {
   width: 100%;
   text-align: center;
+}
+
+.whiteSVG {
+  color: white;
 }
 </style>
