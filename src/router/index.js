@@ -4,6 +4,7 @@ import SwipeTask from '@/views/SwipeTask'
 import Settings from '@/views/Settings'
 import ChatOverview from '@/views/ChatOverview'
 import Login from '@/views/Login'
+import TaskOverview from '@/views/TaskOverview'
 
 Vue.use(VueRouter)
 
@@ -12,6 +13,11 @@ const routes = [
     path: '/task',
     name: 'Task',
     component: SwipeTask
+  },
+  {
+    path: '/tasks',
+    name: 'Tasks',
+    component: TaskOverview
   },
   {
     path: '/chat',
