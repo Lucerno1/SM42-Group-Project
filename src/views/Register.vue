@@ -3,30 +3,97 @@
     <div class="register-box">
       <img src="/img/Logo-LocalBuddy.svg" alt="Local Buddy Logo" />
       <div class="grid register-grid1">
-        <input type="text" name="firstname" placeholder="Firstname" />
-        <input type="text" name="lastname" placeholder="Lastname" />
+        <input
+          type="text"
+          name="firstname"
+          placeholder="Firstname"
+          v-model="firstname"
+        />
+        <input
+          type="text"
+          name="lastname"
+          placeholder="Lastname"
+          v-model="lastname"
+        />
       </div>
       <div class="grid register-grid2">
-        <input type="text" name="nationality" placeholder="Nationality" />
-        <input type="text" name="username" placeholder="Username" />
-        <input type="text" name="password" placeholder="Password" />
-        <input type="text" name="password2" placeholder="Confirm password" />
-        <input type="text" name="postalcode" placeholder="Postal code" />
+        <input
+          type="text"
+          name="nationality"
+          placeholder="Nationality"
+          v-model="nationality"
+        />
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          v-model="username"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          v-model="password"
+        />
+        <input
+          type="password"
+          name="password2"
+          placeholder="Confirm password"
+          v-model="password2"
+        />
+        <input
+          type="text"
+          name="postalcode"
+          placeholder="Postal code"
+          v-model="postalcode"
+        />
       </div>
       <div class="grid register-grid3">
-        <Button class="btn btn-signin">Sign in</Button>
-        <Button class="btn btn-register">Register</Button>
+        <button @click="redirect()" class="btn btn-signin">Sign in</button>
+        <button
+          @click="fieldsFilled ? validateFields() : null"
+          class="btn btn-register"
+        >
+          Register
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Button from '@/components/Button'
-
 export default {
   name: 'Register',
-  components: { Button }
+  data() {
+    return {
+      fieldsFilled: true,
+      firstname: null,
+      lastname: null,
+      nationality: null,
+      username: null,
+      password: null,
+      password2: null,
+      postalcode: null
+    }
+  },
+  methods: {
+    redirect() {
+      this.$router.push('Task')
+    },
+    validateFields() {
+      if (
+        this.firstname &&
+        this.lastname &&
+        this.nationality &&
+        this.username &&
+        this.password &&
+        this.password2 &&
+        this.postalcode != ''
+      ) {
+        this.$router.push('Task')
+      }
+    }
+  }
 }
 </script>
 
@@ -85,6 +152,10 @@ input {
   border: none;
 }
 
+input:focus {
+  outline-color: #ff8a00;
+}
+
 .btn {
   font-size: 20px;
   font-weight: bold;
@@ -92,10 +163,19 @@ input {
   border: solid #ff8a00 2px;
   border-radius: 60px;
   padding: 12px 0;
+  cursor: pointer;
 }
 
 .btn-signin {
+  background: #fff2e2;
   color: #ff8a00;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-signin:hover {
+  background: #ff8a00;
+  color: #ffffff;
+  transition: 0.2s ease-in-out;
 }
 
 .btn-register {
