@@ -31,7 +31,7 @@ export default {
     return {
       icons: [
         { comp: UsersIcon, loc: 'Task' },
-        { comp: ClipboardIcon, loc: '' },
+        { comp: ClipboardIcon, loc: 'Tasks' },
         { comp: MessageSquareIcon, loc: 'Chat' },
         { comp: SettingsIcon, loc: 'Settings' }
       ]
