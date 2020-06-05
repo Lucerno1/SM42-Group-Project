@@ -1,14 +1,32 @@
 <template>
-  <input :type="type" :name="name" :placeholder="placeholder" required />
+  <input
+    :type="type"
+    :name="name"
+    :placeholder="placeholder"
+    v-model="content"
+    @input="handleInput"
+    required
+  />
 </template>
 
 <script>
 export default {
   name: 'Input',
+  data() {
+    return {
+      content: this.value
+    }
+  },
   props: {
     type: String,
     name: String,
-    placeholder: String
+    placeholder: String,
+    value: String
+  },
+  methods: {
+    handleInput() {
+      this.$emit('input', this.content)
+    }
   }
 }
 </script>

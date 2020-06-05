@@ -19,14 +19,24 @@
             :type="field.type"
             :name="field.name"
             :placeholder="field.placeholder"
+            v-model="field.value"
           />
         </InputGrid>
         <InputGrid grid="single" columns="100%" :mgb="35">
-          <select name="nationality" required>
-            <option disabled selected value>Nationality</option>
-            <option>Morocco</option>
-            <option>Turkey</option>
-            <option>Zwahili</option>
+          <select
+            form="register-form"
+            name="nationality"
+            v-model="selectedNationality"
+            required
+          >
+            <option :value="null" disabled>Nationality</option>
+            <option
+              v-for="country in countries"
+              :key="country.id"
+              :value="{ id: country.id, name: country.name }"
+            >
+              {{ country.name }}
+            </option>
           </select>
           <Input
             v-for="(field, index) in fields2"
@@ -34,6 +44,7 @@
             :type="field.type"
             :name="field.name"
             :placeholder="field.placeholder"
+            v-model="field.value"
           />
         </InputGrid>
         <InputGrid
@@ -47,11 +58,11 @@
           ></SecondaryButton>
           <PrimaryButton value="Register" />
         </InputGrid>
-        <!-- <span v-if="errors.length">
+        <span v-if="errors.length">
           <ul>
             <li v-for="error in errors" :key="error">{{ error }}</li>
           </ul>
-        </span> -->
+        </span>
       </form>
     </div>
   </div>
@@ -67,48 +78,54 @@ export default {
   name: 'Register',
   data() {
     return {
+      selectedNationality: null,
       fields1: [
         {
           type: 'text',
           name: 'firstname',
-          placeholder: 'Firstname'
+          placeholder: 'Firstname',
+          value: ''
         },
         {
           type: 'text',
           name: 'lastname',
-          placeholder: 'Lastname'
+          placeholder: 'Lastname',
+          value: ''
         }
       ],
       fields2: [
         {
           type: 'text',
           name: 'username',
-          placeholder: 'Username'
+          placeholder: 'Username',
+          value: ''
         },
         {
           type: 'password',
           name: 'password',
-          placeholder: 'Password'
+          placeholder: 'Password',
+          value: ''
         },
         {
           type: 'password',
           name: 'password',
-          placeholder: 'Confirm password'
+          placeholder: 'Confirm password',
+          value: ''
         },
         {
           type: 'text',
           name: 'postalcode',
-          placeholder: 'Postal code'
+          placeholder: 'Postal code',
+          value: ''
         }
       ],
+      countries: [
+        { id: 1, name: 'Albania' },
+        { id: 2, name: 'Morocco' },
+        { id: 3, name: 'Sweden' },
+        { id: 4, name: 'The Netherlands' }
+      ],
       errors: []
-      // firstname: null,
-      // lastname: null,
-      // nationality: null,
-      // username: null,
-      // password: null,
-      // password2: null,
-      // postalcode: null
     }
   },
   methods: {
@@ -117,22 +134,34 @@ export default {
     },
     validateForm: function (e) {
       this.errors = []
-      if (this.firstname.length > 25 || this.firstname.length < 2) {
+      if (
+        this.fields1[0].value.length > 25 ||
+        this.fields1[0].value.length < 2
+      ) {
         this.errors.push('Firstname must be between 2 and 25 characters')
       }
-      if (this.lastname.length > 30 || this.lastname.length < 2) {
+      if (
+        this.fields1[1].value.length > 30 ||
+        this.fields1[1].value.length < 2
+      ) {
         this.errors.push('Lastname must be between 2 and 30 characters')
       }
-      if (this.username.length > 30 || this.username.length < 3) {
+      if (
+        this.fields2[0].value.length > 30 ||
+        this.fields2[0].value.length < 3
+      ) {
         this.errors.push('Username must be between 3 and 30 characters')
       }
-      if (this.password.length > 30 || this.password.length < 5) {
+      if (
+        this.fields2[1].value.length > 30 ||
+        this.fields2[1].value.length < 5
+      ) {
         this.errors.push('Password must be between 5 and 30 characters')
       }
-      if (this.password !== this.password2) {
+      if (this.fields2[1].value !== this.fields2[2].value) {
         this.errors.push('Passwords must match')
       }
-      if (this.postalcode.length !== 6) {
+      if (this.fields2[3].value.length !== 6) {
         this.errors.push('Postal code must be 6 characters')
       }
       if (!this.errors.length) {
@@ -167,15 +196,14 @@ export default {
 
 select {
   background: #ffffff;
-  height: 22px;
-  padding: 15px;
+  height: 50px;
+  padding: 11px;
   border-radius: 8px;
   border: none;
 }
 
-select {
-  padding: 11px;
-  height: 50px;
+select:focus {
+  outline-color: #ff8a00;
 }
 
 @media only screen and (min-width: 700px) {
