@@ -148,15 +148,7 @@ export default {
   height: 2.5vh;
   width: 2.5vh;
   background-color: red;
-}
-
-.left-corner:before {
-  position: absolute;
-  margin: -2.5vh -2.5vh -1.5vh 0;
-  padding: 2.5vh;
-  border-radius: 50%;
-  background-color: white;
-  content: '';
+  mask: radial-gradient(circle at top right, transparent 2.5vh, #fff 0);
 }
 
 .wave .upper {
