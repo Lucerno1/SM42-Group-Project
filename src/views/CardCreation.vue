@@ -45,8 +45,9 @@ export default {
 .wrapper {
   max-width: 80vw;
   margin: 0 10vw;
-  top: -50px;
+  top: 120px;
   position: relative;
+  
 }
 
 .requests {
