@@ -16,18 +16,12 @@
       <p class="profile">{{ profile }}</p>
     </section>
     <section class="wave">
-      <svg
-        width="100%"
-        viewBox="0 0 270 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M0 0H270V40H0L0 0Z" fill="white" />
-        <path
-          d="M0 40H270V40C270 28.444 260.632 19.076 249.076 19.076H19.076C8.54062 19.076 4.76831e-06 10.5354 4.76831e-06 0V0L0 40Z"
-          fill="#FF8A00"
-        />
-      </svg>
+      <Row class="upper">
+        <div class="left-corner"></div>
+      </Row>
+      <Row class="lower">
+        <div class="right-corner"></div>
+      </Row>
     </section>
     <section class="orange">
       <Row
@@ -147,6 +141,32 @@ export default {
 
 .wave {
   height: 5vh;
+  background: #ff8a00;
+}
+
+.left-corner {
+  height: 2.5vh;
+  width: 2.5vh;
+  background-color: red;
+}
+
+.left-corner:before {
+  position: absolute;
+  margin: -2.5vh -2.5vh -1.5vh 0;
+  padding: 2.5vh;
+  border-radius: 50%;
+  background-color: white;
+  content: '';
+}
+
+.wave .upper {
+  background-color: white;
+  height: 2.5vh;
+}
+
+.wave .lower {
+  background-color: #ff8a00;
+  height: 2.5vh;
 }
 
 .orange {
