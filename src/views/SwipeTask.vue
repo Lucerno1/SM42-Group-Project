@@ -16,7 +16,17 @@ import RequestCard from '@/components/requestcard/RequestCard'
 export default {
   name: 'SwipeTask',
   components: { RequestCard }
+
 }
+
 </script>
 
-<style scoped></style>
+<style scoped>
+.test{
+  top:0;
+  left:0;
+  position: absolute;
+  color:red;
+}
+
+</style>
