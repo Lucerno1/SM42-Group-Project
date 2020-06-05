@@ -2,106 +2,137 @@
   <div id="register">
     <div class="register-box">
       <img src="/img/Logo-LocalBuddy.svg" alt="Local Buddy Logo" />
-      <div class="grid register-grid1">
-        <input
-          type="text"
-          name="firstname"
-          placeholder="Firstname"
-          v-model="firstname"
-        />
-        <input
-          type="text"
-          name="lastname"
-          placeholder="Lastname"
-          v-model="lastname"
-        />
-      </div>
-      <div class="grid register-grid2">
-        <input
-          type="text"
-          name="nationality"
-          placeholder="Nationality"
-          v-model="nationality"
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          v-model="username"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          v-model="password"
-        />
-        <input
-          type="password"
-          name="password2"
-          placeholder="Confirm password"
-          v-model="password2"
-        />
-        <input
-          type="text"
-          name="postalcode"
-          placeholder="Postal code"
-          v-model="postalcode"
-        />
-      </div>
-      <div class="grid register-grid3">
-        <button @click="redirect()" class="btn btn-signin">Sign in</button>
-        <button
-          @click="fieldsFilled ? validateFields() : null"
-          class="btn btn-register"
-        >
-          Register
-        </button>
-      </div>
+      <form
+        id="register-form"
+        @submit="validateForm"
+        action="/task"
+        method="post"
+      >
+        <InputGrid columns="repeat(auto-fit, minmax(130px, 1fr))" :mgb="11">
+          <Input
+            v-for="(field, index) in fields1"
+            :key="'field:' + index"
+            :type="field.type"
+            :name="field.name"
+            :placeholder="field.placeholder"
+          />
+        </InputGrid>
+        <InputGrid columns="100%" :mgb="35">
+          <select name="nationality" required>
+            <option disabled selected value>Nationality</option>
+            <option>Morocco</option>
+            <option>Turkey</option>
+            <option>Zwahili</option>
+          </select>
+          <Input
+            v-for="(field, index) in fields2"
+            :key="'field:' + index"
+            :type="field.type"
+            :name="field.name"
+            :placeholder="field.placeholder"
+          />
+        </InputGrid>
+        <InputGrid columns="repeat(auto-fit, minmax(130px, 1fr))" :mgb="30">
+          <button @click="redirect()" class="btn btn-signin">Sign in</button>
+          <input type="submit" value="Register" class="btn btn-register" />
+        </InputGrid>
+        <span v-if="errors.length">
+          <ul>
+            <li v-for="error in errors" :key="error">{{ error }}</li>
+          </ul>
+        </span>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
+import Input from '@/components/Input'
+import InputGrid from '@/components/InputGrid'
+
 export default {
   name: 'Register',
   data() {
     return {
-      fieldsFilled: true,
-      firstname: null,
-      lastname: null,
-      nationality: null,
-      username: null,
-      password: null,
-      password2: null,
-      postalcode: null
+      fields1: [
+        {
+          type: 'text',
+          name: 'firstname',
+          placeholder: 'Firstname'
+        },
+        {
+          type: 'text',
+          name: 'lastname',
+          placeholder: 'Lastname'
+        }
+      ],
+      fields2: [
+        {
+          type: 'text',
+          name: 'username',
+          placeholder: 'Username'
+        },
+        {
+          type: 'password',
+          name: 'password',
+          placeholder: 'Password'
+        },
+        {
+          type: 'password',
+          name: 'password',
+          placeholder: 'Confirm password'
+        },
+        {
+          type: 'text',
+          name: 'postalcode',
+          placeholder: 'Postal code'
+        }
+      ],
+      errors: []
+      // firstname: null,
+      // lastname: null,
+      // nationality: null,
+      // username: null,
+      // password: null,
+      // password2: null,
+      // postalcode: null
     }
   },
   methods: {
     redirect() {
       this.$router.push('Task')
     },
-    validateFields() {
-      if (
-        this.firstname &&
-        this.lastname &&
-        this.nationality &&
-        this.username &&
-        this.password &&
-        this.password2 &&
-        this.postalcode != ''
-      ) {
-        this.$router.push('Task')
+    validateForm: function (e) {
+      this.errors = []
+      if (this.firstname.length > 25 || this.firstname.length < 2) {
+        this.errors.push('Firstname must be between 2 and 25 characters')
       }
+      if (this.lastname.length > 30 || this.lastname.length < 2) {
+        this.errors.push('Lastname must be between 2 and 30 characters')
+      }
+      if (this.username.length > 30 || this.username.length < 3) {
+        this.errors.push('Username must be between 3 and 30 characters')
+      }
+      if (this.password.length > 30 || this.password.length < 5) {
+        this.errors.push('Password must be between 5 and 30 characters')
+      }
+      if (this.password !== this.password2) {
+        this.errors.push('Passwords must match')
+      }
+      if (this.postalcode.length !== 6) {
+        this.errors.push('Postal code must be 6 characters')
+      }
+      if (!this.errors.length) {
+        return true
+      }
+      e.preventDefault()
     }
-  }
+  },
+  components: { Input, InputGrid }
 }
 </script>
 
 <style scoped>
-::placeholder {
-  color: #a6a6a6;
-}
-
 #register {
   position: relative;
   width: 100vw;
@@ -121,30 +152,7 @@ export default {
   margin-bottom: 30px;
 }
 
-.grid {
-  display: grid;
-  width: 80%;
-  justify-content: center;
-  grid-gap: 11px;
-  margin: 0 auto;
-}
-
-.register-grid1 {
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  margin-bottom: 11px;
-}
-
-.register-grid2 {
-  grid-template-columns: 100%;
-  margin-bottom: 35px;
-}
-
-.register-grid3 {
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  margin-bottom: 30px;
-}
-
-input {
+select {
   background: #ffffff;
   height: 22px;
   padding: 15px;
@@ -152,8 +160,9 @@ input {
   border: none;
 }
 
-input:focus {
-  outline-color: #ff8a00;
+select {
+  padding: 11px;
+  height: 50px;
 }
 
 .btn {
