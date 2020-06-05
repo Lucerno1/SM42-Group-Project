@@ -41,7 +41,7 @@ const routes = [
       },
       {
         path: '/card-creation',
-        name: 'Card Creation',
+        name: 'CardCreation',
         component: CardCreation
       }
     ]
