@@ -1,10 +1,13 @@
 <template>
-  <p>TaskOverview</p>
+  <TopBar pageTitle="Questions & Requests"></TopBar>
 </template>
 
 <script>
+import TopBar from '@/components/topbar/TopBar'
+
 export default {
-  name: 'TaskOverview'
+  name: 'TaskOverview',
+  components: {TopBar}
 }
 </script>
 
