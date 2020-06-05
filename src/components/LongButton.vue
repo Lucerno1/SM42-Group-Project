@@ -1,0 +1,20 @@
+<template>
+  <div class="long-button"><slot></slot></div>
+</template>
+
+<script>
+export default {
+  name: 'LongButton'
+}
+</script>
+
+<style scoped>
+.long-button {
+  width: 80%;
+  border-radius: 10px;
+  height: 50px;
+  background-color: rgb(255, 255, 255);
+  margin: 15px auto;
+
+}
+</style>
