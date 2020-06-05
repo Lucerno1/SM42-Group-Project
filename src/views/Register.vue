@@ -8,7 +8,11 @@
         action="/task"
         method="post"
       >
-        <InputGrid columns="repeat(auto-fit, minmax(130px, 1fr))" :mgb="11">
+        <InputGrid
+          grid="double"
+          columns="repeat(auto-fit, minmax(130px, 1fr))"
+          :mgb="11"
+        >
           <Input
             v-for="(field, index) in fields1"
             :key="'field:' + index"
@@ -17,7 +21,7 @@
             :placeholder="field.placeholder"
           />
         </InputGrid>
-        <InputGrid columns="100%" :mgb="35">
+        <InputGrid grid="single" columns="100%" :mgb="35">
           <select name="nationality" required>
             <option disabled selected value>Nationality</option>
             <option>Morocco</option>
@@ -32,15 +36,22 @@
             :placeholder="field.placeholder"
           />
         </InputGrid>
-        <InputGrid columns="repeat(auto-fit, minmax(130px, 1fr))" :mgb="30">
-          <button @click="redirect()" class="btn btn-signin">Sign in</button>
-          <input type="submit" value="Register" class="btn btn-register" />
+        <InputGrid
+          grid="double"
+          columns="repeat(auto-fit, minmax(130px, 1fr))"
+          :mgb="30"
+        >
+          <SecondaryButton
+            :functionName="redirect"
+            name="Sign in"
+          ></SecondaryButton>
+          <PrimaryButton value="Register" />
         </InputGrid>
-        <span v-if="errors.length">
+        <!-- <span v-if="errors.length">
           <ul>
             <li v-for="error in errors" :key="error">{{ error }}</li>
           </ul>
-        </span>
+        </span> -->
       </form>
     </div>
   </div>
@@ -49,6 +60,8 @@
 <script>
 import Input from '@/components/Input'
 import InputGrid from '@/components/InputGrid'
+import PrimaryButton from '@/components/PrimaryButton'
+import SecondaryButton from '@/components/SecondaryButton'
 
 export default {
   name: 'Register',
@@ -128,7 +141,7 @@ export default {
       e.preventDefault()
     }
   },
-  components: { Input, InputGrid }
+  components: { Input, InputGrid, PrimaryButton, SecondaryButton }
 }
 </script>
 
@@ -165,41 +178,13 @@ select {
   height: 50px;
 }
 
-.btn {
-  font-size: 20px;
-  font-weight: bold;
-  background: #fff2e2;
-  border: solid #ff8a00 2px;
-  border-radius: 60px;
-  padding: 12px 0;
-  cursor: pointer;
-}
-
-.btn-signin {
-  background: #fff2e2;
-  color: #ff8a00;
-  transition: 0.2s ease-in-out;
-}
-
-.btn-signin:hover {
-  background: #ff8a00;
-  color: #ffffff;
-  transition: 0.2s ease-in-out;
-}
-
-.btn-register {
-  color: #ffffff;
-  background: #ff8a00;
-}
-
 @media only screen and (min-width: 700px) {
-  .register-grid1,
-  .register-grid3 {
-    grid-template-columns: 275px 275px;
+  .double {
+    grid-template-columns: 275px 275px !important;
   }
 
-  .register-grid2 {
-    grid-template-columns: 560px;
+  .single {
+    grid-template-columns: 560px !important;
   }
 }
 </style>

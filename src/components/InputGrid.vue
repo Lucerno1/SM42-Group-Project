@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid"
+    :class="'grid' + ' ' + grid"
     :style="
       'grid-template-columns: ' + columns + ';margin-bottom: ' + mgb + 'px'
     "
@@ -14,7 +14,8 @@ export default {
   name: 'InputGrid',
   props: {
     columns: String,
-    mgb: Number
+    mgb: Number,
+    grid: String
   }
 }
 </script>
