@@ -3,6 +3,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'App'
 }
@@ -10,12 +11,17 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Lato';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+p {
+  font-family: 'Lato';
+  font-size: 10pt;
 }
 
 h1 {
@@ -24,4 +30,17 @@ h1 {
   font-family: 'Lato';
   font-weight: 600;
 }
+
+h2 {
+  color: #ff8a00;
+  font-size: 13pt;
+  font-family: 'Lato';
+  font-weight: 600;
+  margin: 0;
+}
+
+body{
+  background-color: #FFF2E2;
+}
+
 </style>
