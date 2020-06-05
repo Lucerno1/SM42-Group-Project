@@ -69,10 +69,10 @@
 </template>
 
 <script>
-import Input from '@/components/Input'
-import InputGrid from '@/components/InputGrid'
-import PrimaryButton from '@/components/PrimaryButton'
-import SecondaryButton from '@/components/SecondaryButton'
+import Input from '@/components/input/Input'
+import InputGrid from '@/components/input/InputGrid'
+import PrimaryButton from '@/components/bigButtons/PrimaryButton'
+import SecondaryButton from '@/components/bigButtons/SecondaryButton'
 
 export default {
   name: 'Register',
@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     redirect() {
-      this.$router.push('Task')
+      this.$router.push('Login')
     },
     validateForm: function (e) {
       this.errors = []
