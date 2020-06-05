@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 import TopBar from '@/components/topbar/TopBar'
 
 export default {
