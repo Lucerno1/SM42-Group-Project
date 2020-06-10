@@ -28,4 +28,14 @@ export default {
   grid-gap: 11px;
   margin: 0 auto;
 }
+
+@media only screen and (min-width: 700px) {
+  .double {
+    grid-template-columns: 275px 275px !important;
+  }
+
+  .single {
+    grid-template-columns: 560px !important;
+  }
+}
 </style>

@@ -49,14 +49,15 @@
         </InputGrid>
         <InputGrid
           grid="double"
-          columns="repeat(auto-fit, minmax(130px, 1fr))"
+          columns="repeat(auto-fit, minmax(120px, 1fr))"
           :mgb="30"
         >
           <SecondaryButton
+            id="signInButton"
             :functionName="redirect"
             name="Sign in"
           ></SecondaryButton>
-          <PrimaryButton value="Register" />
+          <PrimaryButton id="registerButton" value="Register" />
         </InputGrid>
         <span v-if="errors.length">
           <ul>
@@ -194,6 +195,14 @@ export default {
   margin-bottom: 30px;
 }
 
+#signInButton {
+  justify-self: end;
+}
+
+#registerButton {
+  justify-self: start;
+}
+
 select {
   background: #ffffff;
   height: 50px;
@@ -204,15 +213,5 @@ select {
 
 select:focus {
   outline-color: #ff8a00;
-}
-
-@media only screen and (min-width: 700px) {
-  .double {
-    grid-template-columns: 275px 275px !important;
-  }
-
-  .single {
-    grid-template-columns: 560px !important;
-  }
 }
 </style>
