@@ -1,74 +1,80 @@
 <template>
+
   <div class="login">
-
-    <div class="logo">
-      <img src="" alt="Logo" srcset="">
-    </div>
-
-
-    <form action="" id="loginForm">
-      <input
-        type="text"
-        name="username"
-        id="usernameField"
-        placeholder="Username..."
-      />
-
-      <input
-        type="password"
-        name="password"
-        id="passwordField"
-        placeholder="Password..."
-      />
-
-      <a id="forgotPassword" href="">Forgot password?</a>
-
-      <div class="buttons">
-        <button id="signup" class="btn negative">Sign up</button>
-        <button id="signin" class="btn">Sign in</button>
+    <TopBar pageTitle="Sign in" />
+    <div class="content">
+      <div class="logo">
       </div>
+      <form action="" id="loginForm">
+        <input
+          type="text"
+          name="username"
+          id="usernameField"
+          placeholder="Username..."
+        />
 
-    </form>
+        <input
+          type="password"
+          name="password"
+          id="passwordField"
+          placeholder="Password..."
+        />
+
+        <a id="forgotPassword" href="">Forgot password?</a>
+
+        <div class="buttons">
+          <button id="signup" class="btn negative">Sign up</button>
+          <button id="signin" class="btn">Sign in</button>
+        </div>
+
+      </form>
+    </div>
+    
   </div>
 </template>
 
+
+
 <script>
+import TopBar from "@/components/topbar/TopBar.vue";
+
 export default {
-  name: 'Login'
+  name: 'Login',
+  components: {
+    TopBar
+  }
 }
 </script>
 
+
+
+
 <style scoped>
 
-.login {
-  font-family: 'Lucida Sans'; /* !!!Change to Lato */
+.content {
   background-color: #FFF2E2;
-  margin: 0;
-  height: 100vh;
-  margin: -8px;
+  height: 100%;
   padding: 0 10%;
 }
 
-.statusbar {
+.title {
   width: 100%;
-  height: 44px;
+  height: 50px;
   background-color: #FF8A00;
 }
 
 .logo {
-  background-color: red;
+  background-color: #FF8A00;
   height: 300px;
   margin-bottom: 50px;
 }
 
 #loginForm {
-  font-size: 14pt;
   width: 100%;
 }
 
 #loginForm input {
   width: -webkit-fill-available;
-  font-size: 14pt;
   height: 50px;
   border-radius: 9px;
   border: none;
@@ -95,7 +101,6 @@ export default {
   border-radius: 43px;
   border: none;
   color: #FFFFFF;
-  font-size: 14pt;
   margin-left: auto;
 }
 
