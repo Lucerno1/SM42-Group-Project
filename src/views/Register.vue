@@ -209,6 +209,12 @@ select {
   padding: 11px;
   border-radius: 8px;
   border: none;
+  outline: none;
+  background-image: url('/img/dropdown_arrow.svg');
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right 20px center;
 }
 
 select:focus {
