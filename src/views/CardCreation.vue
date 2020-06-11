@@ -2,7 +2,7 @@
   <div>
     <TopBar pageTitle="Card Creation"></TopBar>
     <div class="wrapper">
-        <h2>Create a request card</h2>
+      <h2>Create a request card</h2>
     </div>
   </div>
 </template>
@@ -23,6 +23,4 @@ export default {
   top: 120px;
   position: relative;
 }
-
-
 </style>

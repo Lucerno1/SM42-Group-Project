@@ -58,6 +58,7 @@ export default {
   background-color: #ff8a00;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  z-index: 9999;
 }
 
 .navButton {

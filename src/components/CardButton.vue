@@ -17,7 +17,6 @@ export default {
 
 <style>
 .cardButton {
-
   background-color: white;
   height: 22px;
   border-radius: 8px;
@@ -33,7 +32,7 @@ export default {
 }
 
 .title {
-font-weight: 900;
-color: #727272;
+  font-weight: 900;
+  color: #727272;
 }
 </style>

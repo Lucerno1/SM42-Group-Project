@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App'
 }
@@ -39,8 +38,7 @@ h2 {
   margin: 0;
 }
 
-body{
-  background-color: #FFF2E2;
+body {
+  background-color: #fff2e2;
 }
-
 </style>
