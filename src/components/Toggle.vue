@@ -1,15 +1,14 @@
 <template>
-<label class="switch">
-    <input type="checkbox">
+  <label class="switch">
+    <input type="checkbox" />
     <span class="slider round"></span>
-</label>
+  </label>
 </template>
 
 <script>
 export default {
   name: 'Toggle',
   components: {}
-  
 }
 </script>
 
@@ -17,8 +16,8 @@ export default {
 .switch {
   position: relative;
   display: inline-block;
-  width: 55px;
-  height: 29px;
+  width: 42px;
+  height: 21px;
 }
 .slider {
   position: absolute;
@@ -27,9 +26,10 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(221, 221, 221);
-  -webkit-transition: .4s;
-  transition: .4s;
+  background-color: #b3b3b3;
+  border: #fff3e3 1px solid;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 .slider.round {
   border-radius: 34px;
@@ -39,23 +39,23 @@ export default {
 }
 .slider:before {
   position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 4px;
-  background-color: #ff8a00;
-  -webkit-transition: .4s;
-  transition: .4s;
+  content: '';
+  height: 15px;
+  width: 15px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #ffffff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
 input:checked + .slider {
-  background-color: rgb(255, 240, 221);
+  background-color: #ff8a00;
 }
 
 input:focus + .slider {
@@ -63,8 +63,8 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(21px);
+  -ms-transform: translateX(21px);
+  transform: translateX(21px);
 }
 </style>
