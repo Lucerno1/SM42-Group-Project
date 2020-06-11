@@ -19,6 +19,7 @@ export default {
 .row {
   display: inline-flex;
   width: 100%;
+  z-index: -1;
 }
 
 .child {
