@@ -20,7 +20,7 @@
         <div class="left-corner"></div>
       </Row>
       <Row class="lower">
-        <div class="right-corner"></div>
+        <div class="corner-wrapper"><div class="right-corner"></div></div>
       </Row>
     </section>
     <section class="orange">
@@ -37,6 +37,7 @@
 
 <script>
 import Row from '@/components/Row'
+
 export default {
   name: 'RequestCard',
   props: {
@@ -147,8 +148,21 @@ export default {
 .left-corner {
   height: 2.5vh;
   width: 2.5vh;
-  background-color: red;
+  background-color: #ff8a00;
   mask: radial-gradient(circle at top right, transparent 2.5vh, #fff 0);
+}
+
+.corner-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.right-corner {
+  height: 2.5vh;
+  width: 2.5vh;
+  background-color: #fff;
+  mask: radial-gradient(circle at bottom left, transparent 2.5vh, #fff 0);
 }
 
 .wave .upper {
