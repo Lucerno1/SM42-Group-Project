@@ -1,6 +1,6 @@
 <template>
   <div class="ChatTaskOverview">
-      <ChatTask />
+      <ChatTask id= "hi" state="active" />
       <ChatTask />
       <ChatTask />
       <ChatTask />
@@ -30,7 +30,5 @@ display: flex;
 padding: 0 10%;
 flex-wrap: nowrap;
 overflow-x: auto;
-
-
 }
 </style>

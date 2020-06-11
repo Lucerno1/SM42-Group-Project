@@ -1,5 +1,5 @@
 <template>
-  <div class="ChatTask">
+  <div :class="'ChatTask' + ' ' + state">
       <ClipboardIcon class="icon" />
   </div>
 </template>
@@ -11,14 +11,16 @@ export default {
   name: 'ChatTask',
   components: {
     ClipboardIcon
+  },
+  props: {
+    state: String
   }
 }
 </script>
 
 <style>
 .ChatTask {
- margin: auto 0;
- margin-right: 10px;
+ margin: auto 5px;
  width: 58px;
  height: 58px;
  background: #fff2e2;
@@ -28,6 +30,11 @@ export default {
  flex: 0 0 auto;
 }
 
+.ChatTask.active {
+    background: #ff8a00;
+    border: 2px solid #fff2e2;
+}
+
 .icon {
     align-items: center;
     justify-content: center;
@@ -35,5 +42,9 @@ export default {
     height: initial;
     padding: 15px;
     color: #ff8a00;
+}
+
+.ChatTask.active .icon {
+    color: #fff2e2;
 }
 </style>
