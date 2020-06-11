@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App'
 }
@@ -17,6 +16,28 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.white-text {
+  color: white;
+  font-family: Lato, serif;
+}
+
+.white-big-text {
+  color: white;
+  font-size: 1.2rem;
+  font-family: Lato, serif;
+}
+
+.orange-text {
+  color: #ff8a00;
+  font-family: Lato, serif;
+}
+
+.orange-big-text {
+  color: #ff8a00;
+  font-size: 1.2rem;
+  font-family: Lato, serif;
 }
 
 p {
@@ -39,7 +60,7 @@ h2 {
   margin: 0;
 }
 
-h3{
+h3 {
   color: rgb(100, 100, 100);
   font-size: 11pt;
   font-family: 'Lato';
@@ -47,7 +68,7 @@ h3{
   margin: 0;
 }
 
-h4{
+h4 {
   color: rgb(148, 148, 148);
   font-size: 11pt;
   font-family: 'Lato';
@@ -55,8 +76,7 @@ h4{
   margin: 0;
 }
 
-body{
-  background-color: #FFF2E2;
+body {
+  background-color: #fff2e2;
 }
-
 </style>
