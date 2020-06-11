@@ -38,7 +38,23 @@ h2 {
   margin: 0;
 }
 
-body {
-  background-color: #fff2e2;
+h3{
+  color: rgb(100, 100, 100);
+  font-size: 11pt;
+  font-family: 'Lato';
+  font-weight: 700;
+  margin: 0;
+}
+
+h4{
+  color: rgb(148, 148, 148);
+  font-size: 11pt;
+  font-family: 'Lato';
+  font-weight: 600;
+  margin: 0;
+}
+
+body{
+  background-color: #FFF2E2;
 }
 </style>
