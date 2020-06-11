@@ -4,43 +4,63 @@
     <section class="filter-grid">
       <div class="inner-grid distance-height slider-grid-columns">
         <map-pin-icon size="1.4x"></map-pin-icon>
-        <input
-          type="range"
-          name="distanceSlider"
-          id="distanceSlider"
-          min="1"
-          max="50"
-          value="1"
-          step="1"
+        <vue-slider
+          v-model="value"
+          v-bind="options"
+          :tooltip-formatter="value + ' km'"
         />
       </div>
       <div class="bg-requests">
-        <div class="inner-grid toggle-btn-height">
+        <div class="inner-grid toggle-btn-height toggle-grid-columns">
           <p>Show Requests</p>
+          <Toggle style="justify-self: right;" />
         </div>
       </div>
-      <div class="inner-grid toggle-btn-height">
+      <div class="inner-grid toggle-btn-height toggle-grid-columns">
         <p>Show Questions</p>
+        <Toggle style="justify-self: right;" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import VueSlider from 'vue-slider-component'
+import Toggle from '@/components/Toggle.vue'
 import { MapPinIcon } from 'vue-feather-icons'
 
 export default {
   name: 'SwipeFilter',
+  data() {
+    return {
+      value: 1,
+      options: {
+        dotSize: 20,
+        width: 'auto',
+        height: 4,
+        min: 1,
+        max: 50,
+        tooltip: 'always',
+        tooltipPlacement: 'top',
+        dragOnClick: true,
+        process: true
+      }
+    }
+  },
   components: {
+    VueSlider,
+    Toggle,
     MapPinIcon
   }
 }
 </script>
 
+<style src="@/assets/vue-slider.css"></style>
+
 <style scoped>
 #swipe-filter {
   position: absolute;
-  height: 46%;
+  height: 23em;
   width: 100%;
   bottom: 0;
   background: #ffa033;
@@ -77,8 +97,13 @@ export default {
   grid-template-columns: 15% 85%;
 }
 
+.toggle-grid-columns {
+  grid-template-columns: 50% 50%;
+}
+
 .inner-grid p {
   font-size: 11pt;
+  font-weight: 600;
 }
 
 .distance-height {
@@ -91,25 +116,5 @@ export default {
 
 .bg-requests {
   background: #ffac4d;
-}
-
-#distanceSlider {
-  -webkit-appearance: none;
-  background: #fff3e3;
-  border-radius: 20px;
-  height: 4px;
-  align-self: center;
-  outline: none;
-  width: 100%;
-}
-
-#distanceSlider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #fff3e3;
-  border-radius: 50%;
-  cursor: ew-resize;
 }
 </style>

@@ -1,6 +1,13 @@
 <template>
   <div>
-    <BigCircle><span class="white-text">Requests</span></BigCircle>
+    <BigCircle>
+      <span class="white-text">Requests</span>
+      <sliders-icon
+        @click="OpenFilter()"
+        size="1.5x"
+        class="white options"
+      ></sliders-icon>
+    </BigCircle>
     <Flickity ref="carousel" :options="flickityOptions" class="gallery">
       <RequestCard
         class="gallery-cell"
@@ -15,7 +22,12 @@
       ></RequestCard
     ></Flickity>
     <Row class="row"
-      ><RoundButton color="transparent" length="40px" class="button-left" @click.native="$refs.carousel.previous()">
+      ><RoundButton
+        color="transparent"
+        length="40px"
+        class="button-left"
+        @click.native="$refs.carousel.previous()"
+      >
         <div class="flex-box">
           <arrow-left-icon class="orange icon"></arrow-left-icon>
         </div> </RoundButton
@@ -23,11 +35,19 @@
         <div class="flex-box">
           <check-icon class="white icon"></check-icon>
         </div> </RoundButton
-      ><RoundButton color="transparent" length="40px" class="button-right" @click.native="$refs.carousel.next()">
+      ><RoundButton
+        color="transparent"
+        length="40px"
+        class="button-right"
+        @click.native="$refs.carousel.next()"
+      >
         <div class="flex-box">
           <arrow-right-icon class="orange icon"></arrow-right-icon>
         </div> </RoundButton
     ></Row>
+    <transition name="slide" mode="in-out">
+      <SwipeFilter v-if="showFilter"></SwipeFilter>
+    </transition>
   </div>
 </template>
 
@@ -37,12 +57,19 @@ import RequestCard from '@/components/requestcard/RequestCard'
 import BigCircle from '@/components/BigCircle'
 import Row from '@/components/Row'
 import RoundButton from '@/components/RoundButton'
-import { ArrowLeftIcon, ArrowRightIcon, CheckIcon } from 'vue-feather-icons'
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  CheckIcon,
+  SlidersIcon
+} from 'vue-feather-icons'
+import SwipeFilter from '@/components/swipefilter/SwipeFilter.vue'
 
 export default {
   name: 'SwipeTask',
   data() {
     return {
+      showFilter: false,
       flickityOptions: {
         initialIndex: 0,
         prevNextButtons: false,
@@ -85,15 +112,22 @@ export default {
       ]
     }
   },
+  methods: {
+    OpenFilter() {
+      this.showFilter = !this.showFilter
+    }
+  },
   components: {
     RoundButton,
     Row,
     BigCircle,
     RequestCard,
     Flickity,
+    SwipeFilter,
     ArrowRightIcon,
     ArrowLeftIcon,
-    CheckIcon
+    CheckIcon,
+    SlidersIcon
   }
 }
 </script>
@@ -159,5 +193,23 @@ export default {
 .is-selected {
   filter: none;
   bottom: 0;
+}
+
+.options {
+  position: absolute;
+  right: 0;
+  margin-right: 2em;
+  cursor: pointer;
+}
+
+/* Transition animation keyframes */
+.slide-enter-active,
+.slide-leave-active {
+  transform: translateY(0);
+  transition: 0.5s ease-in-out;
+}
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(25em);
 }
 </style>

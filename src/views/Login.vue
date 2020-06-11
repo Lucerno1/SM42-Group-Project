@@ -78,5 +78,4 @@ export default {
 #secondary {
   margin-right: 10px;
 }
-
 </style>
