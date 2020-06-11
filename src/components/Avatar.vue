@@ -1,7 +1,7 @@
 <template>
 
 <div class="avatar">
-    <img class="test" :src="src"/>
+    <img class="picture" alt="Profile picture" :src="src"/>
     <div class="dot"><edit-2-icon size="1.3x" class="icon"></edit-2-icon></div>
 </div>
     
@@ -36,7 +36,7 @@ export default {
   display: flex;
   justify-content:center;
 }
-.test{
+.picture{
     width:90%;
     height:90%;
     border-radius: 50%;
