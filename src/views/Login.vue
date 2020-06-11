@@ -16,8 +16,7 @@
         <PrimaryButton value="sign in" />
       </div>
     </div>
-    <ChatTask />
-    <ChatTask />
+    <ChatTaskOverview />
   </div>  
 </template>
 
@@ -28,7 +27,7 @@ import InputGrid from '@/components/input/InputGrid.vue'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton.vue'
 import SecondaryButton from '@/components/bigButtons/SecondaryButton.vue'
 
-import ChatTask from '@/components/chatTasks/ChatTask.vue'
+import ChatTaskOverview from '@/components/chatTasks/ChatTaskOverview.vue'
 
 export default {
   name: 'Login',
@@ -38,7 +37,7 @@ export default {
     SecondaryButton,
     Input,
     InputGrid,
-    ChatTask
+    ChatTaskOverview
   }
 }
 </script>
