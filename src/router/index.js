@@ -9,6 +9,8 @@ import TaskOverview from '@/views/TaskOverview'
 import AppWrapper from '@/views/AppWrapper'
 import RequestCardCreation from '@/views/RequestCardCreation'
 import QuestionCardCreation from '@/views/QuestionCardCreation'
+import AccountSettings from '@/views/AccountSettings'
+
 
 Vue.use(VueRouter)
 
@@ -50,6 +52,11 @@ const routes = [
         path: '/QuestionCardCreation',
         name: 'QuestionCardCreation',
         component: QuestionCardCreation
+      },
+      {
+        path: '/account-settings',
+        name: 'AccountSettings',
+        component: AccountSettings
       }
     ]
   },
