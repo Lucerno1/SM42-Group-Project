@@ -16,18 +16,12 @@
       <p class="profile">{{ profile }}</p>
     </section>
     <section class="wave">
-      <svg
-        width="100%"
-        viewBox="0 0 270 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M0 0H270V40H0L0 0Z" fill="white" />
-        <path
-          d="M0 40H270V40C270 28.444 260.632 19.076 249.076 19.076H19.076C8.54062 19.076 4.76831e-06 10.5354 4.76831e-06 0V0L0 40Z"
-          fill="#FF8A00"
-        />
-      </svg>
+      <Row class="upper">
+        <div class="left-corner"></div>
+      </Row>
+      <Row class="lower">
+        <div class="corner-wrapper"><div class="right-corner"></div></div>
+      </Row>
     </section>
     <section class="orange">
       <Row
@@ -43,6 +37,7 @@
 
 <script>
 import Row from '@/components/Row'
+
 export default {
   name: 'RequestCard',
   props: {
@@ -147,6 +142,37 @@ export default {
 
 .wave {
   height: 5vh;
+  background: #ff8a00;
+}
+
+.left-corner {
+  height: 2.5vh;
+  width: 2.5vh;
+  background-color: #ff8a00;
+  mask: radial-gradient(circle at top right, transparent 2.5vh, #fff 0);
+}
+
+.corner-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.right-corner {
+  height: 2.5vh;
+  width: 2.5vh;
+  background-color: #fff;
+  mask: radial-gradient(circle at bottom left, transparent 2.5vh, #fff 0);
+}
+
+.wave .upper {
+  background-color: white;
+  height: 2.5vh;
+}
+
+.wave .lower {
+  background-color: #ff8a00;
+  height: 2.5vh;
 }
 
 .orange {

@@ -4,8 +4,10 @@ import SwipeTask from '@/views/SwipeTask'
 import Settings from '@/views/Settings'
 import ChatOverview from '@/views/ChatOverview'
 import Login from '@/views/Login'
+import Register from '@/views/Register'
 import TaskOverview from '@/views/TaskOverview'
 import AppWrapper from '@/views/AppWrapper'
+import CardCreation from '@/views/CardCreation'
 
 Vue.use(VueRouter)
 
@@ -37,6 +39,11 @@ const routes = [
         path: '/settings',
         name: 'Settings',
         component: Settings
+      },
+      {
+        path: '/card-creation',
+        name: 'CardCreation',
+        component: CardCreation
       }
     ]
   },
@@ -44,6 +51,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '*',
