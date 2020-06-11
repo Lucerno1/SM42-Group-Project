@@ -2,7 +2,8 @@
   <div class="login">
     <TopBar pageTitle="Sign in" />
     <div class="content">
-      <div class="logo"></div>
+      <div class="logo">
+      </div>
 
       <InputGrid grid="login">
         <Input type="text" placeholder="Username..." />
@@ -15,7 +16,9 @@
         <PrimaryButton value="sign in" />
       </div>
     </div>
-  </div>
+    <ChatTask />
+    <ChatTask />
+  </div>  
 </template>
 
 <script>
@@ -25,6 +28,8 @@ import InputGrid from '@/components/input/InputGrid.vue'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton.vue'
 import SecondaryButton from '@/components/bigButtons/SecondaryButton.vue'
 
+import ChatTask from '@/components/chatTasks/ChatTask.vue'
+
 export default {
   name: 'Login',
   components: {
@@ -32,7 +37,8 @@ export default {
     PrimaryButton,
     SecondaryButton,
     Input,
-    InputGrid
+    InputGrid,
+    ChatTask
   }
 }
 </script>
