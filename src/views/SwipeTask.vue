@@ -1,5 +1,5 @@
 <template>
-  <Flickity :options="flickityOptions">
+  <Flickity ref="carousel" :options="flickityOptions">
     <RequestCard
       class="gallery-cell"
       v-for="(request, index) in requests"
@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       flickityOptions: {
-        initialIndex: 3,
+        initialIndex: 0,
         prevNextButtons: false,
         pageDots: false,
         wrapAround: true,
@@ -32,7 +32,7 @@ export default {
       },
       requests: [
         {
-          title: 'Tax system',
+          title: 'Tax system1',
           kind: 'Question',
           origin: 'Morocco',
           name: 'Achmed Akhabi',
@@ -42,7 +42,7 @@ export default {
             'The tax system in the netherlands is new for me. I did get alot of letters from the government about this but I don’t know what to do. Could someone explain me in a private chat what to do?'
         },
         {
-          title: 'Tax system',
+          title: 'Tax system2',
           kind: 'Question',
           origin: 'Morocco',
           name: 'Achmed Akhabi',
@@ -52,7 +52,7 @@ export default {
             'The tax system in the netherlands is new for me. I did get alot of letters from the government about this but I don’t know what to do. Could someone explain me in a private chat what to do?'
         },
         {
-          title: 'Tax system',
+          title: 'Tax system3',
           kind: 'Question',
           origin: 'Morocco',
           name: 'Achmed Akhabi',
@@ -71,5 +71,13 @@ export default {
 <style scoped>
 .gallery-cell {
   margin: 0 8px 0 8px;
+  bottom: 30px;
+  transition: bottom 0.3s linear, filter 0.2s linear;
+  filter: blur(1px);
+}
+
+.is-selected {
+  filter: none;
+  bottom: 0;
 }
 </style>
