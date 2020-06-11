@@ -11,7 +11,7 @@
       <a id="forgotPassword" href="">Forgot password?</a>
 
       <div class="buttons">
-        <SecondaryButton id="secondary" name="sign up" />
+        <SecondaryButton id="secondary" name="register" />
         <PrimaryButton value="sign in" />
       </div>
     </div>
