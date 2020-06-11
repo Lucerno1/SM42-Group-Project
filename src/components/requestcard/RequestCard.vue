@@ -25,9 +25,13 @@
     </section>
     <section class="orange">
       <Row
-        ><span class="title white-text">{{ requestTitle }}</span>
-        <span class="requestType orange-text">{{ kind }}</span></Row
-      >
+        ><div class="center-text title-container">
+          <span class="title white-text">{{ requestTitle }}</span>
+        </div>
+        <div class="center-text requestType">
+          <span class="orange-text">{{ kind }}</span>
+        </div>
+      </Row>
       <Row>
         <p class="description white-text">{{ description }}</p>
       </Row>
@@ -53,6 +57,11 @@ export default {
 </script>
 
 <style scoped>
+.center-text {
+  display: flex;
+  align-items: center;
+}
+
 .name {
   margin: 12px 12px 4px 12px;
   font-size: 1.2rem;
@@ -104,18 +113,23 @@ export default {
 }
 
 .title {
-  margin: 0px 16px 4px;
-  padding-left: 4px;
-  font-size: 1.2rem;
-  width: 70%;
+  font-size: 1.4rem;
 }
+
+.title-container {
+  margin: 0 16px 4px;
+  padding-left: 4px;
+  width: 75%;
+}
+
 .requestType {
-  margin: 4px 16px 4px;
+  justify-content: center;
+  margin: 4px 16px 4px 4px;
   padding: 4px;
   border-radius: 20px;
   text-align: center;
   background-color: white;
-  width: 30%;
+  width: 25%;
 }
 .card {
   border-radius: 20px;
