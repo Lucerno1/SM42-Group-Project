@@ -1,5 +1,5 @@
 <template>
-  <div class="circle"></div>
+  <div class="circle"><slot></slot></div>
 </template>
 
 <script>
@@ -10,9 +10,12 @@ export default {
 
 <style scoped>
 .circle {
-    width: 375px;
     height: 150px;
     background-color: #FF8A00;
     border-radius: 0 0 50% 50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
 }
 </style>

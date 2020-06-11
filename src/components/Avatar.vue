@@ -43,7 +43,8 @@ export default {
     margin: auto;
     position:relative;
     display: flex;
-    justify-content:center;align-items:center;
+    justify-content:center;
+    align-items:center;
 }
 .dot{
     width:35px;
