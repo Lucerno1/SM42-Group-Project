@@ -7,8 +7,10 @@ import Login from '@/views/Login'
 import Register from '@/views/Register'
 import TaskOverview from '@/views/TaskOverview'
 import AppWrapper from '@/views/AppWrapper'
-import CardCreation from '@/views/CardCreation'
+import RequestCardCreation from '@/views/RequestCardCreation'
+import QuestionCardCreation from '@/views/QuestionCardCreation'
 import AccountSettings from '@/views/AccountSettings'
+
 
 Vue.use(VueRouter)
 
@@ -42,9 +44,14 @@ const routes = [
         component: Settings
       },
       {
-        path: '/card-creation',
-        name: 'CardCreation',
-        component: CardCreation
+        path: '/RequestCardCreation',
+        name: 'RequestCardCreation',
+        component: RequestCardCreation
+      },
+      {
+        path: '/QuestionCardCreation',
+        name: 'QuestionCardCreation',
+        component: QuestionCardCreation
       },
       {
         path: '/account-settings',
