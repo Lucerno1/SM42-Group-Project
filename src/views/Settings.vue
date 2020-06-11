@@ -2,18 +2,19 @@
 <div class="content">
   <BigCircle class="first"><h1>Settings</h1></BigCircle>
   <div class="inner-content">
-    <Avatar src="https://i.guim.co.uk/img/media/7a633730f5f90db3c12f6efc954a2d5b475c3d4a/0_138_5544_3327/master/5544.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=27c09d27ccbd139fd0f7d1cef8f7d41d"/>
-    <h2 class="header">Test</h2>
-    <h4>Test</h4>
+    <Avatar src=""/>
+    <h2 class="header">{{Firstname}} {{Lastname}}</h2>
+    <h4>{{Username}}</h4>
     <LongButton class="long-btn">
-      <Row class="row">
-        <div class="grid-item" id="left">
+      <router-link :to="{ name: 'AccountSettings' }"  class="row">
+      <Row>
+        <div class="grid-item" id="left">          
           <h3>Account settings</h3>
         </div>
         <div class="grid-item" id="right">
           <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
         </div>
-      </Row>
+      </Row> </router-link>
     </LongButton>
     <LongButton class="long-btn">
      <Row class="row">
@@ -71,12 +72,23 @@ import {ChevronRightIcon} from 'vue-feather-icons'
 import Toggle from '@/components/Toggle'
 export default {
   name: 'Settings',
-  components: {Row, LongButton, Avatar, BigCircle, ChevronRightIcon, Toggle}
+  components: {Row, LongButton, Avatar, BigCircle, ChevronRightIcon, Toggle},
+  data(){
+    return{
+      Firstname: "Firstname",
+      Lastname: "Lastname",
+      Username: "Username",
+    }
+  }
   
 }
 </script>
 
 <style scoped>
+*{
+    text-decoration: none;
+
+}
 .content{
   width: 100%;
   text-align: center;

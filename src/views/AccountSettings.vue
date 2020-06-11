@@ -28,6 +28,12 @@ export default {
     name: 'AccountSettings',
     components: {
         TopBar, InputGrid, Input, PrimaryButton
+    },
+    data: function (){
+        return {
+            Firstname: String, 
+            Lastname: String
+        }
     }
 }
 </script>
