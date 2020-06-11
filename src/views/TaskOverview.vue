@@ -1,11 +1,11 @@
 <template>
   <div>
     <TopBar pageTitle="Questions & Requests"></TopBar>
-    <div class="wrapper">
+    <div class="wrapper pb-100">
       <!-- Requests Section -->
       <div class="requests">
         <h2>Requests</h2>
-        <router-link :to="{ name: 'CardCreation' }">
+        <router-link :to="{ name: 'RequestCardCreation' }">
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
       </div>
@@ -16,18 +16,10 @@
       <!-- Questions Section -->
       <div class="questions">
         <h2>Questions</h2>
-        <router-link :to="{ name: 'CardCreation' }">
+        <router-link :to="{ name: 'QuestionCardCreation' }">
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
       </div>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
       <CardButton></CardButton>
       <CardButton></CardButton>
     </div>
@@ -51,6 +43,8 @@ export default {
   margin: 0 10vw;
   top: 120px;
   position: relative;
+  
+  
 }
 
 .requests {
@@ -70,5 +64,9 @@ export default {
 
 .orangeIcon {
   color: #ff8a00;
+}
+
+.pb-100{
+  padding-bottom: 100px;
 }
 </style>
