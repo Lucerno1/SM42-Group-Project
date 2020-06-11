@@ -8,6 +8,7 @@ import Register from '@/views/Register'
 import TaskOverview from '@/views/TaskOverview'
 import AppWrapper from '@/views/AppWrapper'
 import CardCreation from '@/views/CardCreation'
+import AccountSettings from '@/views/AccountSettings'
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,11 @@ const routes = [
         path: '/card-creation',
         name: 'CardCreation',
         component: CardCreation
+      },
+      {
+        path: '/account-settings',
+        name: 'AccountSettings',
+        component: AccountSettings
       }
     ]
   },
