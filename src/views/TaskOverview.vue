@@ -9,9 +9,11 @@
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
       </div>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
+      <CardButton
+        v-for="(request, index) in requests"
+        :key="'request' + index"
+        :title="request.title"
+      ></CardButton>
 
       <!-- Questions Section -->
       <div class="questions">
@@ -20,8 +22,11 @@
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
       </div>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
+      <CardButton
+        v-for="(question, index) in questions"
+        :key="'question' + index"
+        :title="question.title"
+      ></CardButton>
     </div>
   </div>
 </template>
@@ -33,7 +38,31 @@ import CardButton from '@/components/CardButton'
 
 export default {
   name: 'TaskOverview',
-  components: { TopBar, PlusCircleIcon, CardButton }
+  components: { TopBar, PlusCircleIcon, CardButton },
+  data() {
+    return {
+      questions: [{
+        title:'Helping with taxes'
+      },
+      {
+        title:'Translating a letter'
+      },
+      {
+        title:'Practising dutch'
+      },
+      {
+        title:'Moving furniture'
+      }
+      ],
+      requests: [{
+        title:'Helping with groceries'
+      },
+      {
+        title:'Guide to the local pubs'
+      }
+      ]
+    }
+  }
 }
 </script>
 
@@ -43,8 +72,6 @@ export default {
   margin: 0 10vw;
   top: 120px;
   position: relative;
-  
-  
 }
 
 .requests {
@@ -66,7 +93,7 @@ export default {
   color: #ff8a00;
 }
 
-.pb-100{
+.pb-100 {
   padding-bottom: 100px;
 }
 </style>
