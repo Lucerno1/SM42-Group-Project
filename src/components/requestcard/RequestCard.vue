@@ -120,7 +120,7 @@ export default {
 .card {
   border-radius: 20px;
   height: 50vh;
-  width: 80vw;
+  width: 75vw;
   background-color: red;
 }
 
