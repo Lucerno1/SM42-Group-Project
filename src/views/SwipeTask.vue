@@ -124,6 +124,9 @@ export default {
 </style>
 
 <style scoped>
+.flickity-viewport {
+  height: calc(50vh + 30px) !important;
+}
 .row {
   margin-top: 24px;
 }

@@ -10,6 +10,7 @@ import AppWrapper from '@/views/AppWrapper'
 import RequestCardCreation from '@/views/RequestCardCreation'
 import QuestionCardCreation from '@/views/QuestionCardCreation'
 import AccountSettings from '@/views/AccountSettings'
+import Introduction from '@/views/Introduction'
 
 Vue.use(VueRouter)
 
@@ -72,6 +73,11 @@ const routes = [
   {
     path: '*',
     redirect: '/task'
+  },
+  {
+    path: '/introduction',
+    name: 'Introduction',
+    component: Introduction
   }
 ]
 
