@@ -5,7 +5,7 @@
       <sliders-icon
         @click="OpenFilter()"
         size="1.5x"
-        class="white options"
+        class="white-text options"
       ></sliders-icon>
     </BigCircle>
     <Flickity ref="carousel" :options="flickityOptions" class="gallery">
