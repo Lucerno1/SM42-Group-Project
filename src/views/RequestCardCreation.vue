@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar pageTitle="Card Creation"></TopBar>
+    <TopBarCardCreation pageTitle="Card Creation"></TopBarCardCreation>
     <div class="wrapper">
       <h2>Create a request card</h2>
     </div>
@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import TopBar from '@/components/topbar/TopBar'
+import TopBarCardCreation from '@/components/topbar/TopBarCardCreation'
 import Input from '@/components/input/Input'
 import InputGrid from '@/components/input/InputGrid'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
 
 export default {
   name: 'TaskOverview',
-  components: { TopBar, Input, InputGrid, PrimaryButton },
+  components: { TopBarCardCreation, Input, InputGrid, PrimaryButton },
   data() {
     return {
       fields: [
