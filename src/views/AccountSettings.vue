@@ -1,8 +1,10 @@
 <template>
   <div class="content">
-    <TopBar class="topbar" pageTitle="Account Settings"></TopBar>
+    <TopBarAccountSettings pageTitle="Account Settings"></TopBarAccountSettings>
     <div class="inner-content">
-      <h2>Change your account info</h2>
+      <div class="wrapper">
+        <span class="orange-big-text">Change your account info</span>
+      </div>
       <div class="custom-grid">
         <InputGrid
           columns="repeat(auto-fit, minmax(130px, 1fr))"
@@ -21,20 +23,20 @@
           />
         </InputGrid>
       </div>
-      <PrimaryButton />
+      <div class="center"><PrimaryButton /></div>
     </div>
   </div>
 </template>
 
 <script>
-import TopBar from '@/components/topbar/TopBar'
+import TopBarAccountSettings from '@/components/topbar/TopBarAccountSettings'
 import InputGrid from '@/components/input/InputGrid'
 import Input from '@/components/input/Input'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
 export default {
   name: 'AccountSettings',
   components: {
-    TopBar,
+    TopBarAccountSettings,
     InputGrid,
     Input,
     PrimaryButton
@@ -51,7 +53,7 @@ export default {
 <style scoped>
 .content {
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
   position: relative;
   top: 0;
 }
@@ -61,11 +63,21 @@ export default {
   width: 100%;
   margin: 0 0 85px 0;
 }
-.topbar {
-  position: absolute;
-  width: 100%;
-}
+
 .custom-grid {
-  padding: 30px 0;
+  padding: 45px 0;
+}
+
+.center {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 80vw;
+  margin: 0 10vw;
+  top: 20px;
+  position: relative;
 }
 </style>
