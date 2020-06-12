@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <section class="transparent"></section>
-    <section class="white">
+    <section class="white-section white">
       <Row
         ><span class="avatar"></span>
         <div class="nameWrapper">
@@ -16,19 +16,19 @@
       <p class="profile black-text">{{ profile }}</p>
     </section>
     <section class="wave">
-      <Row class="upper">
-        <div class="left-corner"></div>
+      <Row class="upper white">
+        <div class="left-corner orange"></div>
       </Row>
-      <Row class="lower">
-        <div class="corner-wrapper"><div class="right-corner"></div></div>
+      <Row class="lower orange">
+        <div class="corner-wrapper"><div class="right-corner white"></div></div>
       </Row>
     </section>
-    <section class="orange">
+    <section class="orange-section orange">
       <Row
         ><div class="center-text title-container">
           <span class="title white-big-text">{{ requestTitle }}</span>
         </div>
-        <div class="center-text requestType">
+        <div class="center-text requestType white">
           <span class="orange-text">{{ kind }}</span>
         </div>
       </Row>
@@ -116,7 +116,6 @@ export default {
   padding: 4px;
   border-radius: 20px;
   text-align: center;
-  background-color: white;
   width: 25%;
 }
 .card {
@@ -134,22 +133,19 @@ export default {
   background-color: transparent;
 }
 
-.white {
+.white-section {
   height: 22vh;
-  background-color: white;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
 
 .wave {
   height: 5vh;
-  background: #ff8a00;
 }
 
 .left-corner {
   height: 2.5vh;
   width: 2.5vh;
-  background-color: #ff8a00;
   mask: radial-gradient(circle at top right, transparent 2.5vh, #fff 0);
 }
 
@@ -162,23 +158,19 @@ export default {
 .right-corner {
   height: 2.5vh;
   width: 2.5vh;
-  background-color: #fff;
   mask: radial-gradient(circle at bottom left, transparent 2.5vh, #fff 0);
 }
 
 .wave .upper {
-  background-color: white;
   height: 2.5vh;
 }
 
 .wave .lower {
-  background-color: #ff8a00;
   height: 2.5vh;
 }
 
-.orange {
+.orange-section {
   height: 20vh;
-  background-color: #ff8a00;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
