@@ -1,7 +1,6 @@
 <template>
   <div>
-    
-    <div class="topBar ">
+    <div class="topBar">
       <div class="solidTopBar">
         <h1>{{ pageTitle }}</h1>
       </div>
@@ -10,7 +9,6 @@
     <div class="secondTopBar orangeBackground">
       <div class="cornerTopBar"></div>
     </div>
-
   </div>
 </template>
 
@@ -29,14 +27,14 @@ export default {
   position: fixed;
   top: 0px;
   width: 100vw;
-  background-color: #FFF2E2;
+  background-color: #fff2e2;
 }
 .secondTopBar {
   z-index: -10000;
   position: fixed;
   top: 0px;
   width: 100vw;
-  background-color: #FFF2E2;
+  background-color: #fff2e2;
 }
 h1 {
   padding-top: 30px;
@@ -48,15 +46,13 @@ h1 {
   height: 80px;
   border-bottom-left-radius: 10vw;
 }
-.cornerTopBar{
+.cornerTopBar {
   margin-top: 80px;
-  background-color: #FFF2E2;
+  background-color: #fff2e2;
   height: 80px;
   border-top-right-radius: 10vw;
 }
-.orangeBackground{
+.orangeBackground {
   background-color: #ff8a00;
 }
-
-
 </style>
