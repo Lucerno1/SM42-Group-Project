@@ -2,7 +2,13 @@
   <div
     class="round-button"
     :style="
-      'background-color: ' + color + '; height: ' + length + '; width: ' + length + ';'
+      'background-color: ' +
+      color +
+      '; height: ' +
+      length +
+      '; width: ' +
+      length +
+      ';'
     "
   >
     <slot></slot>

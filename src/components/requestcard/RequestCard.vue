@@ -6,14 +6,14 @@
         ><span class="avatar"></span>
         <div class="nameWrapper">
           <Row
-            ><span class="orange-text name">{{ name }}</span></Row
+            ><span class="orange-big-text name">{{ name }}</span></Row
           >
           <Row
             ><span class="grey-text origin">{{ origin }}</span></Row
           >
         </div></Row
       >
-      <p class="profile">{{ profile }}</p>
+      <p class="profile black-text">{{ profile }}</p>
     </section>
     <section class="wave">
       <Row class="upper">
@@ -26,7 +26,7 @@
     <section class="orange">
       <Row
         ><div class="center-text title-container">
-          <span class="title white-text">{{ requestTitle }}</span>
+          <span class="title white-big-text">{{ requestTitle }}</span>
         </div>
         <div class="center-text requestType">
           <span class="orange-text">{{ kind }}</span>
@@ -90,10 +90,6 @@ export default {
   background-color: #2c3e50;
 }
 
-.grey-text {
-  color: #c6c6c6;
-}
-
 .profile {
   padding: 4px;
   margin: 4px 16px;
@@ -102,14 +98,6 @@ export default {
 .description {
   margin: 0px 16px 16px;
   padding: 4px;
-}
-
-.white-text {
-  color: white;
-}
-
-.orange-text {
-  color: #ff8a00;
 }
 
 .title {
@@ -135,7 +123,6 @@ export default {
   border-radius: 20px;
   height: 50vh;
   width: 75vw;
-  background-color: red;
 }
 
 .card section {

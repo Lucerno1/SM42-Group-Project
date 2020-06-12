@@ -10,7 +10,6 @@ export default {
 
 <style>
 #app {
-  font-family: 'Lato';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -18,62 +17,72 @@ export default {
   margin-top: 60px;
 }
 
+.white {
+  background-color: white;
+}
+
 .white-text {
   color: white;
   font-family: Lato, serif;
+  font-weight: 400;
 }
 
 .white-big-text {
   color: white;
   font-size: 1.2rem;
   font-family: Lato, serif;
+  font-weight: 400;
+}
+
+.black {
+  background-color: black;
+}
+
+.black-text {
+  color: black;
+  font-family: Lato, serif;
+  font-weight: 400;
+}
+
+.black-big-text {
+  color: black;
+  font-size: 1.2rem;
+  font-family: Lato, serif;
+  font-weight: 400;
+}
+
+.orange {
+  background-color: #ff8a00;
 }
 
 .orange-text {
   color: #ff8a00;
   font-family: Lato, serif;
+  font-weight: 600;
 }
 
 .orange-big-text {
   color: #ff8a00;
   font-size: 1.2rem;
   font-family: Lato, serif;
+  font-weight: 400;
 }
 
-p {
-  font-family: 'Lato';
-  font-size: 10pt;
+.grey {
+  background-color: #c6c6c6;
 }
 
-h1 {
-  color: white;
-  font-size: 13pt;
-  font-family: 'Lato';
+.grey-text {
+  color: #c6c6c6;
+  font-family: Lato, serif;
   font-weight: 600;
 }
 
-h2 {
-  color: #ff8a00;
-  font-size: 13pt;
-  font-family: 'Lato';
+.grey-big-text {
+  color: #c6c6c6;
+  font-size: 1.2rem;
+  font-family: Lato, serif;
   font-weight: 600;
-  margin: 0;
-}
-
-h3 {
-  color: rgb(100, 100, 100);
-  font-size: 11pt;
-  font-family: 'Lato';
-  font-weight: 700;
-  margin: 0;
-}
-
-h4 {
-  color: rgb(148, 148, 148);
-  font-size: 11pt;
-  font-family: 'Lato';
-  font-weight: 600;
-  margin: 0;
 }
 
 body {

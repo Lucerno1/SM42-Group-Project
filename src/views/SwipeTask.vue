@@ -15,17 +15,27 @@
       ></RequestCard
     ></Flickity>
     <Row class="row"
-      ><RoundButton color="transparent" length="40px" class="button-left" @click.native="$refs.carousel.previous()">
+      ><RoundButton
+        color="transparent"
+        length="40px"
+        class="button-left"
+        @click.native="$refs.carousel.previous()"
+      >
         <div class="flex-box">
-          <arrow-left-icon class="orange icon"></arrow-left-icon>
+          <arrow-left-icon class="orange-text icon"></arrow-left-icon>
         </div> </RoundButton
       ><RoundButton color="#ff8a00" length="50px" class="button-middle">
         <div class="flex-box">
-          <check-icon class="white icon"></check-icon>
+          <check-icon class="white-text icon"></check-icon>
         </div> </RoundButton
-      ><RoundButton color="transparent" length="40px" class="button-right" @click.native="$refs.carousel.next()">
+      ><RoundButton
+        color="transparent"
+        length="40px"
+        class="button-right"
+        @click.native="$refs.carousel.next()"
+      >
         <div class="flex-box">
-          <arrow-right-icon class="orange icon"></arrow-right-icon>
+          <arrow-right-icon class="orange-text icon"></arrow-right-icon>
         </div> </RoundButton
     ></Row>
   </div>
