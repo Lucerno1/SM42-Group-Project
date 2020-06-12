@@ -10,8 +10,7 @@ import { Trash2Icon } from 'vue-feather-icons'
 export default {
   name: 'CardButton',
   props: {
-    title: String,
-
+    title: String
   },
   components: {
     Trash2Icon

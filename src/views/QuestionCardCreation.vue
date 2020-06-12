@@ -4,19 +4,19 @@
     <div class="wrapper">
       <h2>Create a question card</h2>
     </div>
-      <InputGrid class="mt-147" grid="single" columns="100%" :mgb="35">
-        <Input
-          v-for="(field, index) in fields"
-          :key="'field:' + index"
-          :type="field.type"
-          :name="field.name"
-          :placeholder="field.placeholder"
-          v-model="field.value"
-        />
-        <div class="center">
-          <PrimaryButton id="createQuestionCard" value="Create" />
-        </div>
-      </InputGrid>
+    <InputGrid class="mt-147" grid="single" columns="100%" :mgb="35">
+      <Input
+        v-for="(field, index) in fields"
+        :key="'field:' + index"
+        :type="field.type"
+        :name="field.name"
+        :placeholder="field.placeholder"
+        v-model="field.value"
+      />
+      <div class="center">
+        <PrimaryButton id="createQuestionCard" value="Create" />
+      </div>
+    </InputGrid>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
   padding-top: 147px;
 }
 
-.center{
+.center {
   margin-top: 30px;
   display: flex;
   justify-content: center;

@@ -2,8 +2,7 @@
   <div class="login">
     <TopBar pageTitle="Sign in" />
     <div class="content">
-      <div class="logo">
-      </div>
+      <div class="logo"></div>
 
       <InputGrid grid="login">
         <Input type="text" placeholder="Username..." />
@@ -16,7 +15,7 @@
         <PrimaryButton value="sign in" />
       </div>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>

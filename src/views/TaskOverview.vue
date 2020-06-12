@@ -41,25 +41,27 @@ export default {
   components: { TopBar, PlusCircleIcon, CardButton },
   data() {
     return {
-      questions: [{
-        title:'Helping with taxes'
-      },
-      {
-        title:'Translating a letter'
-      },
-      {
-        title:'Practising dutch'
-      },
-      {
-        title:'Moving furniture'
-      }
+      questions: [
+        {
+          title: 'Helping with taxes'
+        },
+        {
+          title: 'Translating a letter'
+        },
+        {
+          title: 'Practising dutch'
+        },
+        {
+          title: 'Moving furniture'
+        }
       ],
-      requests: [{
-        title:'Helping with groceries'
-      },
-      {
-        title:'Guide to the local pubs'
-      }
+      requests: [
+        {
+          title: 'Helping with groceries'
+        },
+        {
+          title: 'Guide to the local pubs'
+        }
       ]
     }
   }
