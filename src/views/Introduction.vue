@@ -52,9 +52,6 @@ export default {
 </style>
 
 <style scoped>
-.flickity-viewport {
-  height: 100% !important;
-}
 .slideshow{
     position: absolute;
     display: block;
@@ -74,6 +71,7 @@ export default {
     bottom: 0;
     right: 0;
     margin: 10px;
+    color: rgb(100, 100, 100);
 }
 
 
