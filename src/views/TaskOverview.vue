@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar pageTitle="Questions & Requests"></TopBar>
+    <TopBar pageTitle="My Requests & Questions"></TopBar>
     <div class="wrapper pb-100">
       <!-- Requests Section -->
       <div class="requests">
