@@ -1,6 +1,6 @@
 <template>
   <label class="switch">
-    <input type="checkbox" />
+    <input :checked="toggle" type="checkbox" />
     <span class="slider round"></span>
   </label>
 </template>
@@ -8,7 +8,9 @@
 <script>
 export default {
   name: 'Toggle',
-  components: {}
+  props: {
+    toggle: Boolean
+  }
 }
 </script>
 

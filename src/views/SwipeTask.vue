@@ -46,7 +46,7 @@
         </div> </RoundButton
     ></Row>
     <transition name="slide" mode="in-out">
-      <SwipeFilter v-if="showFilter"></SwipeFilter>
+      <SwipeFilter v-show="showFilter"></SwipeFilter>
     </transition>
   </div>
 </template>

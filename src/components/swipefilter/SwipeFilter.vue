@@ -13,12 +13,12 @@
       <div class="bg-requests">
         <div class="inner-grid toggle-btn-height toggle-grid-columns">
           <p>Show Requests</p>
-          <Toggle style="justify-self: right;" />
+          <Toggle :toggle="true" class="toggle-right" />
         </div>
       </div>
       <div class="inner-grid toggle-btn-height toggle-grid-columns">
         <p>Show Questions</p>
-        <Toggle style="justify-self: right;" />
+        <Toggle :toggle="true" class="toggle-right" />
       </div>
     </section>
   </div>
@@ -112,6 +112,10 @@ export default {
 
 .toggle-btn-height {
   height: 70px;
+}
+
+.toggle-right {
+  justify-self: right;
 }
 
 .bg-requests {
