@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <BigCircle class="first">
+    <BigCircle height="150">
       <span class="white-big-text flex">Settings</span></BigCircle
     >
     <div class="inner-content">
@@ -109,10 +109,7 @@ export default {
   width: 100%;
   margin: 0 0 85px 0;
 }
-.first {
-  position: absolute;
-  width: 100%;
-}
+
 .icon {
   color: rgb(100, 100, 100);
 }
