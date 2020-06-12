@@ -1,17 +1,19 @@
 <template>
-  <div class="circle"><slot></slot></div>
+  <div :style="'height: ' + height + 'px;'" class="circle"><slot></slot></div>
 </template>
 
 <script>
 export default {
-  name: 'BigCircle'
+  name: 'BigCircle',
+  props: {
+    height: Number
+  }
 }
 </script>
 
 <style scoped>
 .circle {
   position: absolute;
-  height: 230px;
   width: 110%;
   left: 50%;
   transform: translateX(-50%);
