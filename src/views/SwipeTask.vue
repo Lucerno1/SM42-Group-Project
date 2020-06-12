@@ -14,11 +14,11 @@
         v-for="(request, index) in requests"
         :key="'request' + index"
         :request-title="request.title"
-        :kind="request.kind"
-        :origin="request.origin"
-        :name="request.name"
-        :profile="request.profile"
-        :description="request.description"
+        :kind="request.type"
+        :origin="request.nationality"
+        :name="request.firstname + ' ' + request.lastname"
+        :profile="request.bio"
+        :description="request.text"
       ></RequestCard
     ></Flickity>
     <Row class="row"
@@ -63,10 +63,14 @@ import {
   CheckIcon,
   SlidersIcon
 } from 'vue-feather-icons'
+import { mapGetters, mapActions } from 'vuex'
 import SwipeFilter from '@/components/swipefilter/SwipeFilter.vue'
 
 export default {
   name: 'SwipeTask',
+  computed: {
+    ...mapGetters('requests', ['requests'])
+  },
   data() {
     return {
       showFilter: false,
@@ -77,45 +81,17 @@ export default {
         wrapAround: true,
         selectedAttraction: 0.1,
         friction: 0.45
-      },
-      requests: [
-        {
-          title: 'Tax system1',
-          kind: 'Question',
-          origin: 'Morocco',
-          name: 'Achmed Akhabi',
-          profile:
-            'Hello, I am Achmed and I just moved to The Netherlands a few months ago. I do speak Arabic, English and a little bit Dutch.',
-          description:
-            'The tax system in the netherlands is new for me. I did get alot of letters from the government about this but I don’t know what to do. Could someone explain me in a private chat what to do?'
-        },
-        {
-          title: 'Tax system2',
-          kind: 'Question',
-          origin: 'Morocco',
-          name: 'Achmed Akhabi',
-          profile:
-            'Hello, I am Achmed and I just moved to The Netherlands a few months ago. I do speak Arabic, English and a little bit Dutch.',
-          description:
-            'The tax system in the netherlands is new for me. I did get alot of letters from the government about this but I don’t know what to do. Could someone explain me in a private chat what to do?'
-        },
-        {
-          title: 'Tax system3',
-          kind: 'Question',
-          origin: 'Morocco',
-          name: 'Achmed Akhabi',
-          profile:
-            'Hello, I am Achmed and I just moved to The Netherlands a few months ago. I do speak Arabic, English and a little bit Dutch.',
-          description:
-            'The tax system in the netherlands is new for me. I did get alot of letters from the government about this but I don’t know what to do. Could someone explain me in a private chat what to do?'
-        }
-      ]
+      }
     }
   },
   methods: {
+    ...mapActions('requests', ['loadRequestSet']),
     OpenFilter() {
       this.showFilter = !this.showFilter
     }
+  },
+  created() {
+    this.loadRequestSet()
   },
   components: {
     RoundButton,
