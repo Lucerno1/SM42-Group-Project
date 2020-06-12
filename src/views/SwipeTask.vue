@@ -75,7 +75,6 @@ export default {
   },
   data() {
     return {
-      flickity: [],
       showFilter: false,
       flickityOptions: {
         initialIndex: 0,
@@ -120,7 +119,7 @@ export default {
 
 <style>
 .flickity-viewport {
-  height: calc(50vh + 30px) !important;
+  height: calc(55vh + 30px) !important;
 }
 </style>
 
@@ -157,19 +156,56 @@ export default {
 }
 
 .card-slider {
-  transform: translateY(110px);
+  transform: translateY(90px);
 }
 
 .gallery-cell {
   margin: 0 8px 0 8px;
-  bottom: 30px;
-  transition: bottom 0.3s linear, filter 0.2s linear;
+  top: 0;
+  transition: top 0.2s linear, filter 0.2s linear;
   filter: blur(1px);
+  animation: fadein 0.5s;
+  -moz-animation: fadein 0.5s; /* Firefox */
+  -webkit-animation: fadein 0.5s; /* Safari and Chrome */
+  -o-animation: fadein 0.5s; /* Opera */
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .is-selected {
   filter: none;
-  bottom: 0;
+  top: 30px;
 }
 
 .options {
