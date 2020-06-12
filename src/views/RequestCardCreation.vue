@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .wrapper {
   max-width: 80vw;
   margin: 0 10vw;

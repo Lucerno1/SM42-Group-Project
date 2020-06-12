@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .cardButton {
 
   background-color: white;

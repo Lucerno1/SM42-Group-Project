@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .topBar {
   z-index: 1;
   position: fixed;
