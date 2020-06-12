@@ -10,12 +10,18 @@ export default {
 
 <style scoped>
 .circle {
-  height: 150px;
+  position: absolute;
+  height: 230px;
+  width: 110%;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #ff8a00;
   border-radius: 0 0 50% 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative;
+}
+
+.circle span {
+  margin-top: 50px;
 }
 </style>

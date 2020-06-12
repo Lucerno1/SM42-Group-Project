@@ -8,43 +8,45 @@
         class="white-text options"
       ></sliders-icon>
     </BigCircle>
-    <Flickity ref="carousel" :options="flickityOptions" class="gallery" v-on:>
-      <RequestCard
-        class="gallery-cell"
-        v-for="(request, index) in requests"
-        :key="'request' + index"
-        :request-title="request.title"
-        :kind="request.type"
-        :origin="request.nationality"
-        :name="request.firstname + ' ' + request.lastname"
-        :profile="request.bio"
-        :description="request.text"
-      ></RequestCard
-    ></Flickity>
-    <Row class="row"
-      ><RoundButton
-        color="transparent"
-        length="40px"
-        class="button-left"
-        @click.native="$refs.carousel.previous()"
-      >
-        <div class="flex-box">
-          <arrow-left-icon class="orange-text icon"></arrow-left-icon>
-        </div> </RoundButton
-      ><RoundButton color="#ff8a00" length="50px" class="button-middle">
-        <div class="flex-box">
-          <check-icon class="white-text icon"></check-icon>
-        </div> </RoundButton
-      ><RoundButton
-        color="transparent"
-        length="40px"
-        class="button-right"
-        @click.native="$refs.carousel.next()"
-      >
-        <div class="flex-box">
-          <arrow-right-icon class="orange-text icon"></arrow-right-icon>
-        </div> </RoundButton
-    ></Row>
+    <div class="card-slider">
+      <Flickity ref="carousel" :options="flickityOptions" class="gallery" v-on:>
+        <RequestCard
+          class="gallery-cell"
+          v-for="(request, index) in requests"
+          :key="'request' + index"
+          :request-title="request.title"
+          :kind="request.type"
+          :origin="request.nationality"
+          :name="request.firstname + ' ' + request.lastname"
+          :profile="request.bio"
+          :description="request.text"
+        ></RequestCard
+      ></Flickity>
+      <Row class="row"
+        ><RoundButton
+          color="transparent"
+          length="40px"
+          class="button-left"
+          @click.native="$refs.carousel.previous()"
+        >
+          <div class="flex-box">
+            <arrow-left-icon class="orange-text icon"></arrow-left-icon>
+          </div> </RoundButton
+        ><RoundButton color="#ff8a00" length="50px" class="button-middle">
+          <div class="flex-box">
+            <check-icon class="white-text icon"></check-icon>
+          </div> </RoundButton
+        ><RoundButton
+          color="transparent"
+          length="40px"
+          class="button-right"
+          @click.native="$refs.carousel.next()"
+        >
+          <div class="flex-box">
+            <arrow-right-icon class="orange-text icon"></arrow-right-icon>
+          </div> </RoundButton
+      ></Row>
+    </div>
     <transition name="slide" mode="in-out">
       <SwipeFilter v-if="showFilter"></SwipeFilter>
     </transition>
@@ -154,6 +156,11 @@ export default {
   width: 20px;
 }
 
+.card-slider {
+  position: relative;
+  padding-top: 110px;
+}
+
 .gallery-cell {
   margin: 0 8px 0 8px;
   bottom: 30px;
@@ -169,8 +176,9 @@ export default {
 .options {
   position: absolute;
   right: 0;
-  margin-right: 2em;
+  margin-right: 50px;
   cursor: pointer;
+  margin-top: 50px;
 }
 
 /* Transition animation keyframes */
