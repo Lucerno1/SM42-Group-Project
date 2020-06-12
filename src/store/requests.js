@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import axios from 'axios'
 
 const apiURL = 'https://local-buddy-sm.herokuapp.com/api'
@@ -14,8 +13,9 @@ export default {
     }
   },
   mutations: {
+    // eslint-disable-next-line no-unused-vars
     APPEND_REQUESTS(state, requests) {
-      Vue.set(state, 'requests',state.requests.concat(requests))
+      state.requests = requests
     },
     INCREMENT_LOAD_COUNT(state) {
       state.loadCount++
@@ -39,8 +39,8 @@ export default {
       commit('SET_FILTER', filter)
     },
     loadRequestSet({ commit }) {
-      window.console.log('hi from store')
-      let token = '2rIS4o/Qalt7UHUGTOTPfZLB33GV2FT/3/KiLgCVbq3zE2KPP6uS0whf1UW8eW7igUtxhDHk8vb7xbQvY+f2SA==';
+      let token =
+        '34otOAlpqIdLCraw2ONVPn0sKnHOnW65qo4YKLKQO7yRtVnoDDRjDw0lR8uJqvURsE9+kwuannjOl2d4TRL/+g=='
       axios
         .get(apiURL + '/buddy/card/other', {
           headers: {
@@ -48,7 +48,7 @@ export default {
           }
         })
         .then((response) => {
-          window.console.log(response.data.cards)
+          window.console.log(JSON.stringify(response.data.cards))
           commit('APPEND_REQUESTS', response.data.cards)
           // commit('INCREMENT_LOAD_COUNT')
         })

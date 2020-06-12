@@ -8,7 +8,7 @@
         class="white-text options"
       ></sliders-icon>
     </BigCircle>
-    <Flickity ref="carousel" :options="flickityOptions" class="gallery">
+    <Flickity ref="carousel" :options="flickityOptions" class="gallery" v-on:>
       <RequestCard
         class="gallery-cell"
         v-for="(request, index) in requests"
@@ -73,6 +73,7 @@ export default {
   },
   data() {
     return {
+      flickity: [],
       showFilter: false,
       flickityOptions: {
         initialIndex: 0,
@@ -82,6 +83,13 @@ export default {
         selectedAttraction: 0.1,
         friction: 0.45
       }
+    }
+  },
+  watch: {
+    requests: function () {
+      setTimeout(() => {
+        this.$refs.carousel.rerender()
+      }, 1)
     }
   },
   methods: {
