@@ -1,9 +1,9 @@
 export default {
   namespaced: true,
   state: {
-    username: 'efwef',
-    firstname: 'fewfwfw',
-    lastname: 'wfwfwf',
+    username: 'Olha040',
+    firstname: 'Olha',
+    lastname: 'Bondarenko',
     profilePicture: '',
     bio: ''
   },
