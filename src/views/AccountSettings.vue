@@ -11,8 +11,18 @@
           grid=""
           mgb="11"
         >
-          <Input type="text" name="Firstname" placeholder="Firstname" />
-          <Input type="text" name="Lastname" placeholder="Lastname" />
+          <Input
+            v-model="vfirstname"
+            type="text"
+            name="Firstname"
+            placeholder="Firstname"
+          />
+          <Input
+            v-model="vlastname"
+            type="text"
+            name="Lastname"
+            placeholder="Lastname"
+          />
         </InputGrid>
         <InputGrid columns="100%" grid="" mgb="">
           <Input type="password" name="Password" placeholder="Password" />
@@ -23,7 +33,7 @@
           />
         </InputGrid>
       </div>
-      <div class="center"><PrimaryButton /></div>
+      <div class="center"><PrimaryButton @click.native="submit" /></div>
     </div>
   </div>
 </template>
@@ -33,19 +43,34 @@ import TopBarAccountSettings from '@/components/topbar/TopBarAccountSettings'
 import InputGrid from '@/components/input/InputGrid'
 import Input from '@/components/input/Input'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AccountSettings',
+  computed: {
+    ...mapGetters('user', ['firstname', 'lastname'])
+  },
+  data() {
+    return {
+      vfirstname: '',
+      vlastname: ''
+    }
+  },
+  methods: {
+    ...mapActions('user', ['updateFirstname', 'updateLastname']),
+    submit: function () {
+      this.updateFirstname(this.vfirstname)
+      this.updateLastname(this.vlastname)
+    }
+  },
+  created() {
+    this.vfirstname = this.firstname
+    this.vlastname = this.lastname
+  },
   components: {
     TopBarAccountSettings,
     InputGrid,
     Input,
     PrimaryButton
-  },
-  data: function () {
-    return {
-      Firstname: String,
-      Lastname: String
-    }
   }
 }
 </script>
