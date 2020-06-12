@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import requests from '@/store/requests'
+import user from '@/store/user'
 
 Vue.use(Vuex)
 
-const modules = { requests }
+const modules = { requests, user }
 
 const store = new Vuex.Store({
   modules

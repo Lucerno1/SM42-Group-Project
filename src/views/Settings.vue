@@ -6,10 +6,10 @@
     <div class="inner-content">
       <Avatar src="" />
       <div class="mt-10">
-        <span class="orange-big-text">{{ Firstname }} {{ Lastname }}</span>
+        <span class="orange-big-text">{{ firstname }} {{ lastname }}</span>
       </div>
       <div>
-        <span class="grey-text">{{ Username }}</span>
+        <span class="grey-text">{{ username }}</span>
       </div>
       <LongButton class="long-btn">
         <router-link :to="{ name: 'AccountSettings' }" class="row">
@@ -77,13 +77,16 @@ import BigCircle from '@/components/BigCircle'
 import Row from '@/components/Row'
 import { ChevronRightIcon } from 'vue-feather-icons'
 import Toggle from '@/components/Toggle'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Settings',
   components: { Row, LongButton, Avatar, BigCircle, ChevronRightIcon, Toggle },
+  computed: {
+    ...mapGetters('user', ['firstname', 'lastname', 'username'])
+  },
   data() {
     return {
-      Firstname: 'Firstname',
-      Lastname: 'Lastname',
       Username: 'Username'
     }
   }

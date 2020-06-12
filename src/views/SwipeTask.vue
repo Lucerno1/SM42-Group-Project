@@ -156,8 +156,7 @@ export default {
 }
 
 .card-slider {
-  position: relative;
-  padding-top: 90px;
+  transform: translateY(90px);
 }
 
 .gallery-cell {
