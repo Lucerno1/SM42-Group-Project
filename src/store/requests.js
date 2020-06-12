@@ -39,16 +39,9 @@ export default {
       commit('SET_FILTER', filter)
     },
     loadRequestSet({ commit }) {
-      let token =
-        '34otOAlpqIdLCraw2ONVPn0sKnHOnW65qo4YKLKQO7yRtVnoDDRjDw0lR8uJqvURsE9+kwuannjOl2d4TRL/+g=='
       axios
-        .get(apiURL + '/buddy/card/other', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
+        .get(apiURL + '/buddy/card')
         .then((response) => {
-          window.console.log(JSON.stringify(response.data.cards))
           commit('APPEND_REQUESTS', response.data.cards)
           // commit('INCREMENT_LOAD_COUNT')
         })
