@@ -1,31 +1,38 @@
 export default {
   namespaced: true,
   state: {
-    firstname: '',
-    lastname: '',
+    username: 'efwef',
+    firstname: 'fewfwfw',
+    lastname: 'wfwfwf',
     profilePicture: '',
     bio: ''
   },
   mutations: {
+    SET_USERNAME(state, username) {
+      state.username = username
+    },
     SET_FIRSTNAME(state, firstname) {
       state.firstname = firstname
     },
     SET_LASTNAME(state, lastname) {
-      state.firstname = lastname
+      state.lastname = lastname
     },
     SET_PROFILE_PICTURE(state, profilePicture) {
-      state.firstname = profilePicture
+      state.profilePicture = profilePicture
     },
     SET_BIO(state, bio) {
-      state.firstname = bio
+      state.bio = bio
     }
   },
   actions: {
+    updateUsername({ commit }, username) {
+      commit('SET_USERNAME', username)
+    },
     updateFirstname({ commit }, firstname) {
-      commit('SET_BIO', firstname)
+      commit('SET_FIRSTNAME', firstname)
     },
     updateLastname({ commit }, lastname) {
-      commit('SET_BIO', lastname)
+      commit('SET_LASTNAME', lastname)
     },
     updateProfilePicture({ commit }, profilePicture) {
       commit('SET_PROFILE_PICTURE', profilePicture)
@@ -35,6 +42,9 @@ export default {
     }
   },
   getters: {
+    username: (state) => {
+      return state.username
+    },
     firstname: (state) => {
       return state.firstname
     },
