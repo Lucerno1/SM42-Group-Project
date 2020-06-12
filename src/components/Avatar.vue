@@ -1,7 +1,6 @@
 <template>
-
-<div class="avatar">
-    <img class="picture" alt="Profile picture" :src="src"/>
+  <div class="avatar">
+    <img class="picture" alt="Profile picture" :src="src" />
     <div class="dot"><edit-2-icon size="1.3x" class="icon"></edit-2-icon></div>
   </div>
 </template>
@@ -33,15 +32,15 @@ export default {
   display: flex;
   justify-content: center;
 }
-.picture{
-    width:90%;
-    height:90%;
-    border-radius: 50%;
-    margin: auto;
-    position:relative;
-    display: flex;
-    justify-content:center;
-    align-items:center;
+.picture {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dot {
   width: 35px;
