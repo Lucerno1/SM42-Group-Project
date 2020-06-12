@@ -4,29 +4,71 @@ import SwipeTask from '@/views/SwipeTask'
 import Settings from '@/views/Settings'
 import ChatOverview from '@/views/ChatOverview'
 import Login from '@/views/Login'
+import Register from '@/views/Register'
+import TaskOverview from '@/views/TaskOverview'
+import AppWrapper from '@/views/AppWrapper'
+import RequestCardCreation from '@/views/RequestCardCreation'
+import QuestionCardCreation from '@/views/QuestionCardCreation'
+import AccountSettings from '@/views/AccountSettings'
+
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/task',
-    name: 'Task',
-    component: SwipeTask
+    path: '/',
+    redirect: '/task'
   },
   {
-    path: '/chat',
-    name: 'Chat',
-    component: ChatOverview
-  },
-  {
-    path: '/settings',
-    name: 'Settings',
-    component: Settings
+    path: '/',
+    component: AppWrapper,
+    children: [
+      {
+        path: '/task',
+        name: 'Task',
+        component: SwipeTask
+      },
+      {
+        path: '/tasks',
+        name: 'Tasks',
+        component: TaskOverview
+      },
+      {
+        path: '/chat',
+        name: 'Chat',
+        component: ChatOverview
+      },
+      {
+        path: '/settings',
+        name: 'Settings',
+        component: Settings
+      },
+      {
+        path: '/RequestCardCreation',
+        name: 'RequestCardCreation',
+        component: RequestCardCreation
+      },
+      {
+        path: '/QuestionCardCreation',
+        name: 'QuestionCardCreation',
+        component: QuestionCardCreation
+      },
+      {
+        path: '/account-settings',
+        name: 'AccountSettings',
+        component: AccountSettings
+      }
+    ]
   },
   {
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '*',
