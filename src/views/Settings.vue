@@ -1,15 +1,21 @@
 <template>
   <div class="content">
-    <BigCircle class="first"><h1>Settings</h1></BigCircle>
+    <BigCircle class="first">
+      <span class="white-big-text flex">Settings</span></BigCircle
+    >
     <div class="inner-content">
       <Avatar src="" />
-      <h2 class="header">{{ Firstname }} {{ Lastname }}</h2>
-      <h4>{{ Username }}</h4>
+      <div class="mt-10">
+        <span class="orange-big-text">{{ Firstname }} {{ Lastname }}</span>
+      </div>
+      <div>
+        <span class="grey-text">{{ Username }}</span>
+      </div>
       <LongButton class="long-btn">
         <router-link :to="{ name: 'AccountSettings' }" class="row">
           <Row>
             <div class="grid-item" id="left">
-              <h3>Account settings</h3>
+              <span class="dark-grey-text">Account Settings</span>
             </div>
             <div class="grid-item" id="right">
               <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
@@ -20,7 +26,7 @@
       <LongButton class="long-btn">
         <Row class="row">
           <div class="grid-item" id="left">
-            <h3>Darkmode</h3>
+            <span class="dark-grey-text">Darkmode</span>
           </div>
           <div class="grid-item" id="right">
             <Toggle />
@@ -30,7 +36,7 @@
       <LongButton class="long-btn">
         <Row class="row">
           <div class="grid-item" id="left">
-            <h3>Notifications</h3>
+            <span class="dark-grey-text">Notifications</span>
           </div>
           <div class="grid-item" id="right">
             <Toggle />
@@ -40,7 +46,7 @@
       <LongButton class="long-btn">
         <Row class="row">
           <div class="grid-item" id="left">
-            <h3>Help</h3>
+            <span class="dark-grey-text">Help</span>
           </div>
           <div class="grid-item" id="right">
             <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
@@ -53,7 +59,7 @@
       <LongButton class="long-btn">
         <Row class="row">
           <div class="grid-item" id="left">
-            <h3>Sign out</h3>
+            <span class="dark-grey-text">Sign out</span>
           </div>
           <div class="grid-item" id="right">
             <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
@@ -130,5 +136,9 @@ export default {
 
 .empty {
   margin: 50px 0;
+}
+
+.mt-10 {
+  margin-top: 10px;
 }
 </style>

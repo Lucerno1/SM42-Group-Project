@@ -30,10 +30,5 @@ export default {
   justify-content: space-between;
 }
 
-.dark-grey-text {
-  color: #636363;
-  font-family: Lato, serif;
-  font-weight: 600;
-  padding-left: 5px;
-}
+
 </style>
