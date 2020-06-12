@@ -1,7 +1,7 @@
 <template>
   <div>
     <BigCircle>
-      <span class="white-text">Requests</span>
+      <span class="white-big-text">Requests</span>
       <sliders-icon
         @click="OpenFilter()"
         size="1.5x"
@@ -168,19 +168,6 @@ export default {
 .icon {
   height: 20px;
   width: 20px;
-}
-
-.orange {
-  color: #ff8a00;
-}
-
-.white {
-  color: white;
-}
-
-.white-text {
-  color: white;
-  font-size: 1.2rem;
 }
 
 .gallery-cell {
