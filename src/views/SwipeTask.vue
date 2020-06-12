@@ -164,10 +164,10 @@ export default {
   top: 0;
   transition: top 0.2s linear, filter 0.2s linear;
   filter: blur(1px);
-  animation: fadein 0.5s;
-  -moz-animation: fadein 0.5s; /* Firefox */
-  -webkit-animation: fadein 0.5s; /* Safari and Chrome */
-  -o-animation: fadein 0.5s; /* Opera */
+  animation: fadein 0.6s;
+  -moz-animation: fadein 0.6s; /* Firefox */
+  -webkit-animation: fadein 0.6s; /* Safari and Chrome */
+  -o-animation: fadein 0.6s; /* Opera */
 }
 
 @keyframes fadein {
