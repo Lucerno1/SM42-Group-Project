@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="topBar">
-      <div class="solidTopBar">
-        <h1>{{ pageTitle }}</h1>
+      <div class="flex solidTopBar">
+        <span class="white-big-text flex">{{ pageTitle }}</span>
       </div>
     </div>
 
@@ -22,6 +22,11 @@ export default {
 </script>
 
 <style scoped>
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .topBar {
   z-index: 1;
   position: fixed;
@@ -54,5 +59,10 @@ h1 {
 }
 .orangeBackground {
   background-color: #ff8a00;
+}
+
+.white-text {
+  color: white;
+  font-size: 1.2rem;
 }
 </style>

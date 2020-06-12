@@ -1,7 +1,7 @@
 <template>
   <div class="cardButton">
-    <p class="title">{{ title }}</p>
-    <trash-2-icon size="1.5x" class="orangeIcon"></trash-2-icon>
+    <span class="dark-grey-text">{{ title }}</span>
+    <trash-2-icon size="1.5x" class="orange-text"></trash-2-icon>
   </div>
 </template>
 
@@ -30,12 +30,10 @@ export default {
   justify-content: space-between;
 }
 
-.orangeIcon {
-  color: #ff8a00;
-}
-
-.title {
-  font-weight: 900;
-  color: #727272;
+.dark-grey-text {
+  color: #636363;
+  font-family: Lato, serif;
+  font-weight: 600;
+  padding-left: 5px;
 }
 </style>

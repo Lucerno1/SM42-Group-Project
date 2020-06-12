@@ -31,7 +31,7 @@ export default {
   color: white;
   font-size: 1.2rem;
   font-family: Lato, serif;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .black {
@@ -65,7 +65,7 @@ export default {
   color: #ff8a00;
   font-size: 1.2rem;
   font-family: Lato, serif;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .grey {

@@ -4,7 +4,7 @@
     <div class="wrapper pb-100">
       <!-- Requests Section -->
       <div class="requests">
-        <h2>Requests</h2>
+        <span class="orange-big-text">Requests</span>
         <router-link :to="{ name: 'RequestCardCreation' }">
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
@@ -17,7 +17,7 @@
 
       <!-- Questions Section -->
       <div class="questions">
-        <h2>Questions</h2>
+        <span class="orange-big-text">Questions</span>
         <router-link :to="{ name: 'QuestionCardCreation' }">
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>

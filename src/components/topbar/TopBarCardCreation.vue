@@ -2,13 +2,13 @@
   <div>
     <div class="topBar">
       <div class="solidTopBar">
-        <div class="flex">
+        <div class="flex-between">
           <div class="left-icon">
-            <arrow-left-icon size="1.5x"></arrow-left-icon>
+            <arrow-left-icon size="1.5x" class="white-text" @click="$router.go(-1)"></arrow-left-icon>
           </div>
-          <h1>{{ pageTitle }}</h1>
+          <span class="white-big-text flex">{{ pageTitle }}</span>
           <div class="right-icon">
-            <Trash2Icon size="1.5x"></Trash2Icon>
+            <Trash2Icon size="1.5x" class="white-text"></Trash2Icon>
           </div>
         </div>
       </div>
@@ -36,19 +36,23 @@ export default {
 </script>
 
 <style scoped>
+.flex {
+  display: flex;
+  justify-content: center;
+}
 .left-icon {
-  padding-top: 30px;
   margin-left: 10vw;
 }
 
 .right-icon {
-  padding-top: 30px;
   margin-right: 10vw;
 }
 
-.flex {
+.flex-between {
   display: flex;
   justify-content: space-between;
+  height: 100%;
+  align-items: center;
 }
 .topBar {
   z-index: 1;
