@@ -37,14 +37,16 @@
       </Row>
     </LongButton>
     <LongButton class="long-btn"> 
-      <Row class="row">
-        <div class="grid-item" id="left">
-          <h3>Help</h3>
-        </div>
-        <div class="grid-item" id="right">
-          <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
-        </div>
-      </Row>
+      <router-link :to="{ name: 'Introduction' }"  class="row">
+        <Row class="row">
+          <div class="grid-item" id="left">
+            <h3>Help</h3>
+          </div>
+          <div class="grid-item" id="right">
+            <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
+          </div>
+        </Row>
+      </router-link>
     </LongButton>
 
     <div class="empty"></div>

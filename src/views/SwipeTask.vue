@@ -99,12 +99,13 @@ export default {
 </script>
 
 <style>
-.flickity-viewport {
-  height: calc(50vh + 30px) !important;
-}
+
 </style>
 
 <style scoped>
+.flickity-viewport {
+  height: calc(50vh + 30px) !important;
+}
 .row {
   margin-top: 24px;
 }

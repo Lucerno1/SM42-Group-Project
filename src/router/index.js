@@ -9,6 +9,7 @@ import TaskOverview from '@/views/TaskOverview'
 import AppWrapper from '@/views/AppWrapper'
 import CardCreation from '@/views/CardCreation'
 import AccountSettings from '@/views/AccountSettings'
+import Introduction from '@/views/Introduction'
 
 Vue.use(VueRouter)
 
@@ -66,6 +67,11 @@ const routes = [
   {
     path: '*',
     redirect: '/task'
+  },
+  {
+    path: '/introduction',
+    name: 'Introduction',
+    component: Introduction
   }
 ]
 
