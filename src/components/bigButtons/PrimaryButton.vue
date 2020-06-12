@@ -1,5 +1,5 @@
 <template>
-  <input type="submit" class="btn" :value="value" />
+  <input type="submit" class="btn white-big-text" :value="value" />
 </template>
 
 <script>
@@ -13,15 +13,12 @@ export default {
 
 <style scoped>
 .btn {
-  font-size: 20px;
-  font-weight: bold;
   background: #ff8a00;
   border: solid #ff8a00 2px;
   border-radius: 60px;
   padding: 12px 0;
   width: 120px;
   cursor: pointer;
-  color: #ffffff;
   transition: 0.2s ease-in-out;
 }
 

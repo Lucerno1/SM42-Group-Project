@@ -1,0 +1,94 @@
+/* rail style */
+.vue-slider-rail {
+  background-color: #ffb866;
+  border-radius: 15px;
+  transition: background-color 0.3s;
+}
+.vue-slider:hover .vue-slider-rail {
+  background-color: #ffb866;
+}
+
+/* process style */
+.vue-slider-process {
+  background-color: #fff3e3;
+  border-radius: 15px;
+  transition: background-color 0.3s;
+}
+.vue-slider:hover .vue-slider-process {
+  background-color: #fff3e3;
+}
+
+/* dot style */
+.vue-slider-dot-handle {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #fff3e3;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.vue-slider:hover .vue-slider-dot-handle {
+  border-color: #fff3e3;
+}
+
+.vue-slider-dot-handle-focus {
+  border-color: #fff3e3;
+  box-shadow: 0 0 0 2px #fff3e3;
+}
+.vue-slider:hover .vue-slider-dot-handle-focus {
+  border-color: #fff3e3;
+}
+
+.vue-slider-dot-handle:hover {
+  border-color: #fff3e3;
+}
+.vue-slider:hover .vue-slider-dot-handle:hover {
+  border-color: #fff3e3;
+}
+
+.vue-slider-dot-tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+.vue-slider-dot-tooltip-inner {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 6px 8px;
+  color: #ffa033;
+  border-radius: 5px;
+  border-color: #fff3e3;
+  background-color: #fff3e3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(0.9);
+  transition: transform 0.3s;
+}
+.vue-slider-dot-tooltip-inner::after {
+  content: "";
+  position: absolute;
+}
+.vue-slider-dot-tooltip-inner-top::after {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px;
+  border-top-color: inherit;
+}
+.vue-slider-dot-tooltip-inner-top {
+  transform-origin: 50% 100%;
+}
+
+.vue-slider-dot:hover .vue-slider-dot-tooltip, .vue-slider-dot-tooltip-show {
+  opacity: 1;
+  visibility: visible;
+}
+.vue-slider-dot:hover .vue-slider-dot-tooltip .vue-slider-dot-tooltip-inner, .vue-slider-dot-tooltip-show .vue-slider-dot-tooltip-inner {
+  transform: scale(1);
+}

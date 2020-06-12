@@ -1,5 +1,5 @@
 <template>
-  <button @click="functionName" class="btn">{{ name }}</button>
+  <button @click="functionName" class="btn orange-big-text">{{ name }}</button>
 </template>
 
 <script>
@@ -14,15 +14,12 @@ export default {
 
 <style scoped>
 .btn {
-  font-size: 20px;
-  font-weight: bold;
   background: #fff2e2;
   border: solid #ff8a00 2px;
   border-radius: 60px;
   padding: 12px 0;
   width: 120px;
   cursor: pointer;
-  color: #ff8a00;
   transition: 0.2s ease-in-out;
 }
 

@@ -1,33 +1,55 @@
 <template>
   <div>
-    <BigCircle><span class="white-text">Requests</span></BigCircle>
-    <Flickity ref="carousel" :options="flickityOptions" class="gallery">
-      <RequestCard
-        class="gallery-cell"
-        v-for="(request, index) in requests"
-        :key="'request' + index"
-        :request-title="request.title"
-        :kind="request.kind"
-        :origin="request.origin"
-        :name="request.name"
-        :profile="request.profile"
-        :description="request.description"
-      ></RequestCard
-    ></Flickity>
-    <Row class="row"
-      ><RoundButton color="transparent" length="40px" class="button-left" @click.native="$refs.carousel.previous()">
-        <div class="flex-box">
-          <arrow-left-icon class="orange icon"></arrow-left-icon>
-        </div> </RoundButton
-      ><RoundButton color="#ff8a00" length="50px" class="button-middle">
-        <div class="flex-box">
-          <check-icon class="white icon"></check-icon>
-        </div> </RoundButton
-      ><RoundButton color="transparent" length="40px" class="button-right" @click.native="$refs.carousel.next()">
-        <div class="flex-box">
-          <arrow-right-icon class="orange icon"></arrow-right-icon>
-        </div> </RoundButton
-    ></Row>
+    <BigCircle height="230">
+      <span class="white-big-text">Requests</span>
+      <sliders-icon
+        @click="OpenFilter()"
+        size="1.5x"
+        class="white-text options"
+      ></sliders-icon>
+    </BigCircle>
+    <div class="card-slider">
+      <Flickity ref="carousel" :options="flickityOptions" class="gallery" v-on:>
+        <RequestCard
+          class="gallery-cell"
+          v-for="(request, index) in requests"
+          :key="'request' + index"
+          :request-title="request.title"
+          :kind="request.type"
+          :origin="request.nationality"
+          :name="request.firstname + ' ' + request.lastname"
+          :profile="request.bio"
+          :description="request.text"
+        ></RequestCard
+      ></Flickity>
+      <Row class="row"
+        ><RoundButton
+          color="transparent"
+          length="40px"
+          class="button-left"
+          @click.native="$refs.carousel.previous()"
+        >
+          <div class="flex-box">
+            <arrow-left-icon class="orange-text icon"></arrow-left-icon>
+          </div> </RoundButton
+        ><RoundButton color="#ff8a00" length="50px" class="button-middle">
+          <div class="flex-box">
+            <check-icon class="white-text icon"></check-icon>
+          </div> </RoundButton
+        ><RoundButton
+          color="transparent"
+          length="40px"
+          class="button-right"
+          @click.native="$refs.carousel.next()"
+        >
+          <div class="flex-box">
+            <arrow-right-icon class="orange-text icon"></arrow-right-icon>
+          </div> </RoundButton
+      ></Row>
+    </div>
+    <transition name="slide" mode="in-out">
+      <SwipeFilter v-show="showFilter"></SwipeFilter>
+    </transition>
   </div>
 </template>
 
@@ -37,12 +59,23 @@ import RequestCard from '@/components/requestcard/RequestCard'
 import BigCircle from '@/components/BigCircle'
 import Row from '@/components/Row'
 import RoundButton from '@/components/RoundButton'
-import { ArrowLeftIcon, ArrowRightIcon, CheckIcon } from 'vue-feather-icons'
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  CheckIcon,
+  SlidersIcon
+} from 'vue-feather-icons'
+import { mapGetters, mapActions } from 'vuex'
+import SwipeFilter from '@/components/swipefilter/SwipeFilter.vue'
 
 export default {
   name: 'SwipeTask',
+  computed: {
+    ...mapGetters('requests', ['requests'])
+  },
   data() {
     return {
+      showFilter: false,
       flickityOptions: {
         initialIndex: 0,
         prevNextButtons: false,
@@ -50,40 +83,24 @@ export default {
         wrapAround: true,
         selectedAttraction: 0.1,
         friction: 0.45
-      },
-      requests: [
-        {
-          title: 'Tax system1',
-          kind: 'Question',
-          origin: 'Morocco',
-          name: 'Achmed Akhabi',
-          profile:
-            'Hello, I am Achmed and I just moved to The Netherlands a few months ago. I do speak Arabic, English and a little bit Dutch.',
-          description:
-            'The tax system in the netherlands is new for me. I did get alot of letters from the government about this but I don’t know what to do. Could someone explain me in a private chat what to do?'
-        },
-        {
-          title: 'Tax system2',
-          kind: 'Question',
-          origin: 'Morocco',
-          name: 'Achmed Akhabi',
-          profile:
-            'Hello, I am Achmed and I just moved to The Netherlands a few months ago. I do speak Arabic, English and a little bit Dutch.',
-          description:
-            'The tax system in the netherlands is new for me. I did get alot of letters from the government about this but I don’t know what to do. Could someone explain me in a private chat what to do?'
-        },
-        {
-          title: 'Tax system3',
-          kind: 'Question',
-          origin: 'Morocco',
-          name: 'Achmed Akhabi',
-          profile:
-            'Hello, I am Achmed and I just moved to The Netherlands a few months ago. I do speak Arabic, English and a little bit Dutch.',
-          description:
-            'The tax system in the netherlands is new for me. I did get alot of letters from the government about this but I don’t know what to do. Could someone explain me in a private chat what to do?'
-        }
-      ]
+      }
     }
+  },
+  watch: {
+    requests: function () {
+      setTimeout(() => {
+        this.$refs.carousel.rerender()
+      }, 1)
+    }
+  },
+  methods: {
+    ...mapActions('requests', ['loadRequestSet']),
+    OpenFilter() {
+      this.showFilter = !this.showFilter
+    }
+  },
+  created() {
+    this.loadRequestSet()
   },
   components: {
     RoundButton,
@@ -91,15 +108,19 @@ export default {
     BigCircle,
     RequestCard,
     Flickity,
+    SwipeFilter,
     ArrowRightIcon,
     ArrowLeftIcon,
-    CheckIcon
+    CheckIcon,
+    SlidersIcon
   }
 }
 </script>
 
 <style>
-
+.flickity-viewport {
+  height: calc(55vh + 30px) !important;
+}
 </style>
 
 <style scoped>
@@ -137,28 +158,75 @@ export default {
   width: 20px;
 }
 
-.orange {
-  color: #ff8a00;
-}
-
-.white {
-  color: white;
-}
-
-.white-text {
-  color: white;
-  font-size: 1.2rem;
+.card-slider {
+  transform: translateY(90px);
 }
 
 .gallery-cell {
   margin: 0 8px 0 8px;
-  bottom: 30px;
-  transition: bottom 0.3s linear, filter 0.2s linear;
+  top: 0;
+  transition: top 0.2s linear, filter 0.2s linear;
   filter: blur(1px);
+  animation: fadein 0.6s;
+  -moz-animation: fadein 0.6s; /* Firefox */
+  -webkit-animation: fadein 0.6s; /* Safari and Chrome */
+  -o-animation: fadein 0.6s; /* Opera */
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .is-selected {
   filter: none;
-  bottom: 0;
+  top: 30px;
+}
+
+.options {
+  position: absolute;
+  right: 0;
+  margin-right: 50px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+/* Transition animation keyframes */
+.slide-enter-active,
+.slide-leave-active {
+  transform: translateY(0);
+  transition: 0.5s ease-in-out;
+}
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(25em);
 }
 </style>

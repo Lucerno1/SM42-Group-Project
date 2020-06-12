@@ -3,11 +3,9 @@
 </template>
 
 <script>
-
 export default {
   name: 'LongButton',
-  components:{
-  }
+  components: {}
 }
 </script>
 
@@ -18,6 +16,5 @@ export default {
   height: 50px;
   background-color: rgb(255, 255, 255);
   margin: 15px auto;
-
 }
 </style>
