@@ -15,7 +15,6 @@
         <PrimaryButton value="sign in" />
       </div>
     </div>
-    <InstallPrompt>Hi</InstallPrompt>
   </div>
 </template>
 
@@ -26,7 +25,6 @@ import InputGrid from '@/components/input/InputGrid.vue'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton.vue'
 import SecondaryButton from '@/components/bigButtons/SecondaryButton.vue'
 
-import InstallPrompt from '@/components/install/InstallPrompt.vue'
 
 export default {
   name: 'Login',
@@ -35,8 +33,7 @@ export default {
     PrimaryButton,
     SecondaryButton,
     Input,
-    InputGrid,
-    InstallPrompt
+    InputGrid
   }
 }
 </script>
