@@ -1,5 +1,10 @@
 <template>
-  <InputGrid grid="chat-overview" columns="20% 55% 25%" :mgb="20">
+  <InputGrid
+    @click.native="functionName"
+    grid="chat-overview"
+    columns="20% 55% 25%"
+    :mgb="20"
+  >
     <ProfileIcon
       :profilePicture="profilePicture"
       :newMsg="newMsg"
@@ -20,6 +25,7 @@ import ProfileIcon from '@/components/chatOverview/ProfileIcon.vue'
 export default {
   name: 'ChatOverviewItem',
   props: {
+    functionName: Function,
     profilePicture: String,
     newMsg: Boolean,
     firstName: String,

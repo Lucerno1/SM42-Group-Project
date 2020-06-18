@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import SwipeTask from '@/views/SwipeTask'
 import Settings from '@/views/Settings'
 import ChatOverview from '@/views/ChatOverview'
+import Chat from '@/views/Chat'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
 import TaskOverview from '@/views/TaskOverview'
@@ -34,9 +35,14 @@ const routes = [
         component: TaskOverview
       },
       {
+        path: '/chatOverview',
+        name: 'ChatOverview',
+        component: ChatOverview
+      },
+      {
         path: '/chat',
         name: 'Chat',
-        component: ChatOverview
+        component: Chat
       },
       {
         path: '/settings',

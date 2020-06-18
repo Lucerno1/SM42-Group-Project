@@ -9,6 +9,7 @@
         :lastName="lastName"
         :message="message"
         :time="time"
+        :functionName="redirect"
       ></ChatOverviewItem>
     </div>
   </div>
@@ -28,6 +29,11 @@ export default {
       lastName: 'Akkabi',
       message: 'Lorem ipsum dolor setameta di axio',
       time: '13:45'
+    }
+  },
+  methods: {
+    redirect() {
+      this.$router.push('Chat')
     }
   },
   components: { TopBar, ChatOverviewItem }
