@@ -27,20 +27,18 @@ export default {
     state: String
   }
 }
-
 </script>
-
-
 
 <style scoped>
 .installPrompt {
-  height: 140px;
-  width: 100vw;
+  width: 100%;
+  border: 2px solid #ff8a00;
   border-radius: 30px 30px 0 0;
   padding: 30px 0;
-  background: white;
+  background: #ffffff;
   position: absolute;
-  bottom: 0;
+  bottom: -3px;
+  left: -2px;
   text-align: center;
 }
 
