@@ -32,16 +32,19 @@ import InputGrid from '@/components/input/InputGrid'
 import Input from '@/components/input/Input'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
 export default {
-    name: 'AccountSettings',
-    components: {
-        TopBar, InputGrid, Input, PrimaryButton
-    },
-    data: function (){
-        return {
-            Firstname: String, 
-            Lastname: String
-        }
+  name: 'AccountSettings',
+  components: {
+    TopBar,
+    InputGrid,
+    Input,
+    PrimaryButton
+  },
+  data: function () {
+    return {
+      Firstname: String,
+      Lastname: String
     }
+  }
 }
 </script>
 

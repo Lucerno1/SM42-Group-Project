@@ -11,7 +11,6 @@ import RequestCardCreation from '@/views/RequestCardCreation'
 import QuestionCardCreation from '@/views/QuestionCardCreation'
 import AccountSettings from '@/views/AccountSettings'
 
-
 Vue.use(VueRouter)
 
 const routes = [

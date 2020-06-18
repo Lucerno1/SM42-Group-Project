@@ -2,8 +2,7 @@
   <div class="login">
     <TopBar pageTitle="Sign in" />
     <div class="content">
-      <div class="logo">
-      </div>
+      <div class="logo"></div>
 
       <InputGrid grid="login">
         <Input type="text" placeholder="Username..." />
@@ -17,7 +16,7 @@
       </div>
     </div>
     <InstallPrompt>Hi</InstallPrompt>
-  </div>  
+  </div>
 </template>
 
 <script>
