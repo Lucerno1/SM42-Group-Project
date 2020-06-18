@@ -2,7 +2,7 @@
   <div>
     <TopBarCardCreation pageTitle="Card Creation"></TopBarCardCreation>
     <div class="wrapper">
-       <span class="orange-big-text">Create a question card</span>
+      <span class="orange-big-text">Create a question card</span>
     </div>
     <InputGrid class="mt-147" grid="single" columns="100%" :mgb="35">
       <Input
