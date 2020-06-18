@@ -3,7 +3,7 @@
     <TopBar pageTitle="Sign in" />
     <div class="content">
       <div class="logo">
-              <img src="/img/Logo-LocalBuddy.svg" alt="Local Buddy Logo" />
+        <img src="/img/Logo-LocalBuddy.svg" alt="Local Buddy Logo" />
       </div>
 
       <InputGrid grid="login">
@@ -82,5 +82,4 @@ export default {
 #secondary {
   margin-right: 10px;
 }
-
 </style>
