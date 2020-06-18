@@ -25,6 +25,7 @@ import InputGrid from '@/components/input/InputGrid.vue'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton.vue'
 import SecondaryButton from '@/components/bigButtons/SecondaryButton.vue'
 
+
 export default {
   name: 'Login',
   components: {
