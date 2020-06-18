@@ -57,8 +57,7 @@ export default {
 </script>
 
 <style scoped>
-
-.mb-1{
+.mb-1 {
   margin-bottom: 2px;
 }
 .center-text {
@@ -177,7 +176,7 @@ export default {
 
 .orange-section {
   height: 22vh;
-  
+
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
