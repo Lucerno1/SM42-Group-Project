@@ -1,11 +1,13 @@
 export default {
   namespaced: true,
   state: {
-    username: 'Olha040',
-    firstname: 'Olha',
-    lastname: 'Bondarenko',
+    username: 'TestUser2',
+    firstname: 'fewfwfw',
+    lastname: 'wfwfwf',
     profilePicture: '',
-    bio: ''
+    bio: '',
+    password: 'TestPassword',
+    isLoggedIn: false
   },
   mutations: {
     SET_USERNAME(state, username) {
@@ -56,6 +58,12 @@ export default {
     },
     bio: (state) => {
       return state.bio
+    },
+    credentials: (state) => {
+      return { username: state.username, password: state.password }
+    },
+    isLoggedIn: (state) => {
+      return state.isLoggedIn
     }
   }
 }
