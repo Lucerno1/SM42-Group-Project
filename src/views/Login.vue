@@ -7,14 +7,18 @@
       </div>
 
       <InputGrid grid="login">
-        <Input type="text" placeholder="Username..." />
-        <Input type="text" placeholder="Password..." />
+        <Input type="text" placeholder="Username..." v-model="username" />
+        <Input type="text" placeholder="Password..." v-model="password" />
       </InputGrid>
       <a id="forgotPassword" href="">Forgot password?</a>
 
       <div class="buttons">
-        <SecondaryButton id="secondary" name="register" />
-        <PrimaryButton value="sign in" />
+        <SecondaryButton
+          id="secondary"
+          name="register"
+          :function-name="toRegister"
+        />
+        <PrimaryButton value="sign in" @click.native="signInUser" />
       </div>
     </div>
   </div>
@@ -26,6 +30,7 @@ import Input from '@/components/input/Input.vue'
 import InputGrid from '@/components/input/InputGrid.vue'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton.vue'
 import SecondaryButton from '@/components/bigButtons/SecondaryButton.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
@@ -35,6 +40,19 @@ export default {
     SecondaryButton,
     Input,
     InputGrid
+  },
+  data() {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    ...mapActions('user', ['login']),
+    toRegister() {
+      this.$router.push('Register')
+    },
+    signInUser() {}
   }
 }
 </script>

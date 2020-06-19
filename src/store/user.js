@@ -1,3 +1,5 @@
+import api from '@/api'
+
 export default {
   namespaced: true,
   state: {
@@ -24,6 +26,9 @@ export default {
     },
     SET_BIO(state, bio) {
       state.bio = bio
+    },
+    SET_LOGGED_IN(state, bool) {
+      state.isLoggedIn = bool
     }
   },
   actions: {
@@ -41,6 +46,14 @@ export default {
     },
     updateBio({ commit }, bio) {
       commit('SET_BIO', bio)
+    },
+    login({ commit }, credentials) {
+      api.get('/user/me').then((res) => {
+        const user = res.data.user
+        user.password = credentials.password
+
+        commit('')
+      })
     }
   },
   getters: {
