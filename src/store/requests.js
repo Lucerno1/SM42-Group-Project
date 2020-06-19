@@ -1,6 +1,4 @@
-import axios from 'axios'
-
-const apiURL = 'https://local-buddy-sm.herokuapp.com/api'
+import api from '@/api'
 
 export default {
   namespaced: true,
@@ -39,8 +37,8 @@ export default {
       commit('SET_FILTER', filter)
     },
     loadRequestSet({ commit }) {
-      axios
-        .get(apiURL + '/buddy/card')
+      api
+        .get('/buddy/card/own')
         .then((response) => {
           commit('APPEND_REQUESTS', response.data.cards)
           // commit('INCREMENT_LOAD_COUNT')
