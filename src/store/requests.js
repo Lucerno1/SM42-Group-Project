@@ -36,9 +36,13 @@ export default {
 
       commit('SET_FILTER', filter)
     },
-    loadRequestSet({ commit }) {
+    loadRequestSet({ commit, rootGetters }) {
+      let url = '/buddy/card'
+      if (rootGetters['user/isLoggedIn']) {
+        url += '/own'
+      }
       api
-        .get('/buddy/card/own')
+        .get(url)
         .then((response) => {
           commit('APPEND_REQUESTS', response.data.cards)
           // commit('INCREMENT_LOAD_COUNT')
