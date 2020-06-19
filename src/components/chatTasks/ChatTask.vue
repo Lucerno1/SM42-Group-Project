@@ -1,6 +1,6 @@
 <template>
   <div :class="'ChatTask' + ' ' + state">
-      <ClipboardIcon class="icon" />
+    <clipboard-icon size="1.5x" class="icon"></clipboard-icon>
   </div>
 </template>
 
@@ -20,31 +20,29 @@ export default {
 
 <style>
 .ChatTask {
- margin: auto 5px;
- width: 58px;
- height: 58px;
- background: #fff2e2;
- border-radius: 50%;
- border: 2px solid #ff8a00;
- display: flex;
- flex: 0 0 auto;
+  width: 55px;
+  height: 55px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5px;
+  border: 2px solid #fff;
 }
 
 .ChatTask.active {
-    background: #ff8a00;
-    border: 2px solid #fff2e2;
+  background: #ff8a00;
+  border: 2px solid #fff2e2;
 }
 
 .icon {
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: initial;
-    padding: 15px;
-    color: #ff8a00;
+  align-items: center;
+  justify-content: center;
+  color: #ff8a00;
 }
 
 .ChatTask.active .icon {
-    color: #fff2e2;
+  color: #fff2e2;
 }
 </style>

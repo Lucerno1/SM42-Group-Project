@@ -4,7 +4,11 @@
       <div class="solidTopBar">
         <div class="flex-between">
           <div class="left-icon">
-            <arrow-left-icon size="1.5x" class="white-text" @click="$router.go(-1)"></arrow-left-icon>
+            <arrow-left-icon
+              size="1.5x"
+              class="white-text"
+              @click="$router.go(-1)"
+            ></arrow-left-icon>
           </div>
           <span class="white-big-text flex">{{ pageTitle }}</span>
           <div class="right-icon">
@@ -41,7 +45,7 @@ export default {
   justify-content: center;
 }
 .left-icon {
-  margin-left: 10vw;
+  margin: 1vw 0 0 10vw;
 }
 
 .right-icon {
