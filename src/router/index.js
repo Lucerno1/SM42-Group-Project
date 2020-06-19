@@ -7,7 +7,11 @@ import Login from '@/views/Login'
 import Register from '@/views/Register'
 import TaskOverview from '@/views/TaskOverview'
 import AppWrapper from '@/views/AppWrapper'
-import CardCreation from '@/views/CardCreation'
+import RequestCardCreation from '@/views/RequestCardCreation'
+import QuestionCardCreation from '@/views/QuestionCardCreation'
+import AccountSettings from '@/views/AccountSettings'
+import Introduction from '@/views/Introduction'
+import OfflinePage from '@/views/OfflinePage'
 
 Vue.use(VueRouter)
 
@@ -41,9 +45,24 @@ const routes = [
         component: Settings
       },
       {
-        path: '/card-creation',
-        name: 'CardCreation',
-        component: CardCreation
+        path: '/RequestCardCreation',
+        name: 'RequestCardCreation',
+        component: RequestCardCreation
+      },
+      {
+        path: '/QuestionCardCreation',
+        name: 'QuestionCardCreation',
+        component: QuestionCardCreation
+      },
+      {
+        path: '/account-settings',
+        name: 'AccountSettings',
+        component: AccountSettings
+      },
+      {
+        path: '/offline-page',
+        name: 'OfflinePage',
+        component: OfflinePage
       }
     ]
   },
@@ -60,6 +79,11 @@ const routes = [
   {
     path: '*',
     redirect: '/task'
+  },
+  {
+    path: '/introduction',
+    name: 'Introduction',
+    component: Introduction
   }
 ]
 

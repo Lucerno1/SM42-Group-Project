@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App'
 }
@@ -11,7 +10,6 @@ export default {
 
 <style>
 #app {
-  font-family: 'Lato';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -19,28 +17,82 @@ export default {
   margin-top: 60px;
 }
 
-p {
-  font-family: 'Lato';
-  font-size: 10pt;
+.white {
+  background-color: white;
 }
 
-h1 {
+.white-text {
   color: white;
-  font-size: 13pt;
-  font-family: 'Lato';
+  font-family: Lato, serif;
+  font-weight: 400;
+}
+
+.white-big-text {
+  color: white;
+  font-size: 1.2rem;
+  font-family: Lato, serif;
   font-weight: 600;
 }
 
-h2 {
+.black {
+  background-color: black;
+}
+
+.black-text {
+  color: black;
+  font-family: Lato, serif;
+  font-weight: 400;
+}
+
+.black-big-text {
+  color: black;
+  font-size: 1.2rem;
+  font-family: Lato, serif;
+  font-weight: 400;
+}
+
+.orange {
+  background-color: #ff8a00;
+}
+
+.orange-text {
   color: #ff8a00;
-  font-size: 13pt;
-  font-family: 'Lato';
+  font-family: Lato, serif;
   font-weight: 600;
-  margin: 0;
 }
 
-body{
-  background-color: #FFF2E2;
+.orange-big-text {
+  color: #ff8a00;
+  font-size: 1.2rem;
+  font-family: Lato, serif;
+  font-weight: 600;
 }
 
+.grey {
+  background-color: #c6c6c6;
+}
+
+.grey-text {
+  color: #c6c6c6;
+  font-family: Lato, serif;
+  font-weight: 600;
+}
+
+.grey-big-text {
+  color: #c6c6c6;
+  font-size: 1.2rem;
+  font-family: Lato, serif;
+  font-weight: 600;
+}
+
+body {
+  background-color: #fff2e2;
+}
+
+.dark-grey-text {
+  color: #636363;
+  font-family: Lato, serif;
+  font-weight: 600;
+  padding-left: 5px;
+}
 </style>

@@ -2,9 +2,7 @@
   <div class="login">
     <TopBar pageTitle="Sign in" />
     <div class="content">
-      <div class="logo">
-        <img src="/img/Logo-LocalBuddy.svg" alt="Local Buddy Logo" />
-      </div>
+      <div class="logo"></div>
 
       <InputGrid grid="login">
         <Input type="text" placeholder="Username..." />
@@ -54,11 +52,9 @@ export default {
 }
 
 .logo {
-  margin-bottom: 30px;
-}
-
-.logo img {
-  width: 100%;
+  border: 2px dashed #ff8a00;
+  height: 300px;
+  margin-bottom: 50px;
 }
 
 .grid.login {
