@@ -23,65 +23,18 @@
           <ChatTask></ChatTask>
         </div>
       </div>
+      <div class="third hpx-70">
+        <div class="back hpx-70"></div>
+      </div>
     </div>
 
     <div class="msg-container">
-      <div class="msg-bubble other">
-        <span class="name">Achmed</span><br />
-        <span>Lorem Ipsum dora sit amet</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble self">
-        <span>Lorem Ipsum dora sit amet</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble other">
-        <span class="name">Achmed</span><br />
-        <span>ok</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble other">
-        <span class="name">Achmed</span><br />
-        <span>Lorem Ipsum dora?</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble self">
-        <span>moeite</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble self">
-        <span>moeite</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble other">
-        <span class="name">Achmed</span><br />
-        <span>Lorem Ipsum dora sit amet</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble self">
-        <span>moeite</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble other">
-        <span class="name">Achmed</span><br />
-        <span>ok</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble other">
-        <span class="name">Achmed</span><br />
-        <span>ok</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble other">
-        <span class="name">Achmed</span><br />
-        <span>ok</span>
-        <span class="time">13:45</span>
-      </div>
-      <div class="msg-bubble other">
-        <span class="name">Achmed</span><br />
-        <span>ok</span>
-        <span class="time">13:45</span>
-      </div>
+      <ChatMessage
+        class="other"
+        name="Ileb olotoubé"
+        message="Slave"
+        time="13:45"
+      ></ChatMessage>
     </div>
 
     <div class="input-container">
@@ -95,6 +48,7 @@
 </template>
 
 <script>
+import ChatMessage from '@/components/chat/ChatMessage.vue'
 import ChatTask from '@/components/chatTasks/ChatTask.vue'
 import Input from '@/components/input/Input.vue'
 import { ArrowLeftIcon, CameraIcon } from 'vue-feather-icons'
@@ -105,7 +59,7 @@ export default {
       value: ''
     }
   },
-  components: { ChatTask, Input, ArrowLeftIcon, CameraIcon }
+  components: { ChatMessage, ChatTask, Input, ArrowLeftIcon, CameraIcon }
 }
 </script>
 
@@ -146,6 +100,11 @@ export default {
   justify-content: space-between;
 }
 
+.top-bar .first *,
+.top-bar .second * {
+  z-index: 3;
+}
+
 .top-bar .first {
   background: #ff8a00;
   height: 120px;
@@ -156,7 +115,19 @@ export default {
 
 .top-bar .second {
   background: #ff8a00;
-  border-radius: 0 0 100px 100px;
+  border-bottom-left-radius: 100px;
+}
+
+.top-bar .third {
+  position: relative;
+}
+
+.third .back {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  border-top-right-radius: 70px;
+  box-shadow: 140px -70px 0px 70px #ff8a00;
 }
 
 .msg-container {
@@ -174,43 +145,6 @@ export default {
 
 .msg-container::-webkit-scrollbar {
   width: 0 !important;
-}
-
-.msg-bubble {
-  width: fit-content;
-  height: auto;
-  margin: 8px 0;
-  padding: 10px;
-  background: #fff;
-  position: relative;
-  border-radius: 7px;
-  font-size: 14px;
-  color: #000;
-}
-
-.msg-bubble.self {
-  background: #ff8a00;
-  align-self: flex-end;
-  color: white;
-}
-
-.msg-bubble.self .time {
-  color: #fff;
-  font-weight: 300;
-  font-size: 10px;
-  margin-left: 10px;
-}
-
-.msg-bubble.other .name {
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.msg-bubble.other .time {
-  color: #000;
-  font-weight: 300;
-  font-size: 10px;
-  margin-left: 10px;
 }
 
 .input-container {
