@@ -7,11 +7,18 @@
 
 <script>
 import NavBar from '@/components/navbar/NavBar'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'AppWrapper',
   components: {
     NavBar
+  },
+  methods: {
+    ...mapActions('user', ['load'])
+  },
+  created() {
+    this.load()
   }
 }
 </script>

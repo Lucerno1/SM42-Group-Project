@@ -1,15 +1,19 @@
 import api from '@/api'
+import qs from 'qs'
 
 export default {
   namespaced: true,
   state: {
+    id: '',
     username: 'TestUser2',
     firstname: 'fewfwfw',
     lastname: 'wfwfwf',
     profilePicture: '',
     bio: '',
     password: 'TestPassword',
-    isLoggedIn: false
+    isLoggedIn: false,
+    nationality: '',
+    pc: ''
   },
   mutations: {
     SET_USERNAME(state, username) {
@@ -29,9 +33,25 @@ export default {
     },
     SET_LOGGED_IN(state, bool) {
       state.isLoggedIn = bool
+    },
+    SET_USER_DATA(state, user) {
+      state.id = user._id
+      state.firstname = user.firstname
+      state.lastname = user.lastname
+      state.password = user.password
+      state.nationality = user.nationality
+      state.pc = user.pc
+      state.username = user.username
+      state.isLoggedIn = true
     }
   },
   actions: {
+    load({ commit }) {
+      const user = localStorage.getItem('user')
+      if (user !== null) {
+        commit('SET_USER_DATA', user)
+      }
+    },
     updateUsername({ commit }, username) {
       commit('SET_USERNAME', username)
     },
@@ -54,6 +74,21 @@ export default {
 
         commit('')
       })
+    },
+    register({ commit }, user) {
+      console.log(user)
+      api
+        .post('/user', qs.stringify(user), {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .then((res) => {
+          if (res.status === 201) {
+            const data = res.data.user
+            data.password = user.password
+            commit('SET_USER_DATA', data)
+            localStorage.setItem('user', data)
+          }
+        })
     }
   },
   getters: {

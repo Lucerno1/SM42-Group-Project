@@ -3,12 +3,7 @@
     <TopBar pageTitle="Register"></TopBar>
     <div class="register-box">
       <img src="/img/Logo-LocalBuddy.svg" alt="Local Buddy Logo" />
-      <form
-        id="register-form"
-        @submit="validateForm"
-        action="/task"
-        method="post"
-      >
+      <form id="register-form" @submit.prevent="registerUser">
         <InputGrid
           grid="double"
           columns="repeat(auto-fit, minmax(130px, 1fr))"
@@ -55,10 +50,10 @@
         >
           <SecondaryButton
             id="signInButton"
-            :functionName="redirect"
+            :function-name="redirect"
             name="Sign in"
           ></SecondaryButton>
-          <PrimaryButton id="registerButton" value="Register" />
+          <PrimaryButton id="registerButton" value="Register" type="submit" />
         </InputGrid>
         <span v-if="errors.length">
           <ul>
@@ -76,6 +71,7 @@ import InputGrid from '@/components/input/InputGrid'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
 import SecondaryButton from '@/components/bigButtons/SecondaryButton'
 import TopBar from '@/components/topbar/TopBar.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Register',
@@ -132,10 +128,30 @@ export default {
     }
   },
   methods: {
+    ...mapActions('user', ['register']),
     redirect() {
       this.$router.push('Login')
     },
-    validateForm: function (e) {
+    registerUser() {
+      if (this.validateForm()) {
+        const usr = {
+          username: this.fields2[0].value,
+          password: this.fields2[1].value,
+          firstname: this.fields1[0].value,
+          lastname: this.fields1[1].value
+        }
+        if (this.fields2[3].value.length > 0) {
+          usr.pc = this.fields2[3].value
+        }
+        if (this.selectedNationality !== null) {
+          usr.nationality = this.selectedNationality.name
+        }
+        this.register(usr)
+
+        this.$router.push('Tasks')
+      }
+    },
+    validateForm: function () {
       this.errors = []
       if (
         this.fields1[0].value.length > 25 ||
@@ -170,7 +186,6 @@ export default {
       if (!this.errors.length) {
         return true
       }
-      e.preventDefault()
     }
   },
   components: { Input, InputGrid, PrimaryButton, SecondaryButton, TopBar }
