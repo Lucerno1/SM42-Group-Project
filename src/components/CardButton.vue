@@ -1,7 +1,7 @@
 <template>
   <div class="cardButton">
-    <p class="title">Request Card Title</p>
-    <trash-2-icon size="1.5x" class="orangeIcon"></trash-2-icon>
+    <span class="dark-grey-text">{{ title }}</span>
+    <trash-2-icon size="1.5x" class="orange-text"></trash-2-icon>
   </div>
 </template>
 
@@ -9,15 +9,17 @@
 import { Trash2Icon } from 'vue-feather-icons'
 export default {
   name: 'CardButton',
+  props: {
+    title: String
+  },
   components: {
     Trash2Icon
   }
 }
 </script>
 
-<style>
+<style scoped>
 .cardButton {
-
   background-color: white;
   height: 22px;
   border-radius: 8px;
@@ -26,14 +28,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.orangeIcon {
-  color: #ff8a00;
-}
-
-.title {
-font-weight: 900;
-color: #727272;
 }
 </style>

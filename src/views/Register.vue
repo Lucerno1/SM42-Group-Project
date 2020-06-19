@@ -1,5 +1,6 @@
 <template>
   <div id="register">
+    <TopBar pageTitle="Register"></TopBar>
     <div class="register-box">
       <img src="/img/Logo-LocalBuddy.svg" alt="Local Buddy Logo" />
       <form
@@ -74,6 +75,7 @@ import Input from '@/components/input/Input'
 import InputGrid from '@/components/input/InputGrid'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
 import SecondaryButton from '@/components/bigButtons/SecondaryButton'
+import TopBar from '@/components/topbar/TopBar.vue'
 
 export default {
   name: 'Register',
@@ -171,7 +173,7 @@ export default {
       e.preventDefault()
     }
   },
-  components: { Input, InputGrid, PrimaryButton, SecondaryButton }
+  components: { Input, InputGrid, PrimaryButton, SecondaryButton, TopBar }
 }
 </script>
 
@@ -180,7 +182,6 @@ export default {
   position: relative;
   width: 100vw;
   height: 100vh;
-  font-family: 'Lato';
 }
 
 .register-box {
