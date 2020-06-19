@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BigCircle height="230">
+    <BigCircle :height="230">
       <span class="white-big-text">Requests</span>
       <sliders-icon
         @click="OpenFilter()"
