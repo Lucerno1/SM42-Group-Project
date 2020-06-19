@@ -76,7 +76,7 @@ export default {
         })
       })
     },
-    register({ commit }, user) {
+    register({ commit, rootGetters }, user) {
       console.log(user)
       api
         .post('/user', qs.stringify(user), {
@@ -88,6 +88,7 @@ export default {
             data.password = user.password
             commit('SET_USER_DATA', data)
             localStorage.setItem('user', data)
+            logIn(rootGetters["user/credentials"])
           }
         })
     }
