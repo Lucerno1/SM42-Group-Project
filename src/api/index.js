@@ -50,16 +50,8 @@ api.interceptors.response.use(
     isRefreshing = true
 
     return new Promise((resolve, reject) => {
-      api
-        .post('/user/auth', qs.stringify(store.getters['user/credentials']), {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        })
+      logIn(store.getters['user/credentials'])
         .then((res) => {
-          console.log(res)
-          token = res.data.token
-          localStorage.setItem('token', token)
-          api.defaults.headers.common['Authorization'] =
-            'Bearer ' + res.data.token
           originalRequest.headers['Authorization'] = 'Bearer ' + res.data.token
           processQueue(null, res.data.token)
           resolve(api(originalRequest))
@@ -76,3 +68,18 @@ api.interceptors.response.use(
 )
 
 export default api
+
+function logIn(credentials) {
+  return api
+    .post('/user/auth', qs.stringify(credentials), {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    })
+    .then((res) => {
+      token = res.data.token
+      localStorage.setItem('token', token)
+      api.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token
+      return res
+    })
+}
+
+export { logIn }

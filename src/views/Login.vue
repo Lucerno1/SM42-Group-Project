@@ -50,7 +50,14 @@ export default {
     toRegister() {
       this.$router.push('Register')
     },
-    signInUser() {}
+    signInUser() {
+      const credentials = {
+        username: this.username,
+        password: this.password
+      }
+      this.login(credentials)
+      this.$router.push('Task')
+    }
   }
 }
 </script>

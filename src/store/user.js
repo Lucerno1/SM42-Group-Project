@@ -1,16 +1,17 @@
 import api from '@/api'
+import { logIn } from '@/api'
 import qs from 'qs'
 
 export default {
   namespaced: true,
   state: {
     id: '',
-    username: 'TestUser2',
-    firstname: 'fewfwfw',
-    lastname: 'wfwfwf',
+    username: '',
+    firstname: '',
+    lastname: '',
     profilePicture: '',
     bio: '',
-    password: 'TestPassword',
+    password: '',
     isLoggedIn: false,
     nationality: '',
     pc: ''
@@ -30,9 +31,6 @@ export default {
     },
     SET_BIO(state, bio) {
       state.bio = bio
-    },
-    SET_LOGGED_IN(state, bool) {
-      state.isLoggedIn = bool
     },
     SET_USER_DATA(state, user) {
       state.id = user._id
@@ -68,11 +66,14 @@ export default {
       commit('SET_BIO', bio)
     },
     login({ commit }, credentials) {
-      api.get('/user/me').then((res) => {
-        const user = res.data.user
-        user.password = credentials.password
-
-        commit('')
+      logIn(credentials).then(() => {
+        api.get('/user/me').then((res) => {
+          console.log(res)
+          const user = res.data.user
+          user.password = credentials.password
+          commit('SET_USER_DATA', user)
+          localStorage.setItem('user', user)
+        })
       })
     },
     register({ commit }, user) {
@@ -92,6 +93,9 @@ export default {
     }
   },
   getters: {
+    id: (state) => {
+      return state.id
+    },
     username: (state) => {
       return state.username
     },
