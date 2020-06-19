@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <BigCircle class="first">
+    <BigCircle height="150">
       <span class="white-big-text flex">Settings</span></BigCircle
     >
     <div class="inner-content">
@@ -44,14 +44,16 @@
         </Row>
       </LongButton>
       <LongButton class="long-btn">
-        <Row class="row">
-          <div class="grid-item" id="left">
-            <span class="dark-grey-text">Help</span>
-          </div>
-          <div class="grid-item" id="right">
-            <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
-          </div>
-        </Row>
+        <router-link :to="{ name: 'Introduction' }" class="row">
+          <Row>
+            <div class="grid-item" id="left">
+              <span class="dark-grey-text">Help</span>
+            </div>
+            <div class="grid-item" id="right">
+              <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
+            </div>
+          </Row>
+        </router-link>
       </LongButton>
 
       <div class="empty"></div>
@@ -109,10 +111,7 @@ export default {
   width: 100%;
   margin: 0 0 85px 0;
 }
-.first {
-  position: absolute;
-  width: 100%;
-}
+
 .icon {
   color: rgb(100, 100, 100);
 }

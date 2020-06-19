@@ -26,10 +26,10 @@
     <section class="orange-section orange">
       <Row
         ><div class="center-text title-container">
-          <span class="title white-big-text">{{ requestTitle }}</span>
+          <span class="white-big-text">{{ requestTitle }}</span>
         </div>
         <div class="center-text requestType white">
-          <span class="orange-text">{{ kind }}</span>
+          <span class="orange-text mb-1">{{ kind }}</span>
         </div>
       </Row>
       <Row>
@@ -57,6 +57,9 @@ export default {
 </script>
 
 <style scoped>
+.mb-1 {
+  margin-bottom: 2px;
+}
 .center-text {
   display: flex;
   align-items: center;
@@ -68,7 +71,7 @@ export default {
 }
 
 .origin {
-  margin: 4px 12px 4px 12px;
+  margin: 0px 12px 4px 12px;
 }
 
 .nameWrapper span {
@@ -92,16 +95,18 @@ export default {
 
 .profile {
   padding: 4px;
-  margin: 4px 16px;
+  margin: 4px 16px 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 .description {
   margin: 0px 16px 16px;
-  padding: 4px;
-}
-
-.title {
-  font-size: 1.4rem;
+  padding: 15px 4px 4px;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 .title-container {
@@ -113,14 +118,14 @@ export default {
 .requestType {
   justify-content: center;
   margin: 4px 16px 4px 4px;
-  padding: 4px;
+  padding: 4px 15px;
   border-radius: 20px;
   text-align: center;
   width: 25%;
 }
 .card {
   border-radius: 20px;
-  height: 50vh;
+  height: 55vh;
   width: 75vw;
 }
 
@@ -134,7 +139,7 @@ export default {
 }
 
 .white-section {
-  height: 22vh;
+  height: auto;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -170,7 +175,8 @@ export default {
 }
 
 .orange-section {
-  height: 20vh;
+  height: 22vh;
+
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }

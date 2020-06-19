@@ -17,6 +17,7 @@
       * {
         margin: 0;
         padding: 0;
+        /* Slight fix for the overlapping css lines */
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
       }
@@ -24,9 +25,11 @@
       body {
         font-family: 'Lato';
         background: #fff2e2;
+        /* Disable selecting text on phone */
         -webkit-user-select: none;
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
+        overflow-x: hidden;
       }
 
       body::-webkit-scrollbar {

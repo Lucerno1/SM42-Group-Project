@@ -1,20 +1,40 @@
 <template>
-  <div class='intro'></div>
+  <div class="intro">
+    <img class="picture" alt="not visible" :src="src" />
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Intro'  
+  name: 'Intro',
+  props: {
+    src: String
+  }
 }
 </script>
 
 <style scoped>
 .intro {
-  width: 100%;
+  overflow: hidden;
   height: 100%;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  opacity: 0.4;
-  z-index: 1000000;
+  width: 100%;
+}
+.picture {
+  width: 100%;
+}
+
+@media only screen and (min-width: 360px) {
+  .intro {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .picture {
+    width: auto;
+    height: 100%;
+  }
 }
 </style>
