@@ -33,6 +33,9 @@ export default {
     },
     ADD_MY_REQUEST(state, card) {
       state.myRequests.push(card)
+    },
+    SET_MY_REQUESTS(state, reqs) {
+      state.myRequests = reqs
     }
   },
   actions: {
@@ -56,6 +59,11 @@ export default {
           window.console.log(error)
         })
     },
+    loadMyRequests({ commit }) {
+      api.get('/buddy/card/own').then((res) => {
+        commit('SET_MY_REQUESTS', res.data.cards)
+      })
+    },
     createRequest({ commit }, card) {
       api.post('buddy/card', qs.stringify(card))
       commit('ADD_MY_REQUEST', card)
@@ -70,6 +78,12 @@ export default {
   getters: {
     requests: (state) => {
       return state.requests
+    },
+    myRequests: (state) => {
+      return state.myRequests.filter((x) => x.type === 'Request')
+    },
+    myQuestions: (state) => {
+      return state.myRequests.filter((x) => x.type === 'Question')
     }
   }
 }
