@@ -13,6 +13,7 @@
         v-for="(request, index) in myRequests"
         :key="'request' + index"
         :title="request.title"
+        :id="request._id"
       ></CardButton>
 
       <!-- Questions Section -->

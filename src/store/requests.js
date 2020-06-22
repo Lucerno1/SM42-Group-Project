@@ -36,6 +36,13 @@ export default {
     },
     SET_MY_REQUESTS(state, reqs) {
       state.myRequests = reqs
+    },
+    REMOVE_MY_REQUEST(state, id) {
+      state.myRequests.forEach((x, index) => {
+        if (x._id === id) {
+          state.myRequests.splice(index, 1)
+        }
+      })
     }
   },
   actions: {
@@ -67,6 +74,10 @@ export default {
     createRequest({ commit }, card) {
       api.post('buddy/card', qs.stringify(card))
       commit('ADD_MY_REQUEST', card)
+    },
+    deleteRequest({ commit }, id) {
+      api.delete('/buddy/card', { data: qs.stringify({ _id: id }) })
+      commit('REMOVE_MY_REQUEST', id)
     },
     setFilterType({ commit }, type) {
       commit('SET_FILTER_TYPE', type)
