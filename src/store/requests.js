@@ -39,7 +39,7 @@ export default {
     loadRequestSet({ commit, rootGetters }) {
       let url = '/buddy/card'
       if (rootGetters['user/isLoggedIn']) {
-        url += '/own'
+        url += '/other'
       }
       api
         .get(url)
