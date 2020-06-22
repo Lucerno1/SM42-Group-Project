@@ -43,6 +43,9 @@ export default {
           state.myRequests.splice(index, 1)
         }
       })
+    },
+    REPLACE_MY_REQUEST(state, original, newCard) {
+      state.myRequests[state.myRequests.indexOf(original)] = newCard
     }
   },
   actions: {
@@ -72,11 +75,21 @@ export default {
       })
     },
     createRequest({ commit }, card) {
-      api.post('buddy/card', qs.stringify(card))
       commit('ADD_MY_REQUEST', card)
+      api.post('buddy/card', qs.stringify(card)).then((res) => {
+        commit('REPLACE_MY_REQUEST', card, res.data.card)
+      })
     },
     deleteRequest({ commit }, id) {
-      api.delete('/buddy/card', { data: qs.stringify({ _id: id }) })
+      console.log('hi')
+      api
+        .delete('/buddy/card', qs.stringify({ _id: id }))
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
       commit('REMOVE_MY_REQUEST', id)
     },
     setFilterType({ commit }, type) {
