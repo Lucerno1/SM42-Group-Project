@@ -58,7 +58,7 @@
 
       <div class="empty"></div>
 
-      <LongButton class="long-btn">
+      <LongButton class="long-btn" @click.native="logOut">
         <Row class="row">
           <div class="grid-item" id="left">
             <span class="dark-grey-text">Sign out</span>
@@ -80,7 +80,7 @@ import Row from '@/components/Row'
 import { ChevronRightIcon } from 'vue-feather-icons'
 import Toggle from '@/components/Toggle'
 import { mapGetters } from 'vuex'
-
+import { mapActions } from 'vuex'
 export default {
   name: 'Settings',
   components: { Row, LongButton, Avatar, BigCircle, ChevronRightIcon, Toggle },
@@ -91,6 +91,9 @@ export default {
     return {
       Username: 'Username'
     }
+  },
+  methods: {
+    ...mapActions('user', ['logOut'])
   }
 }
 </script>

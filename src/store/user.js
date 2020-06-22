@@ -41,6 +41,18 @@ export default {
       state.pc = user.pc
       state.username = user.username
       state.isLoggedIn = true
+    },
+    CLEAR_STORE(state) {
+      state.id = ''
+      state.username = ''
+      state.firstname = ''
+      state.lastname = ''
+      state.profilePicture = ''
+      state.bio = ''
+      state.password = ''
+      state.isLoggedIn = false
+      state.nationality = ''
+      state.pc = ''
     }
   },
   actions: {
@@ -75,6 +87,11 @@ export default {
           localStorage.setItem('user', JSON.stringify(user))
         })
       })
+    },
+    logOut({ commit }) {
+      commit('CLEAR_STORE')
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
     },
     register({ commit, rootGetters }, user) {
       console.log(user)
