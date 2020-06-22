@@ -7,11 +7,10 @@ import Login from '@/views/Login'
 import Register from '@/views/Register'
 import TaskOverview from '@/views/TaskOverview'
 import AppWrapper from '@/views/AppWrapper'
-import RequestCardCreation from '@/views/RequestCardCreation'
-import QuestionCardCreation from '@/views/QuestionCardCreation'
 import AccountSettings from '@/views/AccountSettings'
 import Introduction from '@/views/Introduction'
 import OfflinePage from '@/views/OfflinePage'
+import CardCreation from '@/views/CardCreation'
 
 Vue.use(VueRouter)
 
@@ -47,12 +46,14 @@ const routes = [
       {
         path: '/RequestCardCreation',
         name: 'RequestCardCreation',
-        component: RequestCardCreation
+        component: CardCreation,
+        props: { type: 'request' }
       },
       {
         path: '/QuestionCardCreation',
         name: 'QuestionCardCreation',
-        component: QuestionCardCreation
+        component: CardCreation,
+        props: { type: 'question' }
       },
       {
         path: '/account-settings',
