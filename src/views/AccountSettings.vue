@@ -25,13 +25,23 @@
           />
         </InputGrid>
         <InputGrid columns="100%" grid="" mgb="">
-          <Input type="password" name="Password" placeholder="Password" />
+          <Input
+            type="password"
+            name="Password"
+            placeholder="Password"
+            v-model="vpassword"
+          />
           <Input
             type="password"
             name="Confirm password"
             placeholder="Confirm password"
-          />
-        </InputGrid>
+            v-model="vpasswordConfirm"
+          /> </InputGrid
+        ><span v-if="errors.length">
+          <ul>
+            <li v-for="error in errors" :key="error">{{ error }}</li>
+          </ul>
+        </span>
       </div>
       <div class="center"><PrimaryButton @click.native="submit" /></div>
     </div>
@@ -51,13 +61,25 @@ export default {
   },
   data() {
     return {
+      errors: [],
       vfirstname: '',
-      vlastname: ''
+      vlastname: '',
+      vpassword: '',
+      vpasswordConfirm: ''
     }
   },
   methods: {
     ...mapActions('user', ['updateFirstname', 'updateLastname']),
     submit: function () {
+      if (this.vpassword.length > 30 || this.vpassword.length < 5) {
+        this.errors.push('Password must be between 5 and 30 characters')
+      }
+      if (this.vpassword !== this.vpasswordConfirm) {
+        this.errors.push('Password and password confirmation do not match')
+      }
+      if (this.errors > 0) {
+        return
+      }
       this.updateFirstname(this.vfirstname)
       this.updateLastname(this.vlastname)
     }
