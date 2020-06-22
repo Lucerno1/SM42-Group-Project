@@ -82,7 +82,8 @@ export default {
         pageDots: false,
         wrapAround: true,
         selectedAttraction: 0.1,
-        friction: 0.45
+        friction: 0.4,
+        dragThreshold: 5
       }
     }
   },
