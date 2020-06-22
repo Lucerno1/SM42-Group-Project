@@ -45,7 +45,7 @@ export default {
   },
   actions: {
     load({ commit }) {
-      const user = localStorage.getItem('user')
+      const user = JSON.parse(localStorage.getItem('user'))
       if (user !== null) {
         commit('SET_USER_DATA', user)
       }
@@ -72,7 +72,7 @@ export default {
           const user = res.data.user
           user.password = credentials.password
           commit('SET_USER_DATA', user)
-          localStorage.setItem('user', user)
+          localStorage.setItem('user', JSON.stringify(user))
         })
       })
     },
@@ -87,8 +87,8 @@ export default {
             const data = res.data.user
             data.password = user.password
             commit('SET_USER_DATA', data)
-            localStorage.setItem('user', data)
-            logIn(rootGetters["user/credentials"])
+            localStorage.setItem('user', JSON.stringify(data))
+            logIn(rootGetters['user/credentials'])
           }
         })
     }

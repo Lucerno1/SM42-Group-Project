@@ -148,7 +148,7 @@ export default {
         }
         this.register(usr)
 
-        this.$router.push('Tasks')
+        this.$router.push('Task')
       }
     },
     validateForm: function () {
