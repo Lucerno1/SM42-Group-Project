@@ -69,8 +69,9 @@ export default {
     }
   },
   methods: {
-    ...mapActions('user', ['updateFirstname', 'updateLastname']),
+    ...mapActions('user', ['updateUser']),
     submit: function () {
+      this.errors = []
       if (this.vpassword.length > 30 || this.vpassword.length < 5) {
         this.errors.push('Password must be between 5 and 30 characters')
       }
@@ -80,8 +81,12 @@ export default {
       if (this.errors > 0) {
         return
       }
-      this.updateFirstname(this.vfirstname)
-      this.updateLastname(this.vlastname)
+      this.updateUser({
+        firstname: this.vfirstname,
+        lastname: this.vlastname,
+        password: this.vpassword
+      })
+      this.$router.push('Settings')
     }
   },
   created() {

@@ -26,6 +26,9 @@ export default {
     SET_LASTNAME(state, lastname) {
       state.lastname = lastname
     },
+    SET_PASSWORD(state, password) {
+      state.password = password
+    },
     SET_PROFILE_PICTURE(state, profilePicture) {
       state.profilePicture = profilePicture
     },
@@ -62,14 +65,17 @@ export default {
         commit('SET_USER_DATA', user)
       }
     },
+    updateUser({ commit, rootGetters }, user) {
+      commit('SET_FIRSTNAME', user.firstname)
+      commit('SET_LASTNAME', user.lastname)
+      commit('SET_PASSWORD', user.password)
+      api.put('/user', qs.stringify(user)).then((res) => {
+        console.log(res)
+      })
+      localStorage.setItem('user', JSON.stringify(rootGetters['user/user']))
+    },
     updateUsername({ commit }, username) {
       commit('SET_USERNAME', username)
-    },
-    updateFirstname({ commit }, firstname) {
-      commit('SET_FIRSTNAME', firstname)
-    },
-    updateLastname({ commit }, lastname) {
-      commit('SET_LASTNAME', lastname)
     },
     updateProfilePicture({ commit }, profilePicture) {
       commit('SET_PROFILE_PICTURE', profilePicture)
@@ -111,6 +117,9 @@ export default {
     }
   },
   getters: {
+    user: (state) => {
+      return state
+    },
     id: (state) => {
       return state.id
     },
