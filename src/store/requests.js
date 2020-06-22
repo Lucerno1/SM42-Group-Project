@@ -1,4 +1,5 @@
 import api from '@/api'
+import qs from 'qs'
 
 export default {
   namespaced: true,
@@ -8,7 +9,8 @@ export default {
     filter: {
       maximumDistance: -1,
       type: 'both'
-    }
+    },
+    myRequests: []
   },
   mutations: {
     // eslint-disable-next-line no-unused-vars
@@ -28,6 +30,9 @@ export default {
     },
     SET_FILTER(state, filter) {
       state.filter = filter
+    },
+    ADD_MY_REQUEST(state, card) {
+      state.myRequests.push(card)
     }
   },
   actions: {
@@ -50,6 +55,10 @@ export default {
         .catch((error) => {
           window.console.log(error)
         })
+    },
+    createRequest({ commit }, card) {
+      api.post('buddy/card', qs.stringify(card))
+      commit('ADD_MY_REQUEST', card)
     },
     setFilterType({ commit }, type) {
       commit('SET_FILTER_TYPE', type)
