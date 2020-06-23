@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="logo"><img src="/img/Logo-LocalBuddy.svg" /></div>
+    <div class="logo"><img src="/img/Logo-LocalBuddy.svg"/></div>
     <div class="heading"><h1>Uh Oh!</h1></div>
     <div class="paragraph">
       <p>

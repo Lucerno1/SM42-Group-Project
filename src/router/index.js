@@ -72,11 +72,6 @@ const routes = [
         path: '/account-settings',
         name: 'AccountSettings',
         component: AccountSettings
-      },
-      {
-        path: '/offline-page',
-        name: 'OfflinePage',
-        component: OfflinePage
       }
     ]
   },
