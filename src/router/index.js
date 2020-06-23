@@ -20,13 +20,26 @@ const routes = [
     redirect: '/task'
   },
   {
+    path: '/introduction',
+    name: 'Introduction',
+    component: Introduction
+  },
+  {
     path: '/',
     component: AppWrapper,
     children: [
       {
         path: '/task',
         name: 'Task',
-        component: SwipeTask
+        component: {
+          render(c) {
+            if (navigator.onLine===true) {
+                return c(SwipeTask)
+            } else {
+                return c(OfflinePage);
+            }
+          }
+        }
       },
       {
         path: '/tasks',
@@ -80,11 +93,6 @@ const routes = [
   {
     path: '*',
     redirect: '/task'
-  },
-  {
-    path: '/introduction',
-    name: 'Introduction',
-    component: Introduction
   }
 ]
 
