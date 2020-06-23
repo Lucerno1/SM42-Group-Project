@@ -49,7 +49,7 @@
 
 <script>
 import ChatMessage from '@/components/chat/ChatMessage.vue'
-import ChatTask from '@/components/chatTasks/ChatTask.vue'
+import ChatTask from '@/components/chat/ChatTask.vue'
 import Input from '@/components/input/Input.vue'
 import { ArrowLeftIcon, CameraIcon } from 'vue-feather-icons'
 
