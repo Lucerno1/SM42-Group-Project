@@ -8,7 +8,9 @@
       <div class="carousel-cell"><Intro src="img/intro/5.png" /></div>
       <div class="carousel-cell"><Intro src="img/intro/6.png" /></div>
     </Flickity>
-    <a class="skip-tut" href=""><h3>Skip tutorial</h3></a>
+
+    <div @click="skipTut" class="skip-tut"><h3>Skip tutorial</h3></div>
+    
   </div>
 </template>
 
@@ -40,6 +42,11 @@ export default {
 
     previous() {
       this.$refs.flickity.previous()
+    },
+
+    skipTut(){
+      localStorage.setItem('firstTime', false);
+      this.$router.back()
     }
   }
 }
@@ -64,7 +71,6 @@ export default {
   width: 100%;
 }
 .skip-tut {
-  text-decoration: none;
   position: absolute;
   bottom: 0;
   right: 0;
