@@ -34,10 +34,10 @@ const routes = [
         name: 'Task',
         component: {
           render(c) {
-            if (navigator.onLine===true) {
-                return c(SwipeTask)
+            if (navigator.onLine === true) {
+              return c(SwipeTask)
             } else {
-                return c(OfflinePage);
+              return c(OfflinePage)
             }
           }
         }
