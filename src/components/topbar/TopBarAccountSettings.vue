@@ -45,7 +45,7 @@ export default {
   justify-content: center;
 }
 .left-icon {
-  margin: 1vw 0 0 10vw;
+  margin-left: 10vw;
 }
 
 .right-icon {
