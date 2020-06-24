@@ -33,10 +33,10 @@ const routes = [
         name: 'Task',
         component: {
           render(c) {
-            if (navigator.onLine===true) {
-                return c(SwipeTask)
+            if (navigator.onLine === true) {
+              return c(SwipeTask)
             } else {
-                return c(OfflinePage);
+              return c(OfflinePage)
             }
           }
         }
@@ -72,11 +72,6 @@ const routes = [
         path: '/account-settings',
         name: 'AccountSettings',
         component: AccountSettings
-      },
-      {
-        path: '/offline-page',
-        name: 'OfflinePage',
-        component: OfflinePage
       }
     ]
   },
