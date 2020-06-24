@@ -10,7 +10,6 @@
     </Flickity>
 
     <div @click="skipTut" class="skip-tut"><h3>Skip tutorial</h3></div>
-    
   </div>
 </template>
 
@@ -44,8 +43,8 @@ export default {
       this.$refs.flickity.previous()
     },
 
-    skipTut(){
-      localStorage.setItem('firstTime', false);
+    skipTut() {
+      localStorage.setItem('firstTime', false)
       this.$router.back()
     }
   }
