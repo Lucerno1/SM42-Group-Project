@@ -32,7 +32,14 @@
           <div class="flex-box">
             <arrow-left-icon class="orange-text icon"></arrow-left-icon>
           </div> </RoundButton
-        ><RoundButton color="#ff8a00" length="50px" class="button-middle">
+        ><RoundButton
+          color="#ff8a00"
+          length="50px"
+          class="button-middle"
+          @click.native="
+            acceptRequest(requests[$refs.carousel.selectedIndex]._sender)
+          "
+        >
           <div class="flex-box">
             <check-icon class="white-text icon"></check-icon>
           </div> </RoundButton
@@ -96,6 +103,7 @@ export default {
   },
   methods: {
     ...mapActions('requests', ['loadRequestSet']),
+    ...mapActions('chats', ['acceptRequest']),
     OpenFilter() {
       this.showFilter = !this.showFilter
     }

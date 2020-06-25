@@ -1,4 +1,5 @@
 import api from '@/api'
+import qs from 'qs'
 
 export default {
   namespaced: true,
@@ -7,20 +8,30 @@ export default {
   },
   mutations: {
     // eslint-disable-next-line no-unused-vars
-    APPEND_REQUESTS(state, chats) {
-      state.chats = chats
+    APPEND_CHATS(state, chats) {
+      state.chats.push(chats)
     }
   },
   actions: {
     loadChatOverview({ commit }) {
-      let url = '/chat/own'
       api
-        .get(url)
+        .get('/chat/own')
         .then((response) => {
           commit('APPEND_CHATS', response.data.chats)
         })
         .catch((error) => {
           window.console.log(error)
+        })
+    },
+    acceptRequest({ commit }, id) {
+      console.log(id)
+      api
+        .post('/chat', qs.stringify({ participants: [id] }), {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .then((res) => {
+          console.log(res)
+          commit('APPEND_CHATS', res.data.chat)
         })
     }
   },
