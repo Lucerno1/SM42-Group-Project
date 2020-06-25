@@ -95,4 +95,9 @@ body {
   font-weight: 600;
   padding-left: 5px;
 }
+
+/* Placed on buttons that interfere with the navbar */
+.btnToTop {
+  z-index: 110;
+}
 </style>
