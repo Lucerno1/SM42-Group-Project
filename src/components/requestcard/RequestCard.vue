@@ -6,7 +6,7 @@
         <div class="nameWrapper">
           <span class="orange-big-text">{{ name }}</span
           ><br />
-          <span class="grey-text">{{ origin }}</span>
+          <span class="grey-text origin">{{ origin }}</span>
         </div>
       </div>
       <p class="black-text lh-13">{{ profile }}</p>
@@ -74,18 +74,22 @@ export default {
   display: block;
   width: 84px;
   height: 84px;
-  background: #2c3e50;
+  background: #424242;
   border-radius: 50%;
   margin: -42px 15px 15px 0;
+}
+
+.top-container {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .nameWrapper {
   margin: -10px 0 10px 0;
 }
 
-.top-container {
-  display: flex;
-  flex-flow: row wrap;
+.nameWrapper .origin {
+  font-weight: 400;
 }
 
 .typeWrapper {
