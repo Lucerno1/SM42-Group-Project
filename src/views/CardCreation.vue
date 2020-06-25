@@ -15,7 +15,7 @@
       <Textarea
         name="description"
         rows="5"
-        :placeholder="'Write your ' + type  + ' in here'"
+        :placeholder="'Write your ' + type + ' in here'"
         v-model="description"
       />
 
