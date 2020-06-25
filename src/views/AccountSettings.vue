@@ -64,7 +64,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AccountSettings',
   computed: {
-    ...mapGetters('user', ['firstname', 'lastname'])
+    ...mapGetters('user', ['firstname', 'lastname', 'bio'])
   },
   data() {
     return {

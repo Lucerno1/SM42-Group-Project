@@ -69,6 +69,7 @@ export default {
       commit('SET_FIRSTNAME', user.firstname)
       commit('SET_LASTNAME', user.lastname)
       commit('SET_PASSWORD', user.password)
+      commit('SET_BIO', user.bio)
       api
         .put('/user', qs.stringify(user), {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
