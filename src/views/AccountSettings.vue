@@ -25,6 +25,13 @@
           />
         </InputGrid>
         <InputGrid columns="100%" grid="" mgb="">
+          <Textarea
+            type="textarea"
+            name="Bio"
+            rows="5"
+            placeholder="Write something about yourself here."
+            v-model="vbio"
+          />
           <Input
             type="password"
             name="Password"
@@ -52,6 +59,7 @@
 import TopBarAccountSettings from '@/components/topbar/TopBarAccountSettings'
 import InputGrid from '@/components/input/InputGrid'
 import Input from '@/components/input/Input'
+import Textarea from '@/components/input/Textarea'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
 import { mapGetters, mapActions } from 'vuex'
 export default {
@@ -65,7 +73,8 @@ export default {
       vfirstname: '',
       vlastname: '',
       vpassword: '',
-      vpasswordConfirm: ''
+      vpasswordConfirm: '',
+      vbio: ''
     }
   },
   methods: {
@@ -84,7 +93,8 @@ export default {
       this.updateUser({
         firstname: this.vfirstname,
         lastname: this.vlastname,
-        password: this.vpassword
+        password: this.vpassword,
+        bio: this.vbio
       })
       this.$router.push('Settings')
     }
@@ -92,12 +102,14 @@ export default {
   created() {
     this.vfirstname = this.firstname
     this.vlastname = this.lastname
+    this.vbio = this.bio
   },
   components: {
     TopBarAccountSettings,
     InputGrid,
     Input,
-    PrimaryButton
+    PrimaryButton,
+    Textarea
   }
 }
 </script>
