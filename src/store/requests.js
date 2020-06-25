@@ -33,6 +33,19 @@ export default {
     },
     ADD_MY_REQUEST(state, card) {
       state.myRequests.push(card)
+    },
+    SET_MY_REQUESTS(state, reqs) {
+      state.myRequests = reqs
+    },
+    REMOVE_MY_REQUEST(state, id) {
+      state.myRequests.forEach((x, index) => {
+        if (x._id === id) {
+          state.myRequests.splice(index, 1)
+        }
+      })
+    },
+    REPLACE_MY_REQUEST(state, original, newCard) {
+      state.myRequests[state.myRequests.indexOf(original)] = newCard
     }
   },
   actions: {
@@ -52,13 +65,37 @@ export default {
           commit('APPEND_REQUESTS', response.data.cards)
           // commit('INCREMENT_LOAD_COUNT')
         })
-        .catch((error) => {
-          window.console.log(error)
+        .catch(() => {
+          api.get('/buddy/card').then((response) => {
+            commit('APPEND_REQUESTS', response.data.cards)
+          })
         })
     },
+    loadMyRequests({ commit }) {
+      api.get('/buddy/card/own').then((res) => {
+        commit('SET_MY_REQUESTS', res.data.cards)
+      })
+    },
     createRequest({ commit }, card) {
-      api.post('buddy/card', qs.stringify(card))
       commit('ADD_MY_REQUEST', card)
+      api.post('buddy/card', qs.stringify(card)).then((res) => {
+        commit('REPLACE_MY_REQUEST', card, res.data.card)
+      })
+    },
+    deleteRequest({ commit }, id) {
+      console.log('hi')
+      api
+        .delete('/buddy/card', {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          data: qs.stringify({ _id: id })
+        })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+      commit('REMOVE_MY_REQUEST', id)
     },
     setFilterType({ commit }, type) {
       commit('SET_FILTER_TYPE', type)
@@ -70,6 +107,12 @@ export default {
   getters: {
     requests: (state) => {
       return state.requests
+    },
+    myRequests: (state) => {
+      return state.myRequests.filter((x) => x.type === 'Request')
+    },
+    myQuestions: (state) => {
+      return state.myRequests.filter((x) => x.type === 'Question')
     }
   }
 }

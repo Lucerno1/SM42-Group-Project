@@ -10,9 +10,10 @@
         </router-link>
       </div>
       <CardButton
-        v-for="(request, index) in requests"
+        v-for="(request, index) in myRequests"
         :key="'request' + index"
         :title="request.title"
+        :id="request._id"
       ></CardButton>
 
       <!-- Questions Section -->
@@ -35,10 +36,20 @@
 import { PlusCircleIcon } from 'vue-feather-icons'
 import TopBar from '@/components/topbar/TopBar'
 import CardButton from '@/components/CardButton'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'TaskOverview',
   components: { TopBar, PlusCircleIcon, CardButton },
+  computed: {
+    ...mapGetters('requests', ['myRequests'])
+  },
+  methods: {
+    ...mapActions('requests', ['loadMyRequests'])
+  },
+  created() {
+    this.loadMyRequests()
+  },
   data() {
     return {
       questions: [
@@ -53,14 +64,6 @@ export default {
         },
         {
           title: 'Moving furniture'
-        }
-      ],
-      requests: [
-        {
-          title: 'Helping with groceries'
-        },
-        {
-          title: 'Guide to the local pubs'
         }
       ]
     }
