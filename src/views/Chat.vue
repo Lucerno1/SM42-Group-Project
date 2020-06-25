@@ -31,8 +31,8 @@
     <div class="msg-container">
       <ChatMessage
         class="other"
-        name="Ileb olotoubé"
-        message="Slave"
+        name="Achmed Akkabi"
+        message="Lorem ipsum"
         time="13:45"
       ></ChatMessage>
     </div>
@@ -75,11 +75,11 @@ export default {
 }
 
 .left-icon {
-  margin: 1vw 0 0 10vw;
+  margin: 1vw 0 0 8vw;
 }
 
 .right-icon {
-  margin-right: 10vw;
+  margin-right: 8vw;
   visibility: hidden;
 }
 
