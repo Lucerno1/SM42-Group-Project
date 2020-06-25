@@ -69,9 +69,13 @@ export default {
       commit('SET_FIRSTNAME', user.firstname)
       commit('SET_LASTNAME', user.lastname)
       commit('SET_PASSWORD', user.password)
-      api.put('/user', qs.stringify(user)).then((res) => {
-        console.log(res)
-      })
+      api
+        .put('/user', qs.stringify(user), {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .then((res) => {
+          console.log(res)
+        })
       localStorage.setItem('user', JSON.stringify(rootGetters['user/user']))
     },
     updateUsername({ commit }, username) {
