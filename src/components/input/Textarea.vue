@@ -1,7 +1,6 @@
 <template>
   <textarea 
     class="textarea"
-    :type="type"
     :name="name"
     :placeholder="placeholder"
     :rows="rows"
@@ -20,7 +19,6 @@ export default {
     }
   },
   props: {
-    type: String,
     name: String,
     placeholder: String,
     value: String,

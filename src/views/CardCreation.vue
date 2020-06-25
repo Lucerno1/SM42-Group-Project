@@ -6,13 +6,19 @@
     </div>
     <InputGrid class="mt-147" grid="single" columns="100%" :mgb="35">
       <Input
-        v-for="(field, index) in fields"
-        :key="'field:' + index"
-        :type="field.type"
-        :name="field.name"
-        :placeholder="field.placeholder"
-        v-model="field.value"
+        type="text"
+        name="Subject"
+        placeholder="Subject"
+        v-model="subject"
       />
+
+      <Textarea
+        name="description"
+        rows="5"
+        :placeholder="'Write your ' + type  + ' in here'"
+        v-model="description"
+      />
+
       <div class="center">
         <PrimaryButton
           id="createQuestionCard"
@@ -28,6 +34,7 @@
 import TopBarCardCreation from '@/components/topbar/TopBarCardCreation'
 import Input from '@/components/input/Input'
 import InputGrid from '@/components/input/InputGrid'
+import Textarea from '@/components/input/Textarea'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
 import { mapActions } from 'vuex'
 
@@ -40,30 +47,18 @@ export default {
     ...mapActions('requests', ['createRequest']),
     createCard: function () {
       this.createRequest({
-        title: this.fields[0].value,
-        text: this.fields[1].value,
+        title: this.subject,
+        text: this.description,
         type: this.type.charAt(0).toUpperCase() + this.type.slice(1)
       })
       this.$router.push('Tasks')
     }
   },
-  components: { TopBarCardCreation, Input, InputGrid, PrimaryButton },
+  components: { TopBarCardCreation, Input, InputGrid, PrimaryButton, Textarea },
   data() {
     return {
-      fields: [
-        {
-          type: 'text',
-          name: 'subject',
-          placeholder: 'Subject',
-          value: ''
-        },
-        {
-          type: 'text',
-          name: this.type,
-          placeholder: 'Write your ' + this.type + ' in here.',
-          value: ''
-        }
-      ]
+      subject: '',
+      description: ''
     }
   }
 }

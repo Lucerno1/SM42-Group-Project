@@ -26,7 +26,6 @@
         </InputGrid>
         <InputGrid columns="100%" grid="" mgb="">
           <Textarea
-            type="textarea"
             name="Bio"
             rows="5"
             placeholder="Write something about yourself here."
