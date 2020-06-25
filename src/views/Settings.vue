@@ -29,7 +29,7 @@
             <span class="dark-grey-text">Darkmode</span>
           </div>
           <div class="grid-item" id="right">
-            <Toggle />
+            <Toggle id="dark-mode-toggle"/>
           </div>
         </Row>
       </LongButton>
