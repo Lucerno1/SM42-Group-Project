@@ -44,6 +44,7 @@ export default {
         text: this.fields[1].value,
         type: this.type.charAt(0).toUpperCase() + this.type.slice(1)
       })
+      this.$router.push('Tasks')
     }
   },
   components: { TopBarCardCreation, Input, InputGrid, PrimaryButton },

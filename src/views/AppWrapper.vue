@@ -18,6 +18,10 @@ export default {
     ...mapActions('user', ['load'])
   },
   created() {
+    const firstTime = localStorage.getItem('firstTime')
+    if (firstTime === null) {
+      this.$router.push('Introduction')
+    }
     this.load()
   }
 }
