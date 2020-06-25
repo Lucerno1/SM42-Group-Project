@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BigCircle height="230">
+    <BigCircle :height="230">
       <span class="white-big-text">Requests</span>
       <sliders-icon
         @click="OpenFilter()"
@@ -82,7 +82,8 @@ export default {
         pageDots: false,
         wrapAround: true,
         selectedAttraction: 0.1,
-        friction: 0.45
+        friction: 0.4,
+        dragThreshold: 5
       }
     }
   },

@@ -1,16 +1,25 @@
 <template>
   <div class="cardButton">
     <span class="dark-grey-text">{{ title }}</span>
-    <trash-2-icon size="1.5x" class="orange-text"></trash-2-icon>
+    <trash-2-icon
+      size="1.5x"
+      class="orange-text"
+      @click="deleteRequest(id)"
+    ></trash-2-icon>
   </div>
 </template>
 
 <script>
 import { Trash2Icon } from 'vue-feather-icons'
+import { mapActions } from 'vuex'
 export default {
   name: 'CardButton',
   props: {
-    title: String
+    title: String,
+    id: String
+  },
+  methods: {
+    ...mapActions('requests', ['deleteRequest'])
   },
   components: {
     Trash2Icon

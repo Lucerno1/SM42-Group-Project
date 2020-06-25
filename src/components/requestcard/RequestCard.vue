@@ -122,6 +122,7 @@ export default {
   border-radius: 20px;
   text-align: center;
   width: 25%;
+  height: 20px;
 }
 .card {
   border-radius: 20px;
