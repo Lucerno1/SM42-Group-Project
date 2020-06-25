@@ -43,7 +43,7 @@ export default {
   name: 'TaskOverview',
   components: { TopBar, PlusCircleIcon, CardButton },
   computed: {
-    ...mapGetters('requests', ['myRequests', "myQuestions"])
+    ...mapGetters('requests', ['myRequests', 'myQuestions'])
   },
   methods: {
     ...mapActions('requests', ['loadMyRequests'])
