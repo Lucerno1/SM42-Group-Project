@@ -89,15 +89,19 @@ export default {
       commit('SET_BIO', bio)
     },
     login({ commit }, credentials) {
-      logIn(credentials).then(() => {
-        api.get('/user/me').then((res) => {
-          console.log(res)
-          const user = res.data.user
-          user.password = credentials.password
-          commit('SET_USER_DATA', user)
-          localStorage.setItem('user', JSON.stringify(user))
+      return logIn(credentials)
+        .then(() => {
+          api.get('/user/me').then((res) => {
+            const user = res.data.user
+            user.password = credentials.password
+            commit('SET_USER_DATA', user)
+            localStorage.setItem('user', JSON.stringify(user))
+          })
+          return true
         })
-      })
+        .catch(() => {
+          return false
+        })
     },
     logOut({ commit }) {
       commit('CLEAR_STORE')
