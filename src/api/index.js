@@ -29,7 +29,11 @@ api.interceptors.response.use(
   (resp) => resp,
   (err) => {
     const originalRequest = err.config
-    if (err.response.status !== 401 || originalRequest._retry) {
+    if (
+      err.response.status !== 401 ||
+      originalRequest._retry ||
+      originalRequest.url === '/user/auth'
+    ) {
       return Promise.reject(err)
     }
 
