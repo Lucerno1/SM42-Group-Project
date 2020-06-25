@@ -46,6 +46,7 @@ export default {
 }
 
 input:focus {
-  outline-color: #ff8a00;
+  box-shadow: 0 0 0 2px #ff8a00;
+  outline-width: 0;
 }
 </style>
