@@ -58,7 +58,7 @@
 
       <div class="empty"></div>
 
-      <LongButton class="long-btn" @click.native="logOut">
+      <LongButton class="long-btn" @click.native="logOutAndRedirect">
         <Row class="row">
           <div class="grid-item" id="left">
             <span class="dark-grey-text">Sign out</span>
@@ -93,7 +93,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions('user', ['logOut'])
+    ...mapActions('user', ['logOut']),
+    logOutAndRedirect() {
+      this.logOut()
+      this.$router.push('Login')
+    }
   }
 }
 </script>
