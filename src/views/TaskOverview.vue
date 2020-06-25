@@ -24,9 +24,10 @@
         </router-link>
       </div>
       <CardButton
-        v-for="(question, index) in questions"
+        v-for="(question, index) in myQuestions"
         :key="'question' + index"
         :title="question.title"
+        :id="question._id"
       ></CardButton>
     </div>
   </div>
@@ -42,31 +43,13 @@ export default {
   name: 'TaskOverview',
   components: { TopBar, PlusCircleIcon, CardButton },
   computed: {
-    ...mapGetters('requests', ['myRequests'])
+    ...mapGetters('requests', ['myRequests', "myQuestions"])
   },
   methods: {
     ...mapActions('requests', ['loadMyRequests'])
   },
   created() {
     this.loadMyRequests()
-  },
-  data() {
-    return {
-      questions: [
-        {
-          title: 'Helping with taxes'
-        },
-        {
-          title: 'Translating a letter'
-        },
-        {
-          title: 'Practising dutch'
-        },
-        {
-          title: 'Moving furniture'
-        }
-      ]
-    }
   }
 }
 </script>
