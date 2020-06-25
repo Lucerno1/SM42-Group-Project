@@ -65,8 +65,10 @@ export default {
           commit('APPEND_REQUESTS', response.data.cards)
           // commit('INCREMENT_LOAD_COUNT')
         })
-        .catch((error) => {
-          window.console.log(error)
+        .catch(() => {
+          api.get('/buddy/card').then((response) => {
+            commit('APPEND_REQUESTS', response.data.cards)
+          })
         })
     },
     loadMyRequests({ commit }) {
@@ -83,7 +85,10 @@ export default {
     deleteRequest({ commit }, id) {
       console.log('hi')
       api
-        .delete('/buddy/card', qs.stringify({ _id: id }))
+        .delete('/buddy/card', {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          data: qs.stringify({ _id: id })
+        })
         .then((res) => {
           console.log(res)
         })
