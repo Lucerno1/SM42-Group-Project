@@ -27,13 +27,13 @@ export default {
           console.log(res)
           commit('SET_CHAT', res.data.chat)
         })
-        .catch(() => {
-          console.log('error')
-        })
     }
   },
   getters: {
     name: (state) => {
+      if (state.participants.length < 1) {
+        return ''
+      }
       return (
         state.participants[0].firstname + ' ' + state.participants[0].lastname
       )

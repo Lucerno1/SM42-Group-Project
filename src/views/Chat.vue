@@ -30,10 +30,12 @@
 
     <div class="msg-container">
       <ChatMessage
+        v-for="message in chatMessages"
+        :key="message._id"
         class="other"
-        name="Achmed Akkabi"
-        message="Lorem ipsum"
-        time="13:45"
+        :name="message.name"
+        :message="message.message"
+        :time="message.date"
       ></ChatMessage>
     </div>
 
@@ -61,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('chat', ['name'])
+    ...mapGetters('chat', ['name', 'chatMessages'])
   },
   components: { ChatMessage, ChatTask, Input, ArrowLeftIcon, CameraIcon },
   methods: {
