@@ -1,6 +1,11 @@
 <template>
   <label class="switch">
-    <input v-model="toggle" type="checkbox" />
+    <input
+      @change="handleChange"
+      v-model="content"
+      checked="true"
+      type="checkbox"
+    />
     <span class="slider round"></span>
   </label>
 </template>
@@ -8,8 +13,15 @@
 <script>
 export default {
   name: 'Toggle',
-  props: {
-    toggle: Boolean
+  data() {
+    return {
+      content: this.value
+    }
+  },
+  methods: {
+    handleChange() {
+      this.$emit('input', this.content)
+    }
   }
 }
 </script>

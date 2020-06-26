@@ -13,12 +13,12 @@
       <div class="bg-requests">
         <div class="inner-grid toggle-btn-height toggle-grid-columns">
           <p>Show Requests</p>
-          <Toggle :toggle="toggleR" class="toggle-right" />
+          <Toggle v-model="toggleR" class="toggle-right" />
         </div>
       </div>
       <div class="inner-grid toggle-btn-height toggle-grid-columns">
         <p>Show Questions</p>
-        <Toggle :toggle="toggleQ" class="toggle-right" />
+        <Toggle v-model="toggleQ" class="toggle-right" />
       </div>
     </section>
   </div>
@@ -51,7 +51,7 @@ export default {
     }
   },
   watch: {
-    toggleR: function(){
+    toggleR: function () {
       this.setFilter()
     },
     toggleQ: function () {
@@ -65,13 +65,16 @@ export default {
   },
   methods: {
     ...mapActions('requests', ['setFilterType']),
-    setFilter(){
+    setFilter() {
       let filter = 'both'
       if (this.toggleQ && !this.toggleR) {
         filter = 'Question'
       }
       if (this.toggleR && !this.toggleQ) {
         filter = 'Request'
+      }
+      if (!this.toggleR && !this.toggleQ) {
+        filter = 'none'
       }
       console.log(filter)
       this.setFilterType(filter)
