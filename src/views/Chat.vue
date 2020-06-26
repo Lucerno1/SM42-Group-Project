@@ -35,7 +35,7 @@
         :class="isMe(id, message._id) ? 'self' : 'other'"
         :name="getName(message._id)"
         :message="message.message"
-        :time="message.date"
+        :time="message.date | formatDate"
       ></ChatMessage>
     </div>
 
