@@ -2,7 +2,7 @@
   <div id="register">
     <TopBar pageTitle="Register"></TopBar>
     <div class="register-box">
-      <img src="/img/Logo-LocalBuddyRegister.svg" alt="Local Buddy Logo" />
+      <img src="img\Logo-LocalBuddyRegister.svg" alt="Local Buddy Logo" />
       <form id="register-form" @submit.prevent="registerUser">
         <InputGrid
           grid="double"

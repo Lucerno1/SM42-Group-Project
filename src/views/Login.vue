@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <div class="login-box">
-      <img src="/img/Logo-LocalBuddyLogin.svg" alt="Local Buddy Logo" />
+      <img src="img\Logo-LocalBuddyLogin.svg" alt="Local Buddy Logo" />
 
       <div class="input-box">
         <InputGrid grid="single" columns="100%">
