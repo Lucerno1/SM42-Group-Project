@@ -15,21 +15,21 @@
         </div>
         <span class="bottomTitle white-text">Requests & Questions</span>
       </div>
-      <div class="second hpx-70" >
-        <div class="container-task" >
-          <ChatTask @click.native="popupFunction"></ChatTask>
+      <div class="second hpx-70">
+        <div class="container-task">
+          <ChatTask :state="taskState" @click.native="popupFunction"></ChatTask>
           <ChatTask @click.native="popupFunction"></ChatTask>
           <ChatTask @click.native="popupFunction"></ChatTask>
           <ChatTask @click.native="popupFunction"></ChatTask>
         </div>
-        <ChatCardPopup v-show="popup" ></ChatCardPopup>
+        <ChatCardPopup v-show="popup"></ChatCardPopup>
       </div>
       <div class="third hpx-70">
         <div class="back hpx-70"></div>
       </div>
     </div>
 
-    <div class="msg-container" >
+    <div class="msg-container">
       <ChatMessage
         v-for="(message, index) in chatMessages"
         :key="'message:' + index"
@@ -59,12 +59,12 @@ import ChatCardPopup from '@/components/chat/ChatCardPopup.vue'
 import { mapActions, mapGetters } from 'vuex'
 import user from '@/mixins/user'
 
-
 export default {
   data() {
     return {
       value: '',
-      popup: false
+      popup: false,
+      taskState: 'inactive'
     }
   },
   mixins: [user],
@@ -72,10 +72,18 @@ export default {
     ...mapGetters('chat', ['name', 'chatMessages', 'participants']),
     ...mapGetters('user', ['id'])
   },
-  components: { ChatMessage, ChatTask, Input, ArrowLeftIcon, CameraIcon, ChatCardPopup },
+  components: {
+    ChatMessage,
+    ChatTask,
+    Input,
+    ArrowLeftIcon,
+    CameraIcon,
+    ChatCardPopup
+  },
   methods: {
-      popupFunction() {
-     this.popup = !this.popup
+    popupFunction() {
+      this.popup = !this.popup
+      this.popup ? (this.taskState = 'active') : (this.taskState = 'inactive')
     },
     ...mapActions('chat', ['load', 'sendMessage']),
     getName: function (id) {
