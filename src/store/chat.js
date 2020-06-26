@@ -28,9 +28,28 @@ export default {
           console.log(res)
           commit('SET_CHAT', res.data.chat)
         })
+    },
+    sendMessage({ commit, rootGetters }, val) {
+      console.log(rootGetters['chat/id'])
+      console.log({ _id: rootGetters['chat/id'], message: val })
+      api
+        .post(
+          '/chat/message',
+          qs.stringify({ _id: rootGetters['chat/id'], message: val }),
+          {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          }
+        )
+        .then((res) => {
+          console.log(res)
+          commit('SET_CHAT', res.data.chat)
+        })
     }
   },
   getters: {
+    id: (state) => {
+      return state.id
+    },
     name: (state, rootGetters) => {
       if (state.participants.length < 1) {
         return ''

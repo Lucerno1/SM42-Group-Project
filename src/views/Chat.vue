@@ -40,7 +40,7 @@
     </div>
 
     <div class="input-container">
-      <Input class="input" v-model="value" />
+      <Input class="input" v-model="value" @keydown.enter.native="sendMsg" />
       <button class="camera">
         <camera-icon class="iconC" size="1.3x"></camera-icon>
       </button>
@@ -70,10 +70,14 @@ export default {
   },
   components: { ChatMessage, ChatTask, Input, ArrowLeftIcon, CameraIcon },
   methods: {
-    ...mapActions('chat', ['load']),
+    ...mapActions('chat', ['load', 'sendMessage']),
     getName: function (id) {
       const user = this.getUser(id, this.participants)
       return user.firstname + ' ' + user.lastname
+    },
+    sendMsg: function () {
+      this.sendMessage(this.value)
+      this.value = ''
     }
   },
   created() {
