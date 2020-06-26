@@ -13,7 +13,7 @@
         :firstName="getOther(selfId, chat.participants).firstname"
         :lastName="getOther(selfId, chat.participants).lastname"
         :message="chat.lastMessage.message"
-        :time="chat.lastMessage.date"
+        :time="chat.lastMessage.date | formatDate"
         :functionName="
           () => {
             redirect(chat._id)
