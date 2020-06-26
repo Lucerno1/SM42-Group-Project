@@ -1,13 +1,10 @@
 <template>
-  <div>
-    <div class="topBar">
-      <div class="flex solidTopBar">
-        <span class="white-big-text flex">{{ pageTitle }}</span>
-      </div>
+  <div class="top-bar">
+    <div class="first">
+      <span class="white-big-text">{{ pageTitle }}</span>
     </div>
-
-    <div class="secondTopBar orangeBackground">
-      <div class="cornerTopBar"></div>
+    <div class="second">
+      <div class="back"></div>
     </div>
   </div>
 </template>
@@ -22,47 +19,37 @@ export default {
 </script>
 
 <style scoped>
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.topBar {
-  z-index: 1;
+.top-bar {
   position: fixed;
-  top: 0px;
-  width: 100vw;
-  background-color: #fff2e2;
-}
-.secondTopBar {
-  z-index: -10000;
-  position: fixed;
-  top: 0px;
-  width: 100vw;
-  background-color: #fff2e2;
-}
-h1 {
-  padding-top: 30px;
-  margin-top: 0px;
-  text-align: center;
-}
-.solidTopBar {
-  background-color: #ff8a00;
-  height: 80px;
-  border-bottom-left-radius: 10vw;
-}
-.cornerTopBar {
-  margin-top: 80px;
-  background-color: #fff2e2;
-  height: 80px;
-  border-top-right-radius: 10vw;
-}
-.orangeBackground {
-  background-color: #ff8a00;
+  width: 100%;
+  z-index: 100;
+  top: 0;
 }
 
-.white-text {
-  color: white;
-  font-size: 1.2rem;
+.first span {
+  z-index: 4;
+}
+
+.top-bar .first {
+  background: #ff8a00;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 80px;
+}
+
+.top-bar .second {
+  position: relative;
+  height: 90px;
+}
+
+.second .back {
+  position: relative;
+  height: 80px;
+  background: transparent;
+  width: 100%;
+  border-top-right-radius: 80px;
+  box-shadow: 170px -80px 0px 70px #ff8a00;
 }
 </style>

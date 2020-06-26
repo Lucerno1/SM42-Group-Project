@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BigCircle height="230">
+    <BigCircle :height="230">
       <span class="white-big-text">Requests</span>
       <sliders-icon
         @click="OpenFilter()"
@@ -32,7 +32,7 @@
           <div class="flex-box">
             <arrow-left-icon class="orange-text icon"></arrow-left-icon>
           </div> </RoundButton
-        ><RoundButton color="#ff8a00" length="50px" class="button-middle">
+        ><RoundButton color="#ff8a00" length="60px" class="button-middle">
           <div class="flex-box">
             <check-icon class="white-text icon"></check-icon>
           </div> </RoundButton
@@ -82,7 +82,8 @@ export default {
         pageDots: false,
         wrapAround: true,
         selectedAttraction: 0.1,
-        friction: 0.45
+        friction: 0.4,
+        dragThreshold: 5
       }
     }
   },
@@ -118,7 +119,7 @@ export default {
 </script>
 
 <style>
-.flickity-viewport {
+.gallery .flickity-viewport {
   height: calc(55vh + 30px) !important;
 }
 </style>
@@ -129,7 +130,7 @@ export default {
 }
 
 .button-left {
-  margin-top: 5px;
+  margin-top: 10px;
   margin-left: 18vw;
 }
 
@@ -138,7 +139,7 @@ export default {
 }
 
 .button-right {
-  margin-top: 5px;
+  margin-top: 10px;
   margin-right: 18vw;
 }
 
@@ -160,7 +161,7 @@ export default {
 }
 
 .gallery-cell {
-  margin: 0 8px 0 8px;
+  margin: 35px 8px 0 8px;
   top: 0;
   transition: top 0.2s linear, filter 0.2s linear;
   filter: blur(1px);
@@ -171,36 +172,39 @@ export default {
 }
 
 @keyframes fadein {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-@-moz-keyframes fadein { /* Firefox */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-@-webkit-keyframes fadein { /* Safari and Chrome */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-@-o-keyframes fadein { /* Opera */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity: 1;
-    }
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .is-selected {

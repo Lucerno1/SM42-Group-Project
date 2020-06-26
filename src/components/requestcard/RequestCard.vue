@@ -1,47 +1,27 @@
 <template>
   <div class="card">
-    <section class="transparent"></section>
-    <section class="white-section white">
-      <Row
-        ><span class="avatar"></span>
+    <div class="inner-top">
+      <div class="top-container">
+        <span class="avatar"></span>
         <div class="nameWrapper">
-          <Row
-            ><span class="orange-big-text name">{{ name }}</span></Row
-          >
-          <Row
-            ><span class="grey-text origin">{{ origin }}</span></Row
-          >
-        </div></Row
-      >
-      <p class="profile black-text">{{ profile }}</p>
-    </section>
-    <section class="wave">
-      <Row class="upper white">
-        <div class="left-corner orange"></div>
-      </Row>
-      <Row class="lower orange">
-        <div class="corner-wrapper"><div class="right-corner white"></div></div>
-      </Row>
-    </section>
-    <section class="orange-section orange">
-      <Row
-        ><div class="center-text title-container">
-          <span class="white-big-text">{{ requestTitle }}</span>
+          <span class="orange-big-text">{{ name }}</span
+          ><br />
+          <span class="grey-text origin">{{ origin }}</span>
         </div>
-        <div class="center-text requestType white">
-          <span class="orange-text mb-1">{{ kind }}</span>
-        </div>
-      </Row>
-      <Row>
-        <p class="description white-text">{{ description }}</p>
-      </Row>
-    </section>
+      </div>
+      <p class="black-text lh-13">{{ profile }}</p>
+    </div>
+    <div class="inner-bottom">
+      <div class="typeWrapper">
+        <span class="white-big-text description">{{ requestTitle }}</span>
+        <span class="orange-text kind">{{ kind }}</span>
+      </div>
+      <p class="white-text lh-13">{{ description }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import Row from '@/components/Row'
-
 export default {
   name: 'RequestCard',
   props: {
@@ -51,134 +31,91 @@ export default {
     profile: String,
     name: String,
     origin: String
-  },
-  components: { Row }
+  }
 }
 </script>
 
 <style scoped>
-
-.mb-1{
-  margin-bottom: 2px;
+.lh-13 {
+  line-height: 1.3;
 }
-.center-text {
+
+.card {
+  position: relative;
+  height: fit-content;
+  width: 75vw;
+  border-radius: 20px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  font-size: 0.9rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    to right,
+    #ff8a00 0%,
+    #ff8a00 50%,
+    #fff 50%,
+    #fff 100%
+  );
 }
 
-.name {
-  margin: 12px 12px 4px 12px;
-  font-size: 1.2rem;
+.inner-top {
+  background: #fff;
+  border-radius: 20px 20px 0 20px;
+  padding: 20px;
 }
 
-.origin {
-  margin: 0px 12px 4px 12px;
-}
-
-.nameWrapper span {
-  width: 100%;
-}
-
-.nameWrapper {
-  display: inline;
+.inner-bottom {
+  background: #ff8a00;
+  border-radius: 0 20px 20px 20px;
+  padding: 20px;
 }
 
 .avatar {
-  margin-left: 20px;
-  position: relative;
-  bottom: 16px;
-  z-index: 1;
-  border-radius: 50%;
-  height: 84px;
+  display: block;
   width: 84px;
-  background-color: #2c3e50;
+  height: 84px;
+  background: #424242;
+  border-radius: 50%;
+  margin: -42px 15px 15px 0;
 }
 
-.profile {
-  padding: 4px;
-  margin: 4px 16px 0;
-  font-size: 0.9rem;
-  font-weight: 300;
-  line-height: 1.4;
-}
-
-.description {
-  margin: 0px 16px 16px;
-  padding: 15px 4px 4px;
-  font-size: 0.9rem;
-  font-weight: 300;
-  line-height: 1.4;
-}
-
-.title-container {
-  margin: 0 16px 4px;
-  padding-left: 4px;
-  width: 75%;
-}
-
-.requestType {
-  justify-content: center;
-  margin: 4px 16px 4px 4px;
-  padding: 4px 15px;
-  border-radius: 20px;
-  text-align: center;
-  width: 25%;
-}
-.card {
-  border-radius: 20px;
-  height: 55vh;
-  width: 75vw;
-}
-
-.card section {
-  width: 100%;
-}
-
-.transparent {
-  height: 3vh;
-  background-color: transparent;
-}
-
-.white-section {
-  height: auto;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.wave {
-  height: 5vh;
-}
-
-.left-corner {
-  height: 2.5vh;
-  width: 2.5vh;
-  mask: radial-gradient(circle at top right, transparent 2.5vh, #fff 0);
-}
-
-.corner-wrapper {
-  width: 100%;
+.top-container {
   display: flex;
-  justify-content: flex-end;
+  flex-flow: row wrap;
 }
 
-.right-corner {
-  height: 2.5vh;
-  width: 2.5vh;
-  mask: radial-gradient(circle at bottom left, transparent 2.5vh, #fff 0);
+.nameWrapper {
+  margin: -10px 0 10px 0;
 }
 
-.wave .upper {
-  height: 2.5vh;
+.nameWrapper .origin {
+  font-weight: 400;
 }
 
-.wave .lower {
-  height: 2.5vh;
+.typeWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.orange-section {
-  height: 22vh;
-  
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+.typeWrapper span {
+  display: block;
+  width: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.typeWrapper .description {
+  font-size: 1.1rem;
+  margin: 0 10px 10px 0;
+  white-space: nowrap;
+}
+
+.typeWrapper .kind {
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
 </style>

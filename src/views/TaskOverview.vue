@@ -1,31 +1,33 @@
 <template>
   <div>
-    <TopBar pageTitle="My Requests & Questions"></TopBar>
+    <TopBar pageTitle="Requests & Questions"></TopBar>
     <div class="wrapper pb-100">
       <!-- Requests Section -->
       <div class="requests">
         <span class="orange-big-text">Requests</span>
-        <router-link :to="{ name: 'RequestCardCreation' }">
+        <router-link class="btnToTop" :to="{ name: 'RequestCardCreation' }">
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
       </div>
       <CardButton
-        v-for="(request, index) in requests"
+        v-for="(request, index) in myRequests"
         :key="'request' + index"
         :title="request.title"
+        :id="request._id"
       ></CardButton>
 
       <!-- Questions Section -->
       <div class="questions">
         <span class="orange-big-text">Questions</span>
-        <router-link :to="{ name: 'QuestionCardCreation' }">
+        <router-link class="btnToTop" :to="{ name: 'QuestionCardCreation' }">
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
       </div>
       <CardButton
-        v-for="(question, index) in questions"
+        v-for="(question, index) in myQuestions"
         :key="'question' + index"
         :title="question.title"
+        :id="question._id"
       ></CardButton>
     </div>
   </div>
@@ -35,35 +37,19 @@
 import { PlusCircleIcon } from 'vue-feather-icons'
 import TopBar from '@/components/topbar/TopBar'
 import CardButton from '@/components/CardButton'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'TaskOverview',
   components: { TopBar, PlusCircleIcon, CardButton },
-  data() {
-    return {
-      questions: [
-        {
-          title: 'Helping with taxes'
-        },
-        {
-          title: 'Translating a letter'
-        },
-        {
-          title: 'Practising dutch'
-        },
-        {
-          title: 'Moving furniture'
-        }
-      ],
-      requests: [
-        {
-          title: 'Helping with groceries'
-        },
-        {
-          title: 'Guide to the local pubs'
-        }
-      ]
-    }
+  computed: {
+    ...mapGetters('requests', ['myRequests', 'myQuestions'])
+  },
+  methods: {
+    ...mapActions('requests', ['loadMyRequests'])
+  },
+  created() {
+    this.loadMyRequests()
   }
 }
 </script>
@@ -97,5 +83,11 @@ export default {
 
 .pb-100 {
   padding-bottom: 100px;
+}
+
+@media only screen and (max-width: 330px) {
+  .btnToTop {
+    margin-right: -10px;
+  }
 }
 </style>

@@ -44,19 +44,21 @@
         </Row>
       </LongButton>
       <LongButton class="long-btn">
-        <Row class="row">
-          <div class="grid-item" id="left">
-            <span class="dark-grey-text">Help</span>
-          </div>
-          <div class="grid-item" id="right">
-            <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
-          </div>
-        </Row>
+        <router-link :to="{ name: 'Introduction' }" class="row">
+          <Row>
+            <div class="grid-item" id="left">
+              <span class="dark-grey-text">Help</span>
+            </div>
+            <div class="grid-item" id="right">
+              <chevron-right-icon size="1.5x" class="icon"></chevron-right-icon>
+            </div>
+          </Row>
+        </router-link>
       </LongButton>
 
       <div class="empty"></div>
 
-      <LongButton class="long-btn">
+      <LongButton class="long-btn" @click.native="logOutAndRedirect">
         <Row class="row">
           <div class="grid-item" id="left">
             <span class="dark-grey-text">Sign out</span>
@@ -78,7 +80,7 @@ import Row from '@/components/Row'
 import { ChevronRightIcon } from 'vue-feather-icons'
 import Toggle from '@/components/Toggle'
 import { mapGetters } from 'vuex'
-
+import { mapActions } from 'vuex'
 export default {
   name: 'Settings',
   components: { Row, LongButton, Avatar, BigCircle, ChevronRightIcon, Toggle },
@@ -88,6 +90,13 @@ export default {
   data() {
     return {
       Username: 'Username'
+    }
+  },
+  methods: {
+    ...mapActions('user', ['logOut']),
+    logOutAndRedirect() {
+      this.logOut()
+      this.$router.push('Login')
     }
   }
 }
