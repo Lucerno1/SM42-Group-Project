@@ -31,15 +31,12 @@
         >
           <div class="flex-box">
             <arrow-left-icon class="orange-text icon"></arrow-left-icon>
-          </div>
-        </RoundButton>
-        <RoundButton
+          </div> </RoundButton
+        ><RoundButton
           color="#ff8a00"
           length="60px"
           class="button-middle"
-          @click.native="
-            acceptRequest(requests[$refs.carousel.selectedIndex()]._sender)
-          "
+          @click.native="redirect('login')"
         >
           <div class="flex-box">
             <check-icon class="white-text icon"></check-icon>
@@ -107,6 +104,12 @@ export default {
     ...mapActions('chats', ['acceptRequest']),
     OpenFilter() {
       this.showFilter = !this.showFilter
+    },
+    redirect: function (loc) {
+      if (this.$route.name === loc) {
+        return
+      }
+      this.$router.push(loc)
     }
   },
   created() {
