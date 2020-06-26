@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <BigCircle height="150">
+    <BigCircle :height="150">
       <span class="white-big-text flex">Settings</span></BigCircle
     >
     <div class="inner-content">

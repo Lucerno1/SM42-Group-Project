@@ -32,7 +32,12 @@
           <div class="flex-box">
             <arrow-left-icon class="orange-text icon"></arrow-left-icon>
           </div> </RoundButton
-        ><RoundButton color="#ff8a00" length="60px" class="button-middle">
+        ><RoundButton
+          color="#ff8a00"
+          length="60px"
+          class="button-middle"
+          @click.native="accept"
+        >
           <div class="flex-box">
             <check-icon class="white-text icon"></check-icon>
           </div> </RoundButton
@@ -71,7 +76,8 @@ import SwipeFilter from '@/components/swipefilter/SwipeFilter.vue'
 export default {
   name: 'SwipeTask',
   computed: {
-    ...mapGetters('requests', ['requests'])
+    ...mapGetters('requests', ['requests']),
+    ...mapGetters('user', ['isLoggedIn'])
   },
   data() {
     return {
@@ -96,8 +102,17 @@ export default {
   },
   methods: {
     ...mapActions('requests', ['loadRequestSet']),
+    ...mapActions('chats', ['acceptRequest']),
     OpenFilter() {
       this.showFilter = !this.showFilter
+    },
+    accept: function () {
+      if (!this.isLoggedIn) {
+        this.$router.push({ name: 'Login' })
+      }
+      this.acceptRequest(
+        this.requests[this.$refs.carousel.selectedIndex()]._sender
+      )
     }
   },
   created() {

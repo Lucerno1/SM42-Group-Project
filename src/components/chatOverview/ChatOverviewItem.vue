@@ -2,7 +2,7 @@
   <InputGrid
     @click.native="functionName"
     grid="chat-overview"
-    columns="20% 55% 25%"
+    columns="25% 55% 20%"
     :mgb="20"
   >
     <ProfileIcon
@@ -65,17 +65,5 @@ export default {
   margin-top: 5px;
   font-size: 14px;
   color: #ff8a00;
-}
-
-@media only screen and (min-width: 340px) {
-  .chat-overview {
-    grid-template-columns: 20% 65% 15% !important;
-  }
-}
-
-@media only screen and (max-width: 340px) {
-  .chat-overview {
-    width: 90% !important;
-  }
 }
 </style>

@@ -91,13 +91,13 @@ export default {
     login({ commit }, credentials) {
       return logIn(credentials)
         .then(() => {
-          api.get('/user/me').then((res) => {
+          return api.get('/user/me').then((res) => {
             const user = res.data.user
             user.password = credentials.password
             commit('SET_USER_DATA', user)
             localStorage.setItem('user', JSON.stringify(user))
+            return true
           })
-          return true
         })
         .catch(() => {
           return false
@@ -140,6 +140,9 @@ export default {
     },
     lastname: (state) => {
       return state.lastname
+    },
+    name: (state) => {
+      return state.firstname + ' ' + state.lastname
     },
     profilePicture: (state) => {
       return state.profilePicture
