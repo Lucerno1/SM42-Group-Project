@@ -43,7 +43,10 @@ export default {
       this.$router.push('Chat')
     }
   },
-  components: { TopBar, ChatOverviewItem }
+  components: { TopBar, ChatOverviewItem },
+  created() {
+    this.loadChatOverview()
+  }
 }
 </script>
 

@@ -8,8 +8,11 @@ export default {
   },
   mutations: {
     // eslint-disable-next-line no-unused-vars
-    APPEND_CHATS(state, chats) {
-      state.chats.push(chats)
+    SET_CHATS(state, chats) {
+      state.chats = chats
+    },
+    APPEND_CHATS(state, chat) {
+      state.chats.push(chat)
     }
   },
   actions: {
@@ -17,7 +20,8 @@ export default {
       api
         .get('/chat/own')
         .then((response) => {
-          commit('APPEND_CHATS', response.data.chats)
+          console.log(response)
+          commit('SET_CHATS', response.data.chats)
         })
         .catch((error) => {
           window.console.log(error)
@@ -25,7 +29,7 @@ export default {
     },
     acceptRequest({ commit }, id) {
       api
-        .post('/chat', qs.stringify({ _id: id }), {
+        .post('/chat', qs.stringify({ participants: id }), {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .then((res) => {
