@@ -24,7 +24,6 @@ export default {
         })
     },
     acceptRequest({ commit }, id) {
-      console.log({ participants: [{ _id: id }] })
       api
         .post('/chat', qs.stringify({ _id: id }), {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
