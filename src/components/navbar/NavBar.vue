@@ -7,6 +7,14 @@
             :is="icon.comp"
             class="whiteSVG"
             v-on:click="redirect(icon.loc)"
+            v-if="isLoggedIn"
+          ></component>
+
+          <component
+            :is="icon.comp"
+            class="whiteSVG"
+            v-on:click="redirect('login')"
+            v-else
           ></component>
           <span v-if="$route.name === icon.loc" class="dot"></span>
         </div>
@@ -24,6 +32,7 @@ import {
   ClipboardIcon,
   MessageSquareIcon
 } from 'vue-feather-icons'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'NavBar',
@@ -36,6 +45,9 @@ export default {
         { comp: SettingsIcon, loc: 'Settings' }
       ]
     }
+  },
+  computed: {
+    ...mapGetters('user', ['isLoggedIn'])
   },
   methods: {
     redirect: function (loc) {
