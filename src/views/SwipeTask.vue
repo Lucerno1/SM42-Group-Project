@@ -109,10 +109,12 @@ export default {
     accept: function () {
       if (!this.isLoggedIn) {
         this.$router.push({ name: 'Login' })
+        return
       }
       this.acceptRequest(
         this.requests[this.$refs.carousel.selectedIndex()]._sender
-      )
+      ) 
+      this.$router.push({name:'ChatOverview'})
     }
   },
   created() {
