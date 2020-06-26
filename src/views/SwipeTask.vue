@@ -32,7 +32,7 @@
           <div class="flex-box">
             <arrow-left-icon class="orange-text icon"></arrow-left-icon>
           </div> </RoundButton
-        ><RoundButton color="#ff8a00" length="60px" class="button-middle">
+        ><RoundButton color="#ff8a00" length="60px" class="button-middle" @click.native="redirect('login')">
           <div class="flex-box">
             <check-icon class="white-text icon"></check-icon>
           </div> </RoundButton
@@ -98,6 +98,12 @@ export default {
     ...mapActions('requests', ['loadRequestSet']),
     OpenFilter() {
       this.showFilter = !this.showFilter
+    },
+    redirect: function (loc) {
+      if (this.$route.name === loc) {
+        return
+      }
+      this.$router.push(loc)
     }
   },
   created() {
