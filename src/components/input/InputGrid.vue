@@ -38,4 +38,10 @@ export default {
     grid-template-columns: 560px !important;
   }
 }
+
+@media only screen and (min-width: 340px) {
+  .chat-overview {
+    grid-template-columns: 20% 65% 15% !important;
+  }
+}
 </style>
