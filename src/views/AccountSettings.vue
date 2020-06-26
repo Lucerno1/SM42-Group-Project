@@ -1,43 +1,114 @@
 <template>
   <div class="content">
-    <TopBar class="topbar" pageTitle="Account Settings"></TopBar>
+    <TopBarAccountSettings pageTitle="Account Settings"></TopBarAccountSettings>
     <div class="inner-content">
-      <h2>Change your account info</h2>
+      <div class="wrapper">
+        <span class="orange-big-text">Change your account info</span>
+      </div>
       <div class="custom-grid">
         <InputGrid
           columns="repeat(auto-fit, minmax(130px, 1fr))"
           grid=""
           mgb="11"
         >
-          <Input type="text" name="Firstname" placeholder="Firstname" />
-          <Input type="text" name="Lastname" placeholder="Lastname" />
+          <Input
+            v-model="vfirstname"
+            type="text"
+            name="Firstname"
+            placeholder="Firstname"
+          />
+          <Input
+            v-model="vlastname"
+            type="text"
+            name="Lastname"
+            placeholder="Lastname"
+          />
         </InputGrid>
         <InputGrid columns="100%" grid="" mgb="">
-          <Input type="password" name="Password" placeholder="Password" />
+          <Textarea
+            name="Bio"
+            rows="5"
+            placeholder="Write something about yourself here."
+            v-model="vbio"
+          />
+          <Input
+            type="password"
+            name="Password"
+            placeholder="Password"
+            v-model="vpassword"
+          />
           <Input
             type="password"
             name="Confirm password"
             placeholder="Confirm password"
-          />
-        </InputGrid>
+            v-model="vpasswordConfirm"
+          /> </InputGrid
+        ><span v-if="errors.length">
+          <ul>
+            <li v-for="error in errors" :key="error">{{ error }}</li>
+          </ul>
+        </span>
       </div>
-      <PrimaryButton />
+      <div class="center"><PrimaryButton @click.native="submit" /></div>
     </div>
   </div>
 </template>
 
 <script>
-import TopBar from '@/components/topbar/TopBar'
+import TopBarAccountSettings from '@/components/topbar/TopBarAccountSettings'
 import InputGrid from '@/components/input/InputGrid'
 import Input from '@/components/input/Input'
+import Textarea from '@/components/input/Textarea'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AccountSettings',
+  computed: {
+    ...mapGetters('user', ['firstname', 'lastname', 'bio'])
+  },
+  data() {
+    return {
+      errors: [],
+      vfirstname: '',
+      vlastname: '',
+      vpassword: '',
+      vpasswordConfirm: '',
+      vbio: ''
+    }
+  },
+  methods: {
+    ...mapActions('user', ['updateUser']),
+    submit: function () {
+      this.errors = []
+      if (this.vpassword.length > 30 || this.vpassword.length < 5) {
+        this.errors.push('Password must be between 5 and 30 characters')
+      }
+      if (this.vpassword !== this.vpasswordConfirm) {
+        this.errors.push('Password and password confirmation do not match')
+      }
+      if (this.errors > 0) {
+        return
+      }
+      this.updateUser({
+        firstname: this.vfirstname,
+        lastname: this.vlastname,
+        password: this.vpassword,
+        bio: this.vbio
+      })
+      this.$router.push('Settings')
+    }
+  },
+  created() {
+    this.vfirstname = this.firstname
+    this.vlastname = this.lastname
+    this.vbio = this.bio
+  },
   components: {
-    TopBar,
+    TopBarAccountSettings,
     InputGrid,
     Input,
-    PrimaryButton
+    PrimaryButton,
+    Textarea
   }
 }
 </script>
@@ -45,7 +116,7 @@ export default {
 <style scoped>
 .content {
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
   position: relative;
   top: 0;
 }
@@ -55,11 +126,21 @@ export default {
   width: 100%;
   margin: 0 0 85px 0;
 }
-.topbar {
-  position: absolute;
-  width: 100%;
-}
+
 .custom-grid {
-  padding: 30px 0;
+  padding: 45px 0;
+}
+
+.center {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 80vw;
+  margin: 0 10vw;
+  top: 20px;
+  position: relative;
 }
 </style>

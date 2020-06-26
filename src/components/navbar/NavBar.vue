@@ -32,7 +32,7 @@ export default {
       icons: [
         { comp: UsersIcon, loc: 'Task' },
         { comp: ClipboardIcon, loc: 'Tasks' },
-        { comp: MessageSquareIcon, loc: 'Chat' },
+        { comp: MessageSquareIcon, loc: 'ChatOverview' },
         { comp: SettingsIcon, loc: 'Settings' }
       ]
     }

@@ -3,12 +3,15 @@ import VueRouter from 'vue-router'
 import SwipeTask from '@/views/SwipeTask'
 import Settings from '@/views/Settings'
 import ChatOverview from '@/views/ChatOverview'
+import Chat from '@/views/Chat'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
 import TaskOverview from '@/views/TaskOverview'
 import AppWrapper from '@/views/AppWrapper'
-import CardCreation from '@/views/CardCreation'
 import AccountSettings from '@/views/AccountSettings'
+import Introduction from '@/views/Introduction'
+import OfflinePage from '@/views/OfflinePage'
+import CardCreation from '@/views/CardCreation'
 
 Vue.use(VueRouter)
 
@@ -18,13 +21,26 @@ const routes = [
     redirect: '/task'
   },
   {
+    path: '/introduction',
+    name: 'Introduction',
+    component: Introduction
+  },
+  {
     path: '/',
     component: AppWrapper,
     children: [
       {
         path: '/task',
         name: 'Task',
-        component: SwipeTask
+        component: {
+          render(c) {
+            if (navigator.onLine === true) {
+              return c(SwipeTask)
+            } else {
+              return c(OfflinePage)
+            }
+          }
+        }
       },
       {
         path: '/tasks',
@@ -32,9 +48,14 @@ const routes = [
         component: TaskOverview
       },
       {
+        path: '/chatOverview',
+        name: 'ChatOverview',
+        component: ChatOverview
+      },
+      {
         path: '/chat',
         name: 'Chat',
-        component: ChatOverview
+        component: Chat
       },
       {
         path: '/settings',
@@ -42,9 +63,16 @@ const routes = [
         component: Settings
       },
       {
-        path: '/card-creation',
-        name: 'CardCreation',
-        component: CardCreation
+        path: '/RequestCardCreation',
+        name: 'RequestCardCreation',
+        component: CardCreation,
+        props: { type: 'request' }
+      },
+      {
+        path: '/QuestionCardCreation',
+        name: 'QuestionCardCreation',
+        component: CardCreation,
+        props: { type: 'question' }
       },
       {
         path: '/account-settings',

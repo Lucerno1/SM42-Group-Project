@@ -1,35 +1,34 @@
 <template>
   <div>
-    <TopBar pageTitle="Questions & Requests"></TopBar>
-    <div class="wrapper">
+    <TopBar pageTitle="Requests & Questions"></TopBar>
+    <div class="wrapper pb-100">
       <!-- Requests Section -->
       <div class="requests">
-        <h2>Requests</h2>
-        <router-link :to="{ name: 'CardCreation' }">
+        <span class="orange-big-text">Requests</span>
+        <router-link class="btnToTop" :to="{ name: 'RequestCardCreation' }">
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
       </div>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
+      <CardButton
+        v-for="(request, index) in myRequests"
+        :key="'request' + index"
+        :title="request.title"
+        :id="request._id"
+      ></CardButton>
 
       <!-- Questions Section -->
       <div class="questions">
-        <h2>Questions</h2>
-        <router-link :to="{ name: 'CardCreation' }">
+        <span class="orange-big-text">Questions</span>
+        <router-link class="btnToTop" :to="{ name: 'QuestionCardCreation' }">
           <plus-circle-icon size="1.5x" class="orangeIcon" />
         </router-link>
       </div>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
-      <CardButton></CardButton>
+      <CardButton
+        v-for="(question, index) in myQuestions"
+        :key="'question' + index"
+        :title="question.title"
+        :id="question._id"
+      ></CardButton>
     </div>
   </div>
 </template>
@@ -38,14 +37,24 @@
 import { PlusCircleIcon } from 'vue-feather-icons'
 import TopBar from '@/components/topbar/TopBar'
 import CardButton from '@/components/CardButton'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'TaskOverview',
-  components: { TopBar, PlusCircleIcon, CardButton }
+  components: { TopBar, PlusCircleIcon, CardButton },
+  computed: {
+    ...mapGetters('requests', ['myRequests', 'myQuestions'])
+  },
+  methods: {
+    ...mapActions('requests', ['loadMyRequests'])
+  },
+  created() {
+    this.loadMyRequests()
+  }
 }
 </script>
 
-<style>
+<style scoped>
 .wrapper {
   max-width: 80vw;
   margin: 0 10vw;
@@ -70,5 +79,15 @@ export default {
 
 .orangeIcon {
   color: #ff8a00;
+}
+
+.pb-100 {
+  padding-bottom: 100px;
+}
+
+@media only screen and (max-width: 330px) {
+  .btnToTop {
+    margin-right: -10px;
+  }
 }
 </style>

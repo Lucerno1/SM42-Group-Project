@@ -1,21 +1,33 @@
 <template>
   <div class="cardButton">
-    <p class="title">Request Card Title</p>
-    <trash-2-icon size="1.5x" class="orangeIcon"></trash-2-icon>
+    <span class="dark-grey-text">{{ title }}</span>
+    <trash-2-icon
+      size="1.5x"
+      class="orange-text"
+      @click="deleteRequest(id)"
+    ></trash-2-icon>
   </div>
 </template>
 
 <script>
 import { Trash2Icon } from 'vue-feather-icons'
+import { mapActions } from 'vuex'
 export default {
   name: 'CardButton',
+  props: {
+    title: String,
+    id: String
+  },
+  methods: {
+    ...mapActions('requests', ['deleteRequest'])
+  },
   components: {
     Trash2Icon
   }
 }
 </script>
 
-<style>
+<style scoped>
 .cardButton {
   background-color: white;
   height: 22px;
@@ -25,14 +37,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.orangeIcon {
-  color: #ff8a00;
-}
-
-.title {
-  font-weight: 900;
-  color: #727272;
 }
 </style>
