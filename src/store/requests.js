@@ -109,7 +109,8 @@ export default {
       if (state.filter.type === 'both') {
         return state.requests
       }
-      return state.myRequests.filter((x) => x.type === state.filter.type)
+      console.log(state.filter.type)
+      return state.requests.filter((x) => x.type === state.filter.type)
     },
     myRequests: (state) => {
       return state.myRequests.filter((x) => x.type === 'Request')
