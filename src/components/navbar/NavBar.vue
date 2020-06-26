@@ -2,7 +2,7 @@
   <div class="navBar">
     <Row :margin="16">
       <Button v-for="(icon, index) in icons" :key="'icon:' + index">
-        <div class="navButton" >
+        <div class="navButton">
           <component
             :is="icon.comp"
             class="whiteSVG"
