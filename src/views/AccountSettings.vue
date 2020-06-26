@@ -9,7 +9,7 @@
         <InputGrid
           columns="repeat(auto-fit, minmax(130px, 1fr))"
           grid=""
-          mgb="11"
+          :mgb="11"
         >
           <Input
             v-model="vfirstname"
@@ -24,7 +24,7 @@
             placeholder="Lastname"
           />
         </InputGrid>
-        <InputGrid columns="100%" grid="" mgb="">
+        <InputGrid columns="100%">
           <Textarea
             name="Bio"
             rows="5"
