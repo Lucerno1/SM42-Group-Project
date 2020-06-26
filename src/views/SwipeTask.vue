@@ -37,7 +37,7 @@
           length="50px"
           class="button-middle"
           @click.native="
-            acceptRequest(requests[$refs.carousel.selectedIndex]._sender)
+            acceptRequest(requests[$refs.carousel.selectedIndex()]._sender)
           "
         >
           <div class="flex-box">
