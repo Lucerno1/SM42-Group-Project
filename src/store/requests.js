@@ -106,7 +106,10 @@ export default {
   },
   getters: {
     requests: (state) => {
-      return state.requests
+      if (state.filter.type === 'both') {
+        return state.requests
+      }
+      return state.myRequests.filter((x) => x.type === state.filter.type)
     },
     myRequests: (state) => {
       return state.myRequests.filter((x) => x.type === 'Request')
