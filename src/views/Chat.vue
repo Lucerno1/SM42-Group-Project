@@ -18,9 +18,9 @@
       <div class="second hpx-70">
         <div class="container-task">
           <ChatTask :state="taskState" @click.native="popupFunction"></ChatTask>
-          <ChatTask :state="taskState" @click.native="popupFunction"></ChatTask>
-          <ChatTask :state="taskState" @click.native="popupFunction"></ChatTask>
-          <ChatTask :state="taskState" @click.native="popupFunction"></ChatTask>
+          <ChatTask @click.native="popupFunction"></ChatTask>
+          <ChatTask @click.native="popupFunction"></ChatTask>
+          <ChatTask @click.native="popupFunction"></ChatTask>
         </div>
         <ChatCardPopup v-show="popup"></ChatCardPopup>
       </div>
