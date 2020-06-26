@@ -42,7 +42,7 @@ export default {
       if (this.$route.name === loc) {
         return
       }
-      this.$router.push(loc)
+      this.$router.push({ name: loc })
     }
   },
   components: { Row, Button }

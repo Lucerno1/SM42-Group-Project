@@ -9,12 +9,16 @@
         v-for="(chat, index) in chats"
         :key="'chat' + index"
         :profilePicture="profilePicture"
-        :newMsg="newMsg"
-        :firstName="chat.participants[0].firstname"
-        :lastName="chat.participants[0].lastname"
+        :newMsg="true"
+        :firstName="getOther(selfId, chat.participants).firstname"
+        :lastName="getOther(selfId, chat.participants).lastname"
         :message="chat.lastMessage.message"
         :time="chat.lastMessage.date"
-        :functionName="redirect"
+        :functionName="
+          () => {
+            redirect(chat._id)
+          }
+        "
       ></ChatOverviewItem>
     </div>
   </div>
@@ -23,30 +27,26 @@
 <script>
 import ChatOverviewItem from '@/components/chatOverview/ChatOverviewItem.vue'
 import { mapGetters, mapActions } from 'vuex'
+import user from '@/mixins/user'
 
 export default {
   name: 'ChatOverview',
-  data() {
-    return {
-      profilePicture: '#424242',
-      newMsg: true,
-      firstName: 'Achmed',
-      lastName: 'Akkabi',
-      message: 'Lorem ipsum dolor setameta di axio',
-      time: '13:45'
-    }
-  },
+  mixins: [user],
   computed: {
-    ...mapGetters('chats', ['chats'])
+    ...mapGetters('chats', ['chats']),
+    ...mapGetters('user', { selfId: 'id' })
   },
   methods: {
     ...mapActions('chats', ['loadChatOverview']),
-    redirect() {
-      this.$router.push('Chat')
+    redirect(id) {
+      this.$router.push({ name: 'Chat', params: { id: id } })
     }
   },
   components: {
     ChatOverviewItem
+  },
+  created() {
+    this.loadChatOverview()
   }
 }
 </script>
