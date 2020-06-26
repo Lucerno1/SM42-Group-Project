@@ -110,6 +110,9 @@ export default {
         return
       }
       this.$router.push(loc)
+      this.acceptRequest(
+        this.requests[this.$refs.carousel.selectedIndex()]._sender
+      )
     }
   },
   created() {
