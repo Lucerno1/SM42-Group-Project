@@ -6,7 +6,7 @@
           <component
             :is="icon.comp"
             class="whiteSVG"
-            v-on:click="redirect(icon.loc)"
+            v-on:click="redirect(icon.locs)"
             v-if="isLoggedIn"
           ></component>
 
@@ -16,7 +16,7 @@
             v-on:click="redirect('login')"
             v-else
           ></component>
-          <span v-if="$route.name === icon.loc" class="dot"></span>
+          <span v-if="icon.locs.includes($route.name)" class="dot"></span>
         </div>
       </Button>
     </Row>
@@ -39,10 +39,13 @@ export default {
   data() {
     return {
       icons: [
-        { comp: UsersIcon, loc: 'Task' },
-        { comp: ClipboardIcon, loc: 'Tasks' },
-        { comp: MessageSquareIcon, loc: 'ChatOverview' },
-        { comp: SettingsIcon, loc: 'Settings' }
+        { comp: UsersIcon, locs: ['Task'] },
+        {
+          comp: ClipboardIcon,
+          locs: ['Tasks', 'RequestCardCreation', 'QuestionCardCreation']
+        },
+        { comp: MessageSquareIcon, locs: ['ChatOverview', 'Chat'] },
+        { comp: SettingsIcon, locs: ['Settings', 'AccountSettings'] }
       ]
     }
   },
@@ -50,11 +53,11 @@ export default {
     ...mapGetters('user', ['isLoggedIn'])
   },
   methods: {
-    redirect: function (loc) {
-      if (this.$route.name === loc) {
+    redirect: function (locs) {
+      if (locs.includes(this.$route.name)) {
         return
       }
-      this.$router.push({ name: loc })
+      this.$router.push({ name: locs[0] })
     }
   },
   components: { Row, Button }
