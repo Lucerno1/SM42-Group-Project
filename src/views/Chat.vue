@@ -15,20 +15,21 @@
         </div>
         <span class="bottomTitle white-text">Requests & Questions</span>
       </div>
-      <div class="second hpx-70">
-        <div class="container-task">
-          <ChatTask></ChatTask>
-          <ChatTask></ChatTask>
-          <ChatTask></ChatTask>
-          <ChatTask></ChatTask>
+      <div class="second hpx-70" >
+        <div class="container-task" >
+          <ChatTask @click.native="popupFunction"></ChatTask>
+          <ChatTask @click.native="popupFunction"></ChatTask>
+          <ChatTask @click.native="popupFunction"></ChatTask>
+          <ChatTask @click.native="popupFunction"></ChatTask>
         </div>
+        <ChatCardPopup v-show="popup" ></ChatCardPopup>
       </div>
       <div class="third hpx-70">
         <div class="back hpx-70"></div>
       </div>
     </div>
 
-    <div class="msg-container">
+    <div class="msg-container" >
       <ChatMessage
         class="other"
         name="Achmed Akkabi"
@@ -52,14 +53,28 @@ import ChatMessage from '@/components/chat/ChatMessage.vue'
 import ChatTask from '@/components/chat/ChatTask.vue'
 import Input from '@/components/input/Input.vue'
 import { ArrowLeftIcon, CameraIcon } from 'vue-feather-icons'
+import ChatCardPopup from '@/components/chat/ChatCardPopup.vue'
 
 export default {
   data() {
     return {
-      value: ''
+      value: '',
+      popup: false
     }
   },
-  components: { ChatMessage, ChatTask, Input, ArrowLeftIcon, CameraIcon }
+  components: {
+    ChatMessage,
+    ChatTask,
+    Input,
+    ArrowLeftIcon,
+    CameraIcon,
+    ChatCardPopup
+  },
+  methods: {
+    popupFunction() {
+     this.popup = !this.popup
+    }
+  }
 }
 </script>
 
@@ -127,7 +142,7 @@ export default {
   background: transparent;
   width: 100%;
   border-top-right-radius: 70px;
-  box-shadow: 140px -70px 0px 70px #ff8a00;
+  box-shadow: 140px -71px 0px 70px #ff8a00;
 }
 
 .msg-container {
