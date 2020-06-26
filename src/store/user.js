@@ -141,6 +141,9 @@ export default {
     lastname: (state) => {
       return state.lastname
     },
+    name: (state) => {
+      return state.firstname + ' ' + state.lastname
+    },
     profilePicture: (state) => {
       return state.profilePicture
     },

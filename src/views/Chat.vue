@@ -30,10 +30,10 @@
 
     <div class="msg-container">
       <ChatMessage
-        v-for="message in chatMessages"
-        :key="message._id"
-        class="other"
-        :name="message.name"
+        v-for="(message, index) in chatMessages"
+        :key="'message:' + index"
+        :class="isMe(id, message._id) ? 'self' : 'other'"
+        :name="getName(message._id)"
         :message="message.message"
         :time="message.date"
       ></ChatMessage>
@@ -55,6 +55,7 @@ import ChatTask from '@/components/chat/ChatTask.vue'
 import Input from '@/components/input/Input.vue'
 import { ArrowLeftIcon, CameraIcon } from 'vue-feather-icons'
 import { mapActions, mapGetters } from 'vuex'
+import user from '@/mixins/user'
 
 export default {
   data() {
@@ -62,12 +63,18 @@ export default {
       value: ''
     }
   },
+  mixins: [user],
   computed: {
-    ...mapGetters('chat', ['name', 'chatMessages'])
+    ...mapGetters('chat', ['name', 'chatMessages', 'participants']),
+    ...mapGetters('user', ['id'])
   },
   components: { ChatMessage, ChatTask, Input, ArrowLeftIcon, CameraIcon },
   methods: {
-    ...mapActions('chat', ['load'])
+    ...mapActions('chat', ['load']),
+    getName: function (id) {
+      const user = this.getUser(id, this.participants)
+      return user.firstname + ' ' + user.lastname
+    }
   },
   created() {
     this.load(this.$route.params.id)
@@ -145,7 +152,7 @@ export default {
 .msg-container {
   position: absolute;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   width: 90%;
   height: auto;
   overflow: auto;

@@ -40,6 +40,9 @@ export default {
     },
     chatMessages: (state) => {
       return state.chatlog
+    },
+    participants: (state) => {
+      return state.participants
     }
   }
 }
