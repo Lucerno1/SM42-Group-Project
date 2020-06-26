@@ -9,8 +9,6 @@ const getOther = function (selfId, arr) {
 }
 
 const getUser = function (id, arr) {
-  console.log(id)
-  console.log(arr)
   return arr.find((x) => {
     return isMe(id, x._id)
   })

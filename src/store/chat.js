@@ -1,5 +1,6 @@
 import api from '@/api'
 import qs from 'qs'
+import user from '@/mixins/user'
 
 export default {
   namespaced: true,
@@ -30,13 +31,15 @@ export default {
     }
   },
   getters: {
-    name: (state) => {
+    name: (state, rootGetters) => {
       if (state.participants.length < 1) {
         return ''
       }
-      return (
-        state.participants[0].firstname + ' ' + state.participants[0].lastname
+      const other = user.methods.getOther(
+        rootGetters['user/id'],
+        state.participants
       )
+      return other.firstname + ' ' + other.lastname
     },
     chatMessages: (state) => {
       return state.chatlog
