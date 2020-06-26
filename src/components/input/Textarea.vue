@@ -1,5 +1,5 @@
 <template>
-  <textarea 
+  <textarea
     class="textarea"
     :name="name"
     :placeholder="placeholder"
@@ -22,8 +22,7 @@ export default {
     name: String,
     placeholder: String,
     value: String,
-    rows: String,
-
+    rows: String
   },
   methods: {
     handleInput() {

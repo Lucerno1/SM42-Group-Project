@@ -31,10 +31,11 @@
         >
           <div class="flex-box">
             <arrow-left-icon class="orange-text icon"></arrow-left-icon>
-          </div> </RoundButton
-        ><RoundButton
+          </div>
+        </RoundButton>
+        <RoundButton
           color="#ff8a00"
-          length="50px"
+          length="60px"
           class="button-middle"
           @click.native="
             acceptRequest(requests[$refs.carousel.selectedIndex()]._sender)
@@ -138,7 +139,7 @@ export default {
 }
 
 .button-left {
-  margin-top: 5px;
+  margin-top: 10px;
   margin-left: 18vw;
 }
 
@@ -147,7 +148,7 @@ export default {
 }
 
 .button-right {
-  margin-top: 5px;
+  margin-top: 10px;
   margin-right: 18vw;
 }
 
@@ -169,7 +170,7 @@ export default {
 }
 
 .gallery-cell {
-  margin: 0 8px 0 8px;
+  margin: 35px 8px 0 8px;
   top: 0;
   transition: top 0.2s linear, filter 0.2s linear;
   filter: blur(1px);

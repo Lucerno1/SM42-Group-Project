@@ -26,7 +26,7 @@ export default {
   top: 0;
 }
 
-.first * {
+.first span {
   z-index: 4;
 }
 
@@ -50,6 +50,6 @@ export default {
   background: transparent;
   width: 100%;
   border-top-right-radius: 80px;
-  box-shadow: 140px -70px 0px 70px #ff8a00;
+  box-shadow: 170px -80px 0px 70px #ff8a00;
 }
 </style>
