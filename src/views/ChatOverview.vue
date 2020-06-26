@@ -11,7 +11,11 @@
         :lastName="chat.participants[0].lastname"
         :message="chat.lastMessage.message"
         :time="chat.lastMessage.date"
-        :functionName="redirect"
+        :functionName="
+          () => {
+            redirect(chat._id)
+          }
+        "
       ></ChatOverviewItem>
     </div>
   </div>
@@ -39,8 +43,8 @@ export default {
   },
   methods: {
     ...mapActions('chats', ['loadChatOverview']),
-    redirect() {
-      this.$router.push('Chat')
+    redirect(id) {
+      this.$router.push({ name: 'Chat', params: { id: id } })
     }
   },
   components: { TopBar, ChatOverviewItem },

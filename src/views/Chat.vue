@@ -9,7 +9,7 @@
             @click="$router.go(-1)"
           ></arrow-left-icon>
         </div>
-        <span class="white-big-text">Achmed Akkabi</span>
+        <span class="white-big-text">{{ name }}</span>
         <div class="right-icon">
           <arrow-left-icon size="1.5x" class="white-text"></arrow-left-icon>
         </div>
@@ -52,6 +52,7 @@ import ChatMessage from '@/components/chat/ChatMessage.vue'
 import ChatTask from '@/components/chat/ChatTask.vue'
 import Input from '@/components/input/Input.vue'
 import { ArrowLeftIcon, CameraIcon } from 'vue-feather-icons'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -59,7 +60,16 @@ export default {
       value: ''
     }
   },
-  components: { ChatMessage, ChatTask, Input, ArrowLeftIcon, CameraIcon }
+  computed: {
+    ...mapGetters('chat', ['name'])
+  },
+  components: { ChatMessage, ChatTask, Input, ArrowLeftIcon, CameraIcon },
+  methods: {
+    ...mapActions('chat', ['load'])
+  },
+  created() {
+    this.load(this.$route.params.id)
+  }
 }
 </script>
 
