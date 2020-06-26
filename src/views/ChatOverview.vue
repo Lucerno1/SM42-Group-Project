@@ -8,7 +8,7 @@
       <ChatOverviewItem
         v-for="(chat, index) in chats"
         :key="'chat' + index"
-        :profilePicture="profilePicture"
+        profilePicture="#424242"
         :newMsg="true"
         :firstName="getOther(selfId, chat.participants).firstname"
         :lastName="getOther(selfId, chat.participants).lastname"
