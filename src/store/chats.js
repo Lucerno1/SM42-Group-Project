@@ -33,7 +33,6 @@ export default {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .then((res) => {
-          console.log(res)
           commit('APPEND_CHATS', res.data.chat)
         })
     }
