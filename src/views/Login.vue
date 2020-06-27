@@ -13,11 +13,13 @@
         >
       </div>
 
-      <span v-if="errors.length">
-        <ul>
-          <li v-for="error in errors" :key="error">{{ error }}</li>
+      <div class="error-box">
+        <ul v-if="errors.length">
+          <li class="white-text" v-for="error in errors" :key="error">
+            {{ error }}
+          </li>
         </ul>
-      </span>
+      </div>
 
       <InputGrid
         grid="double"
@@ -75,7 +77,7 @@ export default {
       this.login(credentials).then((suc) => {
         if (!suc) {
           this.errors = []
-          this.errors.push('You could not be logged in')
+          this.errors.push('Username or password were incorrect')
           return
         }
         this.$router.push('Task')
@@ -143,9 +145,13 @@ export default {
   width: 80%;
   font-weight: 400;
   margin-top: 8px;
-  margin-bottom: 40px;
   opacity: 0.6;
   font-size: 0.9rem;
+}
+
+.error-box {
+  height: 45px;
+  line-height: 40px;
 }
 
 @media only screen and (min-width: 700px) {

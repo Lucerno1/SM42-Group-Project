@@ -18,7 +18,7 @@
             v-model="field.value"
           />
         </InputGrid>
-        <InputGrid grid="single" columns="100%" :mgb="35">
+        <InputGrid grid="single" columns="100%">
           <select
             form="register-form"
             name="nationality"
@@ -43,11 +43,14 @@
             v-model="field.value"
           />
         </InputGrid>
-        <InputGrid
-          grid="double"
-          columns="repeat(auto-fit, minmax(120px, 1fr))"
-          :mgb="30"
-        >
+        <div class="error-box">
+          <ul v-if="errors.length">
+            <li class="orange-text" v-for="error in errors" :key="error">
+              {{ error }}
+            </li>
+          </ul>
+        </div>
+        <InputGrid grid="double" columns="repeat(auto-fit, minmax(120px, 1fr))">
           <SecondaryButton
             id="signInButton"
             :function-name="redirect"
@@ -55,11 +58,6 @@
           ></SecondaryButton>
           <PrimaryButton id="registerButton" value="Register" type="submit" />
         </InputGrid>
-        <span v-if="errors.length">
-          <ul>
-            <li v-for="error in errors" :key="error">{{ error }}</li>
-          </ul>
-        </span>
       </form>
     </div>
   </div>
@@ -178,7 +176,7 @@ export default {
         this.errors.push('Password must be between 5 and 30 characters')
       }
       if (this.fields2[1].value !== this.fields2[2].value) {
-        this.errors.push('Passwords must match')
+        this.errors.push("Passwords don't match")
       }
       if (this.fields2[3].value.length !== 6) {
         this.errors.push('Postal code must be 6 characters')
@@ -235,5 +233,9 @@ select {
 
 select:focus {
   outline-color: #ff8a00;
+}
+
+.error-box {
+  padding: 15px 0;
 }
 </style>
