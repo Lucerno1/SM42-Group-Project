@@ -7,6 +7,12 @@
       name="viewport"
       content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link rel="manifest" href="manifest.json" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
@@ -24,7 +30,6 @@
 
       body {
         font-family: 'Lato';
-        background: #fff2e2;
         /* Disable selecting text on phone */
         -webkit-user-select: none;
         -webkit-tap-highlight-color: transparent;

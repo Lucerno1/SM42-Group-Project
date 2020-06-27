@@ -3,7 +3,7 @@
   "short_name": "localBuddy",
   "theme_color": "#ff8a00",
   "background_color": "#ff8a00",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
   "start_url": "/",

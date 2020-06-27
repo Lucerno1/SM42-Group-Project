@@ -93,20 +93,10 @@ export default {
     sendMsg: function () {
       this.sendMessage(this.value)
       this.value = ''
-      this.scrollToElement()
-    },
-    scrollToElement() {
-      const el = this.$el.getElementsByClassName('msg-bubble')[0]
-      if (el) {
-        el.scrollIntoView()
-      }
     }
   },
   created() {
     this.load(this.$route.params.id)
-  },
-  mounted() {
-    this.scrollToElement()
   }
 }
 </script>

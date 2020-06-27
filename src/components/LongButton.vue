@@ -12,9 +12,9 @@ export default {
 <style scoped>
 .long-button {
   width: 80%;
-  border-radius: 10px;
+  border-radius: 8px;
   height: 50px;
   background-color: rgb(255, 255, 255);
-  margin: 15px auto;
+  margin: 11px auto;
 }
 </style>

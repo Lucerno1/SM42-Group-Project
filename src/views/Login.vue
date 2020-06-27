@@ -24,15 +24,19 @@
         columns="repeat(auto-fit, minmax(120px, 1fr))"
         :mgb="30"
       >
-        <SecondaryButton
-          class="s-btn"
-          id="secondary"
-          name="Register"
-          :function-name="toRegister"
-        />
-        <PrimaryButton
-          class="p-btn"
-          value="Sign in"
+        <router-link to="/register">
+          <MainButton
+            type="button"
+            name="Register"
+            textColor="white-big-text"
+            btnStyle="primaryLogin"
+          />
+        </router-link>
+        <MainButton
+          type="submit"
+          name="Sign in"
+          textColor="orange-big-text"
+          btnStyle="secondaryLogin"
           @click.native="signInUser"
         />
       </InputGrid>
@@ -43,15 +47,13 @@
 <script>
 import Input from '@/components/input/Input.vue'
 import InputGrid from '@/components/input/InputGrid.vue'
-import PrimaryButton from '@/components/bigButtons/PrimaryButton.vue'
-import SecondaryButton from '@/components/bigButtons/SecondaryButton.vue'
+import MainButton from '@/components/MainButton.vue'
 import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
   components: {
-    PrimaryButton,
-    SecondaryButton,
+    MainButton,
     Input,
     InputGrid
   },
@@ -111,29 +113,8 @@ export default {
   position: relative;
 }
 
-.s-btn {
-  background: #ff8a00;
-  border: #fff 2px solid;
-  color: #fff;
-  justify-self: end;
-}
-
-.s-btn:hover {
-  background: #fff;
-  border: solid #fff 2px;
-  color: #ff8a00;
-}
-
-.p-btn {
-  background: #fff;
-  border: #fff 2px solid;
-  color: #ff8a00;
-  justify-self: start;
-}
-
-.p-btn:hover {
-  background: rgb(228, 228, 228);
-  border: solid 2px rgb(228, 228, 228);
+.s-btn-wrap {
+  text-align: end;
 }
 
 #forgotPassword {

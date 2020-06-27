@@ -32,7 +32,7 @@ export default {
 
 .top-bar .first {
   background: #ff8a00;
-  height: 95px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
