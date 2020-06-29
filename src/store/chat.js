@@ -25,13 +25,13 @@ export default {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .then((res) => {
-          console.log(res)
+          window.console.log(res)
           commit('SET_CHAT', res.data.chat)
         })
     },
     sendMessage({ commit, rootGetters }, val) {
-      console.log(rootGetters['chat/id'])
-      console.log({ _id: rootGetters['chat/id'], message: val })
+      window.console.log(rootGetters['chat/id'])
+      window.console.log({ _id: rootGetters['chat/id'], message: val })
       api
         .post(
           '/chat/message',
@@ -41,7 +41,7 @@ export default {
           }
         )
         .then((res) => {
-          console.log(res)
+          window.console.log(res)
           commit('SET_CHAT', res.data.chat)
         })
     }

@@ -20,7 +20,7 @@ export default {
       api
         .get('/chat/own')
         .then((response) => {
-          console.log(response)
+          window.console.log(response)
           commit('SET_CHATS', response.data.chats)
         })
         .catch((error) => {

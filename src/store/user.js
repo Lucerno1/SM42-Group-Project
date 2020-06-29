@@ -75,7 +75,7 @@ export default {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .then((res) => {
-          console.log(res)
+          window.console.log(res)
         })
       localStorage.setItem('user', JSON.stringify(rootGetters['user/user']))
     },
@@ -109,7 +109,7 @@ export default {
       localStorage.removeItem('user')
     },
     register({ commit, rootGetters }, user) {
-      console.log(user)
+      window.console.log(user)
       api
         .post('/user', qs.stringify(user), {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

@@ -83,17 +83,17 @@ export default {
       })
     },
     deleteRequest({ commit }, id) {
-      console.log('hi')
+      window.console.log('hi')
       api
         .delete('/buddy/card', {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           data: qs.stringify({ _id: id })
         })
         .then((res) => {
-          console.log(res)
+          window.console.log(res)
         })
         .catch((e) => {
-          console.log(e)
+          window.console.log(e)
         })
       commit('REMOVE_MY_REQUEST', id)
     },
@@ -109,7 +109,7 @@ export default {
       if (state.filter.type === 'both') {
         return state.requests
       }
-      console.log(state.filter.type)
+      window.console.log(state.filter.type)
       return state.requests.filter((x) => x.type === state.filter.type)
     },
     myRequests: (state) => {

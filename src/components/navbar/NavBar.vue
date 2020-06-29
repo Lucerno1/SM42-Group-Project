@@ -10,12 +10,9 @@
             v-if="isLoggedIn"
           ></component>
 
-          <component
-            :is="icon.comp"
-            class="whiteSVG"
-            v-on:click="redirect('login')"
-            v-else
-          ></component>
+          <router-link v-else to="/login">
+            <component :is="icon.comp" class="whiteSVG"></component>
+          </router-link>
           <span v-if="icon.locs.includes($route.name)" class="dot"></span>
         </div>
       </Button>

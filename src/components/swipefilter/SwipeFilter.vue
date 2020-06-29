@@ -76,7 +76,7 @@ export default {
       if (!this.toggleR && !this.toggleQ) {
         filter = 'none'
       }
-      console.log(filter)
+      window.console.log(filter)
       this.setFilterType(filter)
     }
   }
