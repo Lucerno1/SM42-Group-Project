@@ -43,7 +43,7 @@
       role="button"
       @click="installPWA"
       id="installButton"
-      style="display: inline-block;"
+      style="display: none;"
     >
       <div class="prompt-box">
         <download-icon size="1.3x"></download-icon>
