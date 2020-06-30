@@ -39,6 +39,17 @@
         />
       </InputGrid>
     </div>
+    <button
+      role="button"
+      @click="installPWA"
+      id="installButton"
+      style="display: inline-block;"
+    >
+      <div class="prompt-box">
+        <download-icon size="1.3x"></download-icon>
+        <p>INSTALL</p>
+      </div>
+    </button>
   </div>
 </template>
 
@@ -47,6 +58,8 @@ import Input from '@/components/input/Input.vue'
 import InputGrid from '@/components/input/InputGrid.vue'
 import PrimaryButton from '@/components/bigButtons/PrimaryButton.vue'
 import SecondaryButton from '@/components/bigButtons/SecondaryButton.vue'
+import pwaInstallHandler from 'pwa-install-handler'
+import { DownloadIcon } from 'vue-feather-icons'
 import { mapActions } from 'vuex'
 
 export default {
@@ -55,7 +68,8 @@ export default {
     PrimaryButton,
     SecondaryButton,
     Input,
-    InputGrid
+    InputGrid,
+    DownloadIcon
   },
   data() {
     return {
@@ -82,7 +96,22 @@ export default {
         }
         this.$router.push('Task')
       })
+    },
+    installPWA() {
+      pwaInstallHandler.install().then((isInstalled) => {
+        window.console.log(
+          isInstalled ? 'Install accepted' : 'Install declined'
+        )
+      })
     }
+  },
+  mounted() {
+    pwaInstallHandler.addListener((canInstall) => {
+      window.console.log(canInstall)
+      document.getElementById('installButton').style.display = canInstall
+        ? 'inline-block'
+        : 'none'
+    })
   }
 }
 </script>
@@ -154,6 +183,30 @@ export default {
   line-height: 40px;
 }
 
+#installButton {
+  position: absolute;
+  right: 0;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  margin: 60px 40px 0 0;
+  background: #fff;
+  color: #ff8a00;
+  font-size: 0.95rem;
+  transition: 0.3s ease-in-out;
+}
+
+.prompt-box {
+  height: 30px;
+  padding: 1px 7px;
+  display: flex;
+  align-items: center;
+}
+
+.prompt-box p {
+  margin-left: 3px;
+}
+
 @media only screen and (min-width: 700px) {
   #forgotPassword {
     width: 560px;
@@ -163,6 +216,10 @@ export default {
 @media only screen and (max-height: 620px) {
   .login-box {
     height: 92%;
+  }
+
+  #installButton {
+    margin: 20px 10px 0 0;
   }
 }
 </style>
