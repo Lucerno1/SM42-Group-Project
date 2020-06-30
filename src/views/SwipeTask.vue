@@ -113,8 +113,8 @@ export default {
       }
       this.acceptRequest(
         this.requests[this.$refs.carousel.selectedIndex()]._sender
-      ) 
-      this.$router.push({name:'ChatOverview'})
+      )
+      this.$router.push({ name: 'ChatOverview' })
     }
   },
   created() {
