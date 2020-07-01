@@ -352,10 +352,12 @@ export default {
 
 #signInButton {
   justify-self: end;
+  outline: none;
 }
 
 #registerButton {
   justify-self: start;
+  outline: none;
 }
 
 select {

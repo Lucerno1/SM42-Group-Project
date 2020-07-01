@@ -55,6 +55,12 @@
     <transition name="slide" mode="in-out">
       <SwipeFilter v-show="showFilter"></SwipeFilter>
     </transition>
+    <button role="button" @click="installPWA" id="installButton">
+      <div class="prompt-box">
+        <download-icon size="1.3x"></download-icon>
+        <p>INSTALL</p>
+      </div>
+    </button>
   </div>
 </template>
 
@@ -68,10 +74,12 @@ import {
   ArrowLeftIcon,
   ArrowRightIcon,
   CheckIcon,
-  SlidersIcon
+  SlidersIcon,
+  DownloadIcon
 } from 'vue-feather-icons'
 import { mapGetters, mapActions } from 'vuex'
 import SwipeFilter from '@/components/swipefilter/SwipeFilter.vue'
+import pwaInstallHandler from 'pwa-install-handler'
 
 export default {
   name: 'SwipeTask',
@@ -115,10 +123,25 @@ export default {
         this.requests[this.$refs.carousel.selectedIndex()]._sender
       )
       this.$router.push({ name: 'ChatOverview' })
+    },
+    installPWA() {
+      pwaInstallHandler.install().then((isInstalled) => {
+        window.console.log(
+          isInstalled ? 'Install accepted' : 'Install declined'
+        )
+      })
     }
   },
   created() {
     this.loadRequestSet()
+  },
+  mounted() {
+    pwaInstallHandler.addListener((canInstall) => {
+      window.console.log(canInstall)
+      document.getElementById('installButton').style.display = canInstall
+        ? 'inline-block'
+        : 'none'
+    })
   },
   components: {
     RoundButton,
@@ -130,7 +153,8 @@ export default {
     ArrowRightIcon,
     ArrowLeftIcon,
     CheckIcon,
-    SlidersIcon
+    SlidersIcon,
+    DownloadIcon
   }
 }
 </script>
@@ -246,5 +270,37 @@ export default {
 .slide-enter,
 .slide-leave-to {
   transform: translateY(25em);
+}
+
+#installButton {
+  display: none;
+  position: absolute;
+  top: 0;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  margin: 46px 0 0 20px;
+  background: #fff;
+  color: #ff8a00;
+  font-size: 0.95rem;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.prompt-box {
+  height: 30px;
+  padding: 1px 7px;
+  display: flex;
+  align-items: center;
+}
+
+.prompt-box p {
+  margin-left: 3px;
+}
+
+@media only screen and (max-height: 620px) {
+  #installButton {
+    margin: 46px 0 0 10px;
+  }
 }
 </style>

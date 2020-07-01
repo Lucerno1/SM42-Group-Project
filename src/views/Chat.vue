@@ -18,9 +18,9 @@
       <div class="second hpx-70">
         <div class="container-task">
           <ChatTask :state="taskState" @click.native="popupFunction"></ChatTask>
-          <ChatTask @click.native="popupFunction"></ChatTask>
-          <ChatTask @click.native="popupFunction"></ChatTask>
-          <ChatTask @click.native="popupFunction"></ChatTask>
+          <ChatTask></ChatTask>
+          <ChatTask></ChatTask>
+          <ChatTask></ChatTask>
         </div>
         <ChatCardPopup v-show="popup"></ChatCardPopup>
       </div>
@@ -93,20 +93,20 @@ export default {
     sendMsg: function () {
       this.sendMessage(this.value)
       this.value = ''
-      this.scrollToElement()
+      setTimeout(() => {
+        this.scrollToBottom()
+      }, 300)
     },
-    scrollToElement() {
-      const el = this.$el.getElementsByClassName('msg-bubble')[0]
-      if (el) {
-        el.scrollIntoView()
-      }
+    scrollToBottom() {
+      let scrollingElement = document.scrollingElement || document.body
+      scrollingElement.scrollTop = scrollingElement.scrollHeight
     }
   },
   created() {
     this.load(this.$route.params.id)
   },
-  mounted() {
-    this.scrollToElement()
+  updated() {
+    this.scrollToBottom()
   }
 }
 </script>

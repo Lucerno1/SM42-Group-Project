@@ -39,12 +39,7 @@
         />
       </InputGrid>
     </div>
-    <button
-      role="button"
-      @click="installPWA"
-      id="installButton"
-      style="display: none;"
-    >
+    <button role="button" @click="installPWA" id="installButton">
       <div class="prompt-box">
         <download-icon size="1.3x"></download-icon>
         <p>INSTALL</p>
@@ -147,6 +142,7 @@ export default {
   border: #fff 2px solid;
   color: #fff;
   justify-self: end;
+  outline: none;
 }
 
 .s-btn:hover {
@@ -160,6 +156,7 @@ export default {
   border: #fff 2px solid;
   color: #ff8a00;
   justify-self: start;
+  outline: none;
 }
 
 .p-btn:hover {
@@ -184,6 +181,7 @@ export default {
 }
 
 #installButton {
+  display: none;
   position: absolute;
   right: 0;
   outline: none;
@@ -194,6 +192,7 @@ export default {
   color: #ff8a00;
   font-size: 0.95rem;
   transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .prompt-box {
