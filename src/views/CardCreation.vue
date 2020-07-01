@@ -20,9 +20,12 @@
       />
 
       <div class="center">
-        <PrimaryButton
+        <MainButton
+          type="button"
+          name="Create"
+          textColor="white-big-text"
+          btnStyle="primary"
           id="createQuestionCard"
-          value="Create"
           @click.native="createCard"
         />
       </div>
@@ -35,7 +38,7 @@ import TopBarCardCreation from '@/components/topbar/TopBarCardCreation'
 import Input from '@/components/input/Input'
 import InputGrid from '@/components/input/InputGrid'
 import Textarea from '@/components/input/Textarea'
-import PrimaryButton from '@/components/bigButtons/PrimaryButton'
+import MainButton from '@/components/MainButton'
 import { mapActions } from 'vuex'
 
 export default {
@@ -54,7 +57,7 @@ export default {
       this.$router.push('Tasks')
     }
   },
-  components: { TopBarCardCreation, Input, InputGrid, PrimaryButton, Textarea },
+  components: { TopBarCardCreation, Input, InputGrid, MainButton, Textarea },
   data() {
     return {
       subject: '',

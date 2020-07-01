@@ -51,12 +51,20 @@
           </ul>
         </div>
         <InputGrid grid="double" columns="repeat(auto-fit, minmax(120px, 1fr))">
-          <SecondaryButton
-            id="signInButton"
-            :function-name="redirect"
-            name="Sign in"
-          ></SecondaryButton>
-          <PrimaryButton id="registerButton" value="Register" type="submit" />
+          <router-link class="s-btn-wrap" to="/login">
+            <MainButton
+              type="button"
+              name="Sign in"
+              textColor="orange-big-text"
+              btnStyle="secondary"
+            />
+          </router-link>
+          <MainButton
+            type="submit"
+            name="Register"
+            textColor="white-big-text"
+            btnStyle="primary"
+          />
         </InputGrid>
       </form>
     </div>
@@ -66,8 +74,7 @@
 <script>
 import Input from '@/components/input/Input'
 import InputGrid from '@/components/input/InputGrid'
-import PrimaryButton from '@/components/bigButtons/PrimaryButton'
-import SecondaryButton from '@/components/bigButtons/SecondaryButton'
+import MainButton from '@/components/MainButton'
 import TopBar from '@/components/topbar/TopBar.vue'
 import { mapActions } from 'vuex'
 
@@ -327,7 +334,7 @@ export default {
       }
     }
   },
-  components: { Input, InputGrid, PrimaryButton, SecondaryButton, TopBar }
+  components: { Input, InputGrid, MainButton, TopBar }
 }
 </script>
 
@@ -350,16 +357,6 @@ export default {
   margin-bottom: 30px;
 }
 
-#signInButton {
-  justify-self: end;
-  outline: none;
-}
-
-#registerButton {
-  justify-self: start;
-  outline: none;
-}
-
 select {
   background: #ffffff;
   height: 50px;
@@ -380,5 +377,9 @@ select:focus {
 
 .error-box {
   padding: 15px 0;
+}
+
+.s-btn-wrap {
+  text-align: end;
 }
 </style>

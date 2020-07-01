@@ -49,7 +49,15 @@
           </ul>
         </span>
       </div>
-      <div class="center"><PrimaryButton @click.native="submit" /></div>
+      <div class="center">
+        <MainButton
+          type="button"
+          name="Create"
+          textColor="white-big-text"
+          btnStyle="primary"
+          @click.native="submit"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +67,7 @@ import TopBarAccountSettings from '@/components/topbar/TopBarAccountSettings'
 import InputGrid from '@/components/input/InputGrid'
 import Input from '@/components/input/Input'
 import Textarea from '@/components/input/Textarea'
-import PrimaryButton from '@/components/bigButtons/PrimaryButton'
+import MainButton from '@/components/MainButton'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AccountSettings',
@@ -107,7 +115,7 @@ export default {
     TopBarAccountSettings,
     InputGrid,
     Input,
-    PrimaryButton,
+    MainButton,
     Textarea
   }
 }

@@ -93,9 +93,6 @@ export default {
     sendMsg: function () {
       this.sendMessage(this.value)
       this.value = ''
-      setTimeout(() => {
-        this.scrollToBottom()
-      }, 300)
     },
     scrollToBottom() {
       let scrollingElement = document.scrollingElement || document.body
