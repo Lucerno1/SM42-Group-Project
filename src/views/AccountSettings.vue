@@ -94,7 +94,7 @@ export default {
       if (this.vpassword !== this.vpasswordConfirm) {
         this.errors.push('Password and password confirmation do not match')
       }
-      if (this.errors > 0) {
+      if (this.errors.length > 0) {
         return
       }
       this.updateUser({
