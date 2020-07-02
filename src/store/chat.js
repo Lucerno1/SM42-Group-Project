@@ -34,7 +34,7 @@ export default {
       window.console.log({ _id: rootGetters['chat/id'], message: val })
       api
         .post(
-          '/chat/message',
+          '/chat/message/get',
           qs.stringify({ _id: rootGetters['chat/id'], message: val }),
           {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
