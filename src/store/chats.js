@@ -29,7 +29,7 @@ export default {
     },
     acceptRequest({ commit }, id) {
       api
-        .post('/chat', qs.stringify({ participants: id }), {
+        .post('/chat/get', qs.stringify({ participants: id }), {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .then((res) => {
