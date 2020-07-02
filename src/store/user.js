@@ -75,7 +75,7 @@ export default {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .then((res) => {
-          console.log(res)
+          window.console.log(res)
         })
       localStorage.setItem('user', JSON.stringify(rootGetters['user/user']))
     },
@@ -91,13 +91,13 @@ export default {
     login({ commit }, credentials) {
       return logIn(credentials)
         .then(() => {
-          api.get('/user/me').then((res) => {
+          return api.get('/user/me').then((res) => {
             const user = res.data.user
             user.password = credentials.password
             commit('SET_USER_DATA', user)
             localStorage.setItem('user', JSON.stringify(user))
+            return true
           })
-          return true
         })
         .catch(() => {
           return false
@@ -109,7 +109,7 @@ export default {
       localStorage.removeItem('user')
     },
     register({ commit, rootGetters }, user) {
-      console.log(user)
+      window.console.log(user)
       api
         .post('/user', qs.stringify(user), {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -140,6 +140,9 @@ export default {
     },
     lastname: (state) => {
       return state.lastname
+    },
+    name: (state) => {
+      return state.firstname + ' ' + state.lastname
     },
     profilePicture: (state) => {
       return state.profilePicture

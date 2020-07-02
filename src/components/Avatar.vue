@@ -14,7 +14,7 @@ export default {
     Edit2Icon
   },
   props: {
-    src: Blob
+    src: String
   }
 }
 </script>

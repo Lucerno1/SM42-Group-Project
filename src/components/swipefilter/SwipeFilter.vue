@@ -13,12 +13,12 @@
       <div class="bg-requests">
         <div class="inner-grid toggle-btn-height toggle-grid-columns">
           <p>Show Requests</p>
-          <Toggle class="toggle-right" />
+          <Toggle v-model="toggleR" class="toggle-right" />
         </div>
       </div>
       <div class="inner-grid toggle-btn-height toggle-grid-columns">
         <p>Show Questions</p>
-        <Toggle class="toggle-right" />
+        <Toggle v-model="toggleQ" class="toggle-right" />
       </div>
     </section>
   </div>
@@ -28,6 +28,7 @@
 import VueSlider from 'vue-slider-component'
 import Toggle from '@/components/Toggle.vue'
 import { MapPinIcon } from 'vue-feather-icons'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'SwipeFilter',
@@ -44,13 +45,40 @@ export default {
         tooltipPlacement: 'top',
         dragOnClick: true,
         process: true
-      }
+      },
+      toggleR: true,
+      toggleQ: true
+    }
+  },
+  watch: {
+    toggleR: function () {
+      this.setFilter()
+    },
+    toggleQ: function () {
+      this.setFilter()
     }
   },
   components: {
     VueSlider,
     Toggle,
     MapPinIcon
+  },
+  methods: {
+    ...mapActions('requests', ['setFilterType']),
+    setFilter() {
+      let filter = 'both'
+      if (this.toggleQ && !this.toggleR) {
+        filter = 'Question'
+      }
+      if (this.toggleR && !this.toggleQ) {
+        filter = 'Request'
+      }
+      if (!this.toggleR && !this.toggleQ) {
+        filter = 'none'
+      }
+      window.console.log(filter)
+      this.setFilterType(filter)
+    }
   }
 }
 </script>

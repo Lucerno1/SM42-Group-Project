@@ -1,10 +1,10 @@
 <template>
   <div class="content">
-    <BigCircle height="150">
+    <BigCircle :height="150">
       <span class="white-big-text flex">Settings</span></BigCircle
     >
     <div class="inner-content">
-      <Avatar src="" />
+      <Avatar src="img\user-icon.png" />
       <div class="mt-10">
         <span class="orange-big-text">{{ firstname }} {{ lastname }}</span>
       </div>

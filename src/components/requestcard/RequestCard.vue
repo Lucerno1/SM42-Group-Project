@@ -74,7 +74,9 @@ export default {
   display: block;
   width: 84px;
   height: 84px;
-  background: #424242;
+  background: url('https://i.postimg.cc/nhQWn2Td/user-icon.png');
+  background-size: contain;
+  border: 2px solid #ff8a00;
   border-radius: 50%;
   margin: -42px 15px 15px 0;
 }

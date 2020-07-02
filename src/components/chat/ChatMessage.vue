@@ -1,12 +1,14 @@
 <template>
   <div :class="'msg-bubble' + ' ' + user">
-    <span class="name" v-if="name != 'user'">{{ name }}<br /></span>
+    <span class="name" v-if="name !== selfName">{{ name }}<br /></span>
     <span>{{ message }}</span>
     <span class="time">{{ time }}</span>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'ChatMessage',
   props: {
@@ -14,6 +16,9 @@ export default {
     name: String,
     message: String,
     time: String
+  },
+  computed: {
+    ...mapGetters('user', { selfName: 'name' })
   }
 }
 </script>

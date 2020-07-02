@@ -9,7 +9,7 @@
         <InputGrid
           columns="repeat(auto-fit, minmax(130px, 1fr))"
           grid=""
-          mgb="11"
+          :mgb="11"
         >
           <Input
             v-model="vfirstname"
@@ -24,7 +24,7 @@
             placeholder="Lastname"
           />
         </InputGrid>
-        <InputGrid columns="100%" grid="" mgb="">
+        <InputGrid columns="100%">
           <Textarea
             name="Bio"
             rows="5"
@@ -49,7 +49,15 @@
           </ul>
         </span>
       </div>
-      <div class="center"><PrimaryButton @click.native="submit" /></div>
+      <div class="center">
+        <MainButton
+          type="button"
+          name="Create"
+          textColor="white-big-text"
+          btnStyle="primary"
+          @click.native="submit"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +67,7 @@ import TopBarAccountSettings from '@/components/topbar/TopBarAccountSettings'
 import InputGrid from '@/components/input/InputGrid'
 import Input from '@/components/input/Input'
 import Textarea from '@/components/input/Textarea'
-import PrimaryButton from '@/components/bigButtons/PrimaryButton'
+import MainButton from '@/components/MainButton'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AccountSettings',
@@ -86,7 +94,7 @@ export default {
       if (this.vpassword !== this.vpasswordConfirm) {
         this.errors.push('Password and password confirmation do not match')
       }
-      if (this.errors > 0) {
+      if (this.errors.length > 0) {
         return
       }
       this.updateUser({
@@ -107,7 +115,7 @@ export default {
     TopBarAccountSettings,
     InputGrid,
     Input,
-    PrimaryButton,
+    MainButton,
     Textarea
   }
 }

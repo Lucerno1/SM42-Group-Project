@@ -9,37 +9,39 @@
             @click="$router.go(-1)"
           ></arrow-left-icon>
         </div>
-        <span class="white-big-text">Achmed Akkabi</span>
+        <span class="white-big-text">{{ name }}</span>
         <div class="right-icon">
           <arrow-left-icon size="1.5x" class="white-text"></arrow-left-icon>
         </div>
         <span class="bottomTitle white-text">Requests & Questions</span>
       </div>
-      <div class="second hpx-70" >
-        <div class="container-task" >
-          <ChatTask @click.native="popupFunction"></ChatTask>
-          <ChatTask @click.native="popupFunction"></ChatTask>
-          <ChatTask @click.native="popupFunction"></ChatTask>
-          <ChatTask @click.native="popupFunction"></ChatTask>
+      <div class="second hpx-70">
+        <div class="container-task">
+          <ChatTask :state="taskState" @click.native="popupFunction"></ChatTask>
+          <ChatTask></ChatTask>
+          <ChatTask></ChatTask>
+          <ChatTask></ChatTask>
         </div>
-        <ChatCardPopup v-show="popup" ></ChatCardPopup>
+        <ChatCardPopup v-show="popup"></ChatCardPopup>
       </div>
       <div class="third hpx-70">
         <div class="back hpx-70"></div>
       </div>
     </div>
 
-    <div class="msg-container" >
+    <div class="msg-container">
       <ChatMessage
-        class="other"
-        name="Achmed Akkabi"
-        message="Lorem ipsum"
-        time="13:45"
+        v-for="(message, index) in chatMessages"
+        :key="'message:' + index"
+        :class="isMe(id, message._id) ? 'self' : 'other'"
+        :name="getName(message._id)"
+        :message="message.message"
+        :time="message.date | formatDate"
       ></ChatMessage>
     </div>
 
     <div class="input-container">
-      <Input class="input" v-model="value" />
+      <Input class="input" v-model="value" @keydown.enter.native="sendMsg" />
       <button class="camera">
         <camera-icon class="iconC" size="1.3x"></camera-icon>
       </button>
@@ -54,13 +56,21 @@ import ChatTask from '@/components/chat/ChatTask.vue'
 import Input from '@/components/input/Input.vue'
 import { ArrowLeftIcon, CameraIcon } from 'vue-feather-icons'
 import ChatCardPopup from '@/components/chat/ChatCardPopup.vue'
+import { mapActions, mapGetters } from 'vuex'
+import user from '@/mixins/user'
 
 export default {
   data() {
     return {
       value: '',
-      popup: false
+      popup: false,
+      taskState: 'inactive'
     }
+  },
+  mixins: [user],
+  computed: {
+    ...mapGetters('chat', ['name', 'chatMessages', 'participants']),
+    ...mapGetters('user', ['id'])
   },
   components: {
     ChatMessage,
@@ -72,8 +82,28 @@ export default {
   },
   methods: {
     popupFunction() {
-     this.popup = !this.popup
+      this.popup = !this.popup
+      this.popup ? (this.taskState = 'active') : (this.taskState = 'inactive')
+    },
+    ...mapActions('chat', ['load', 'sendMessage']),
+    getName: function (id) {
+      const user = this.getUser(id, this.participants)
+      return user.firstname + ' ' + user.lastname
+    },
+    sendMsg: function () {
+      this.sendMessage(this.value)
+      this.value = ''
+    },
+    scrollToBottom() {
+      let scrollingElement = document.scrollingElement || document.body
+      scrollingElement.scrollTop = scrollingElement.scrollHeight
     }
+  },
+  created() {
+    this.load(this.$route.params.id)
+  },
+  updated() {
+    this.scrollToBottom()
   }
 }
 </script>
@@ -148,7 +178,7 @@ export default {
 .msg-container {
   position: absolute;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   width: 90%;
   height: auto;
   overflow: auto;

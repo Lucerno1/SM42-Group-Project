@@ -6,9 +6,14 @@
           <component
             :is="icon.comp"
             class="whiteSVG"
-            v-on:click="redirect(icon.loc)"
+            v-on:click="redirect(icon.locs)"
+            v-if="isLoggedIn"
           ></component>
-          <span v-if="$route.name === icon.loc" class="dot"></span>
+
+          <router-link v-else to="/login">
+            <component :is="icon.comp" class="whiteSVG"></component>
+          </router-link>
+          <span v-if="icon.locs.includes($route.name)" class="dot"></span>
         </div>
       </Button>
     </Row>
@@ -24,25 +29,32 @@ import {
   ClipboardIcon,
   MessageSquareIcon
 } from 'vue-feather-icons'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'NavBar',
   data() {
     return {
       icons: [
-        { comp: UsersIcon, loc: 'Task' },
-        { comp: ClipboardIcon, loc: 'Tasks' },
-        { comp: MessageSquareIcon, loc: 'ChatOverview' },
-        { comp: SettingsIcon, loc: 'Settings' }
+        { comp: UsersIcon, locs: ['Task'] },
+        {
+          comp: ClipboardIcon,
+          locs: ['Tasks', 'RequestCardCreation', 'QuestionCardCreation']
+        },
+        { comp: MessageSquareIcon, locs: ['ChatOverview', 'Chat'] },
+        { comp: SettingsIcon, locs: ['Settings', 'AccountSettings'] }
       ]
     }
   },
+  computed: {
+    ...mapGetters('user', ['isLoggedIn'])
+  },
   methods: {
-    redirect: function (loc) {
-      if (this.$route.name === loc) {
+    redirect: function (locs) {
+      if (locs.includes(this.$route.name)) {
         return
       }
-      this.$router.push(loc)
+      this.$router.push({ name: locs[0] })
     }
   },
   components: { Row, Button }

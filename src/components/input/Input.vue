@@ -17,6 +17,11 @@ export default {
       content: this.value
     }
   },
+  watch: {
+    value: function () {
+      this.content = this.value
+    }
+  },
   props: {
     type: String,
     name: String,
